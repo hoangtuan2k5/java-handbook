@@ -18,6 +18,19 @@ Mục tiêu không phải là học thuộc API rời rạc, mà là xây một 
 
 README này là entry point cho toàn bộ folder Java. Nó không thay thế note chi tiết bên trong; mục tiêu của nó là giúp điều hướng, chọn thứ tự đọc, và nhắc lại các rule làm việc quan trọng.
 
+## Recommended reader
+
+Repo này là một Obsidian vault folder, không chỉ là Markdown thường. Để có trải nghiệm tốt nhất, nên dùng [Obsidian](https://obsidian.md) clone repo về và mở folder này như một vault hoặc subfolder của vault có sẵn.
+
+Lý do nên dùng Obsidian:
+
+- Wiki-link dạng `[[note-name]]` chỉ resolve được trong Obsidian; trên GitHub các link này hiển thị là plain text.
+- Graph view giúp thấy quan hệ giữa mental model, convention, core, advanced, bug lesson, và open question.
+- Backlink panel giúp truy ngược một concept đang được những note nào tham chiếu.
+- Note structure (`## What is it`, `## Handbook rule`, `## Check yourself`, ...) được thiết kế để tóm tắt nhanh trong Obsidian outline.
+
+Nếu chỉ đọc trên GitHub, bạn vẫn có thể đọc nội dung từng file riêng lẻ. Khi gặp wiki-link `[[xxx]]` không click được, hãy mở thủ công file `xxx.md` cùng folder hoặc theo path tương ứng.
+
 ## Suggested reading path
 
 Nếu học từ đầu, nên đi theo thứ tự:
