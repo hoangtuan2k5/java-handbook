@@ -8,15 +8,6 @@ Mục tiêu là bắt đầu từ symptom cụ thể, tìm root cause, rồi rú
 
 ## Suggested reading order
 
-1. `001-null-pointer-exception.md`
-2. `002-concurrent-modification-exception.md`
-3. `003-equals-vs-double-equal.md`
-4. `004-stack-overflow-error.md`
-5. `005-class-cast-exception.md`
-6. `006-out-of-memory-error.md`
-7. `007-number-format-exception.md`
-8. `008-array-index-out-of-bounds-exception.md`
-9. `009-unsupported-operation-exception.md`
 
 ## How to use this folder
 

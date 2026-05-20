@@ -8,7 +8,6 @@ Mục tiêu là không giả vờ chắc chắn khi evidence chưa đủ.
 
 ## Current notes
 
-- `001-volatile.md`: câu hỏi mở quanh `volatile`, visibility, atomicity, và thread-safety.
 
 ## How to use this folder
 
