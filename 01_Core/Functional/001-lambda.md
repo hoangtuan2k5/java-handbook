@@ -91,6 +91,14 @@ Trong Spring Boot, lambda xuất hiện rất nhiều ở stream pipeline, callb
 - Lambda ngắn thì đẹp, lambda nhiều side effect sẽ rất khó debug.
 - Đừng dùng lambda để che đi logic đáng lẽ nên có tên riêng.
 
+## Handbook rule
+
+- Lambda chỉ dùng cho logic ngắn, không nhiều branch/state; logic dài tách method.
+- Lambda chỉ capture effectively final local variable; không workaround bằng array trick.
+- Side effect trong lambda là tín hiệu code cần tách ra cho dễ debug.
+- Target type quyết định lambda là `Predicate`/`Function`/`Consumer`; viết signature rõ.
+- Đừng functional hóa code chỉ vì cú pháp mới; loop đơn giản vẫn hợp lệ.
+
 ## Check yourself
 
 - Vì sao nói lambda là behavior value chứ không phải function độc lập trong Java?

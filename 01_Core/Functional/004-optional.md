@@ -73,6 +73,14 @@ Nhưng với request DTO, JPA entity, config binding, và serialization boundary
 - `Optional` không thay thế việc modeling domain cho nghiêm túc.
 - Đừng dùng `Optional` chỉ để nhìn code có vẻ hiện đại hơn.
 
+## Handbook rule
+
+- `Optional` chỉ dùng cho return value có thể vắng; không dùng cho field/parameter/collection item.
+- Tránh `optional.get()` không guard; ưu tiên `orElse`, `orElseGet`, hoặc `ifPresent`.
+- `orElse` eager, `orElseGet` lazy; chọn theo cost của default value.
+- Đừng dùng `Optional` chỉ để thay `null` ở mọi chỗ; absence có domain meaning thì cân nhắc sealed/result type.
+- Không serialize `Optional` qua API/JPA; chuyển về plain type trước khi qua boundary.
+
 ## Check yourself
 
 - Vì sao nói `Optional` hợp ở return type hơn là ở field?

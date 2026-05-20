@@ -90,6 +90,14 @@ Một custom functional interface đặt tên tốt có thể làm domain rule d
 - Chữ “functional” không tự làm design tốt hơn, contract input/output vẫn phải rõ.
 - Một method reference hay lambda chỉ hợp lệ khi signature khớp abstract method.
 
+## Handbook rule
+
+- Ưu tiên built-in `Function`/`Predicate`/`Consumer`/`Supplier`; chỉ tạo custom khi domain meaning rõ hơn hoặc signature không khớp.
+- Đánh dấu `@FunctionalInterface` để compiler chặn breaking change.
+- Đừng bọc lại `Function`/`Predicate` y hệt với tên khác mà không thêm meaning.
+- Method reference/lambda chỉ hợp lệ khi signature khớp abstract method; không dựa vào overload mơ hồ.
+- Contract input/output phải rõ trong Javadoc, kể cả với functional interface.
+
 ## Check yourself
 
 - Vì sao lambda cần functional interface làm target type?

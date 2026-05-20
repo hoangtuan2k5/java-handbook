@@ -93,6 +93,14 @@ Trong Spring Boot, Stream API hay dùng để map entity sang DTO, filter respon
 - Stream chỉ dùng một lần.
 - Parallel stream không phải nút “làm nhanh hơn” mặc định.
 
+## Handbook rule
+
+- Dùng stream cho pipeline rõ filter/map/group/reduce; tránh dùng cho logic mutation phức tạp.
+- Mọi pipeline phải có terminal operation; không có thì không chạy gì.
+- Tránh side effect trong `map`/`filter`; reasoning sẽ vỡ rất nhanh.
+- Stream dùng một lần; muốn replay phải tạo lại từ source.
+- `parallelStream()` không mặc định nhanh hơn; chỉ dùng khi đo được lợi ích thật.
+
 ## Check yourself
 
 - Vì sao nói stream là kế hoạch xử lý chứ không phải container dữ liệu?

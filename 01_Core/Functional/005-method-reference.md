@@ -70,6 +70,14 @@ Nó hợp khi logic chỉ là nối các mảnh có sẵn. Nếu mapping có dom
 - Constructor reference gọn, nhưng đừng để nó che đi constructor có validation hoặc side effect khó đoán.
 - `String::trim` không có nghĩa là gọi trên class `String`, mà là gọi `trim()` trên từng phần tử `String` đi qua pipeline.
 
+## Handbook rule
+
+- Dùng method reference khi nó thay lambda gần như một-một và đọc tự nhiên hơn.
+- Khi cần transform thêm hoặc context business, lambda đặt tên rõ tốt hơn method reference generic.
+- Constructor reference (`Foo::new`) đẹp nhưng phải nhớ side effect/validation trong constructor.
+- `Type::method` dạng instance reference áp dụng trên từng phần tử pipeline, không gọi trên class.
+- Overload nặng và generic phức tạp có thể làm type inference khó đọc; ghi explicit type khi cần.
+
 ## Check yourself
 
 - Khi nào method reference rõ hơn lambda, và khi nào không?
