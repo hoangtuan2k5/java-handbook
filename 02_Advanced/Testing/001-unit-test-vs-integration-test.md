@@ -115,6 +115,14 @@ Một mental model hữu ích là: Spring cho mình nhiều mức `integration`,
 - Một unit test quá khó viết thường là tín hiệu code đang dính quá nhiều dependency hoặc class đang làm quá nhiều việc.
 - Không tách rõ mục tiêu test sẽ dẫn tới assertion mơ hồ, fail một cái là không biết lỗi nằm ở logic hay wiring.
 
+## Handbook rule
+
+- Unit test cho business logic nhỏ, không chạm I/O thật; integration test cho wiring/query/transaction/security.
+- Mock quá nhiều framework là tín hiệu cần slice/integration test, không cố mock thêm.
+- Suite không nên toàn integration test; chậm và khó debug, team sẽ skip.
+- Một class khó test thường là class đang làm quá nhiều việc; refactor trước khi viết test phức tạp.
+- Tách rõ mục tiêu mỗi test; assertion phải nói rõ logic hay wiring đang được kiểm tra.
+
 ## Check yourself
 
 - Nếu một test chỉ có 15 dòng nhưng khởi động Spring context và gọi DB thật, nó thuộc mức nào?

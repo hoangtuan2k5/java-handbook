@@ -100,6 +100,14 @@ Với `JaCoCo`, điều quan trọng không chỉ là mở report, mà là đọ
 - Bỏ qua path exception hoặc fallback thường khiến production bug lọt qua dù số coverage nhìn ổn.
 - Một dòng được chạy qua trong test integration lớn chưa chắc đã có assertion đủ gần để bắt bug đúng chỗ.
 
+## Handbook rule
+
+- Coverage là tín hiệu, không phải mục tiêu; cao chưa đảm bảo chất lượng test.
+- Dùng coverage để tìm vùng chưa test, không để chốt PR.
+- Branch coverage có giá trị hơn line coverage cho logic phức tạp.
+- Đừng viết test ép coverage số đẹp; assertion phải có ý nghĩa business.
+- Theo dõi xu hướng coverage; sụt mạnh là tín hiệu suite bị giảm chất lượng.
+
 ## Check yourself
 
 - Vì sao coverage nên được xem như bản đồ nhiệt, không phải điểm số chất lượng tuyệt đối?

@@ -111,6 +111,14 @@ Một lợi thế thực tế là khi mình phân biệt rõ `@BeforeEach` của
 - Parameterized test với quá nhiều input có thể che mất intent nếu không đặt tên case rõ ràng.
 - `@BeforeAll` dễ biến thành nơi khởi tạo state chia sẻ quá rộng, rồi test bắt đầu phụ thuộc nhau mà mình không để ý.
 
+## Handbook rule
+
+- Mỗi test một behavior; tên test mô tả ý định, không lặp lại implementation.
+- `@BeforeEach` chỉ setup tối thiểu; logic chính nằm trong test body.
+- Reset state trong field; không để leak giữa test.
+- Parameterized test phải đặt tên case rõ; nhiều input không đặt tên là khó debug.
+- `assertThrows` chỉ nên ôm đúng đoạn ném exception; bao quá rộng làm assertion sai.
+
 ## Check yourself
 
 - `JUnit Platform`, `Jupiter`, và `Vintage` khác nhau ở vai trò nào?
