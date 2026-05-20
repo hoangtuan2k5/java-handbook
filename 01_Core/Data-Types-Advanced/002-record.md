@@ -83,6 +83,14 @@ Nhưng với JPA entity hoặc proxy-heavy framework behavior, record thường 
 - Record accessor là `name()` chứ không phải bắt buộc `getName()`, nên code cũ hoặc framework cũ có thể cần chú ý.
 - Record rất hợp cho shape ổn định, nhưng không hợp cho object có lifecycle nhiều bước.
 
+## Handbook rule
+
+- Dùng `record` cho immutable DTO, value object, event, hoặc query projection.
+- Tránh `record` cho JPA entity mutable hoặc class cần no-arg constructor framework cũ.
+- `record` chỉ shallow-immutable; component mutable vẫn đổi được nội bộ, phải copy/wrap khi cần.
+- Equality theo toàn bộ components; thêm/bớt component đổi semantics nên cân nhắc trước.
+- Accessor là `name()` không phải `getName()`; framework cũ phải biết quy ước này.
+
 ## Check yourself
 
 - Khi nào `record` rõ hơn class thường?

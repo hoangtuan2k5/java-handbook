@@ -88,6 +88,14 @@ Tuy nhiên nếu bạn xử lý input JSON động hoặc `Object` quá nhiều,
 - Lợi ích cao nhất thường đến khi kết hợp với sealed type hoặc switch expression, không phải khi dùng lẻ tẻ mọi nơi.
 - Nếu code liên tục branch theo type của object ngẫu nhiên, có thể bạn đang thiếu abstraction tốt hơn.
 
+## Handbook rule
+
+- Pattern matching dùng khi branch theo type/shape và cần dữ liệu trong nhánh đó.
+- Kết hợp với sealed hierarchy để switch exhaustive, không phải chỉ thay `instanceof`.
+- Không dùng pattern matching để giấu logic phức tạp trong một switch dài; tách method.
+- Bind variable trong pattern phải dùng đúng scope, không reuse ngoài nhánh match.
+- Dùng `default`/exhaustive đầy đủ; tránh fallthrough ngầm.
+
 ## Check yourself
 
 - Pattern matching giảm bớt ceremony nào so với `instanceof` cộng cast tay?

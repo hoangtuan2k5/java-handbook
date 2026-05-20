@@ -88,6 +88,14 @@ Nhưng nếu dữ liệu phải deserialize linh hoạt từ nhiều nguồn ngo
 - Lợi ích lớn nhất của sealed class thường chỉ lộ rõ khi đi cùng pattern matching hoặc exhaustive branching.
 - Nếu domain thật ra cần mở rộng bởi code ngoài hệ thống, sealed có thể khóa sai chỗ.
 
+## Handbook rule
+
+- Dùng sealed khi hierarchy hữu hạn, đóng theo design, để compiler biết exhaustive branching.
+- Mỗi subtype phải là `final`, `sealed`, hoặc `non-sealed`; không bỏ trống modifier.
+- Lợi ích lớn nhất khi đi kèm pattern matching và exhaustive switch.
+- Không dùng sealed nếu hierarchy cần mở cho plugin/third-party extension.
+- Quá nhiều subtype nhỏ là dấu hiệu over-modeling; gộp lại nếu không có hành vi khác biệt.
+
 ## Check yourself
 
 - `sealed` khác `final` ở điểm nào?

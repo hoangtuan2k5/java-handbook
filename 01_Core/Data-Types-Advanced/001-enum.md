@@ -88,6 +88,14 @@ Nhưng nếu expose enum ra REST API, đổi tên constant có thể là breakin
 - Nếu parse từ input ngoài, cần xử lý invalid value rõ ràng thay vì để exception lan vô nghĩa.
 - `enum` rất mạnh cho tập hữu hạn, nhưng rất tệ nếu domain thật ra là open-ended.
 
+## Handbook rule
+
+- Dùng `enum` cho tập giá trị hữu hạn, ổn định, có ý nghĩa domain.
+- Không persist `name()` trực tiếp vào database/API; dùng explicit code/value để tránh breaking change khi rename.
+- Không bao giờ dùng `ordinal()` làm key persistent.
+- Khi parse value từ external, validate và xử lý invalid rõ ràng, không để exception lan.
+- Domain mở/đổi liên tục theo data ngoài thì không nên dùng `enum`.
+
 ## Check yourself
 
 - Vì sao `enum` tốt hơn `String` khi tập giá trị hợp lệ là hữu hạn và cố định?
