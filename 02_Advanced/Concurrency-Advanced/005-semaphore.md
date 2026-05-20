@@ -106,6 +106,14 @@ Nhưng nếu policy overload đã phức tạp, nên cân nhắc công cụ cao 
 - Semaphore không tự bảo vệ object graph khỏi race condition nếu code bên trong vẫn mutate state phức tạp.
 - `acquire()` là blocking operation; nếu bạn muốn thất bại ngay khi hết permit thì mental model gần hơn là `tryAcquire()`.
 
+## Handbook rule
+
+- `Semaphore` để giới hạn permit/concurrency, không phải bảo vệ invariant object.
+- Mọi `acquire()` phải có `release()` trong `finally`; permit leak làm app nghẽn dần.
+- `Semaphore(1)` không tương đương lock về ownership; tránh dùng thay lock.
+- Cần fail-fast khi hết permit dùng `tryAcquire(timeout)`; tránh blocking vô hạn.
+- Backpressure/overload nên xử lý bằng queue/executor policy, không chỉ semaphore.
+
 ## Check yourself
 
 - `Semaphore` đang giải bài toán mutual exclusion hay bounded parallelism?

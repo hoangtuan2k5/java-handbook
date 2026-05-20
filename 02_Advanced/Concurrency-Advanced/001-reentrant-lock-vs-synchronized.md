@@ -114,6 +114,14 @@ Nếu state đó là đơn giản và bắt buộc phải giữ trong memory, `s
 - Reentrant không có nghĩa nested locking trở nên dễ reason. Nó chỉ tránh self-deadlock cho cùng một thread trên cùng một lock.
 - Đừng dùng lock để che thiết kế state quá rối. Nhiều lúc immutable snapshot hoặc tách state mới là fix đúng.
 
+## Handbook rule
+
+- Default vẫn là `synchronized` cho critical section ngắn, không cần feature đặc biệt.
+- Chọn `ReentrantLock` chỉ khi cần `tryLock`, `lockInterruptibly`, hoặc nhiều `Condition`.
+- Mọi `lock()` phải có `unlock()` trong `finally`; thiếu là leak chắc chắn.
+- Fairness đổi throughput; bật chỉ khi đo được starvation thật.
+- Reentrant tránh self-deadlock cùng thread, không làm nested locking thành an toàn.
+
 ## Check yourself
 
 - `synchronized` và `ReentrantLock` khác nhau chủ yếu ở visibility hay ở API control?

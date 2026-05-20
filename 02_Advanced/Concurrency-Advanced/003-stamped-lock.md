@@ -117,6 +117,14 @@ Nó hiếm khi là lựa chọn đầu tiên cho service business bình thườn
 - Write lock giữ lâu sẽ làm optimistic read fail dày, lúc đó lợi ích lý thuyết tan rất nhanh.
 - Nếu dữ liệu phải đọc qua nhiều bước phức tạp mới dùng được, optimistic read thường kém hợp hơn.
 
+## Handbook rule
+
+- `StampedLock` chỉ dùng khi read áp đảo, read path nóng, đo được lợi ích từ optimistic read.
+- Optimistic read phải gọi `validate(stamp)`; thiếu validate là pattern sai.
+- `StampedLock` không reentrant; không mang thói quen `ReentrantLock` sang.
+- Write lock giữ lâu làm optimistic read fail liên tục; lợi ích biến mất.
+- Logic phức tạp/nhiều bước thì `ReadWriteLock` hoặc immutable snapshot an toàn hơn.
+
 ## Check yourself
 
 - Vì sao optimistic read không phải là “read lock nhanh hơn” theo nghĩa đơn giản?

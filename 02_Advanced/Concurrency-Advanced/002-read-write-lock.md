@@ -114,6 +114,14 @@ Nó ít hợp cho business service thông thường. Nếu bean sống kiểu si
 - Upgrade read sang write là vùng nhiều bug. Mẫu an toàn hơn thường là nhả read lock, lấy write lock, rồi kiểm tra lại điều kiện.
 - Fairness có thể giúp giảm starvation, nhưng không miễn phí về throughput.
 
+## Handbook rule
+
+- Dùng `ReadWriteLock` khi đọc áp đảo và critical section đọc đáng kể; không dùng cho write nặng.
+- Dưới `read lock` không được mutate state; vi phạm phá toàn bộ guarantee.
+- Upgrade read→write không an toàn; nhả read lock trước, lấy write lock, rồi recheck.
+- Reader giữ lock lâu vẫn block writer; tách read path thành snapshot khi có thể.
+- Ưu tiên immutable snapshot hoặc copy-on-write nếu code đọc rất hot.
+
 ## Check yourself
 
 - Vì sao `ReadWriteLock` không phải lựa chọn mặc định mỗi khi có thao tác đọc và ghi?

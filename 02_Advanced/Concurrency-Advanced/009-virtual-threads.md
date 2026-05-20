@@ -117,6 +117,14 @@ Note này tập trung vào mental model và fit decision. Khi áp dụng thật,
 - Concurrency cao hơn không đồng nghĩa throughput tổng thể tăng nếu bottleneck nằm ở nơi khác.
 - Structured concurrency và scoped values là topic liên quan nhưng không được cover sâu trong note này.
 
+## Handbook rule
+
+- Virtual threads cho task I/O-bound đông; CPU-bound dùng pool khác.
+- Tránh `synchronized` trên blocking call; thay bằng `ReentrantLock` để giảm pinning.
+- `ThreadLocal` cần review lại khi số concurrent task tăng mạnh; cân nhắc scoped values.
+- Bottleneck downstream (DB pool, semaphore) vẫn giới hạn throughput; chỉ tăng concurrency không đủ.
+- Imperative style trở lại hấp dẫn với virtual threads; reactive không còn là default.
+
 ## Check yourself
 
 - Virtual threads đang tối ưu chi phí nào, CPU hay thread management?

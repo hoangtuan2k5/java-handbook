@@ -137,6 +137,14 @@ Nếu workload là nhiều task blocking độc lập, virtual threads thường
 - Dùng `commonPool()` bừa bãi có thể tạo coupling khó thấy giữa nhiều chỗ trong app.
 - Shared mutable state giữa subtask làm kết quả song song khó tin hơn nhiều.
 
+## Handbook rule
+
+- `ForkJoinPool` cho CPU-bound, recursive divide-and-conquer; không cho blocking I/O.
+- Split granularity phải đủ lớn; chia quá nhỏ overhead lấn át.
+- Tránh dùng `commonPool()` cho task quan trọng; cô lập pool theo workload.
+- Shared mutable state giữa subtask phá ý nghĩa parallelism; ưu tiên pure compute.
+- Blocking call trong worker dùng `ManagedBlocker`, hoặc tốt hơn là chuyển sang executor khác.
+
 ## Check yourself
 
 - Vì sao `ForkJoinPool` không phải “pool nhanh hơn” cho mọi workload?

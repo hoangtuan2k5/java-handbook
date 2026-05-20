@@ -97,6 +97,14 @@ Nhưng đừng để nó che mất câu hỏi kiến trúc lớn hơn. Nếu sta
 - Iterator là weakly consistent, không phải snapshot ổn định.
 - Thread-safe ở level operation không có nghĩa toàn bộ business workflow đã thread-safe.
 
+## Handbook rule
+
+- `ConcurrentHashMap` không cho `null` key/value; thiết kế API phù hợp.
+- Check-then-act phải dùng atomic API (`putIfAbsent`, `compute`, `merge`); không split `get` rồi `put`.
+- Iterator weakly consistent, không phải snapshot ổn định.
+- Per-entry atomicity không đảm bảo workflow business thread-safe.
+- Cần ordered iteration phải đổi sang `ConcurrentSkipListMap` hoặc đổi data structure.
+
 ## Check yourself
 
 - Vì sao thay `HashMap` bằng `ConcurrentHashMap` chưa đủ để sửa mọi race condition quanh map?

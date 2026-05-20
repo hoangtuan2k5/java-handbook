@@ -93,6 +93,14 @@ Nhưng nếu app vẫn dùng JDBC blocking, gọi HTTP client blocking, hoặc p
 - Lazy execution làm nhiều người đọc code xong tưởng đã chạy rồi, trong khi thực tế chưa có subscription.
 - Backpressure chỉ mạnh khi cả pipeline thật sự tôn trọng nó.
 
+## Handbook rule
+
+- Reactive chỉ chọn khi async I/O streaming, backpressure thật sự cần.
+- Không trộn blocking call vào reactive pipeline; cô lập qua scheduler riêng.
+- Lazy execution là contract; nhớ subscribe để pipeline chạy.
+- Toàn pipeline phải tôn trọng backpressure; một mắt xích buffer vô hạn vô hiệu hóa.
+- Imperative + virtual threads thường đủ cho CRUD/blocking heavy app.
+
 ## Check yourself
 
 - Reactive khác imperative chủ yếu ở cú pháp hay ở execution model?
