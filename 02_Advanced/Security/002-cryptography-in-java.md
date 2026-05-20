@@ -84,6 +84,14 @@ Trong Spring ecosystem, crypto thường xuất hiện qua `Spring Security`, `P
 - Reuse nonce hoặc IV trong mode yêu cầu uniqueness như `GCM` có thể phá hỏng guarantee bảo mật
 - Tự trộn nhiều primitive mà không hiểu rõ threat model dễ tạo ra scheme nhìn có vẻ phức tạp nhưng lại yếu
 
+## Handbook rule
+
+- Không tự thiết kế crypto protocol; dùng primitive chuẩn theo threat model rõ.
+- Password lưu bằng KDF chuyên dụng (Argon2/bcrypt/PBKDF2), không SHA trực tiếp.
+- AES dùng mode authenticated (`GCM`); tránh `ECB`; không tái dùng nonce/IV.
+- `Base64` là encoding, không phải encryption; không nhầm khi nói về confidentiality.
+- Crypto đúng phụ thuộc bối cảnh dùng; thiếu threat model thì không thể đánh giá secure.
+
 ## Check yourself
 
 - Bài toán của bạn là `password storage`, `integrity`, `authenticated encryption`, hay `signature`?

@@ -92,6 +92,14 @@ Khi mình viết controller, service, hoặc integration adapter, nguyên tắc 
 - Dùng blacklist thay vì allow-list cho input hẹp dễ bị bypass vì mình không thể liệt kê hết mọi chuỗi xấu
 - Tin dữ liệu từ internal service là an toàn tuyệt đối có thể mở đường cho chain compromise khi một service khác bị lỗi trước
 
+## Handbook rule
+
+- Validate input ở boundary và check lại authorization ở mỗi layer dùng chung; không tin caller nội bộ tuyệt đối.
+- Dùng allow-list cho input hẹp, không blacklist; không thể liệt kê hết chuỗi xấu.
+- Validate cả format lẫn semantics; format đúng không có nghĩa giá trị hợp lệ trong domain.
+- Không log raw body chứa password/token/PII; redact trước khi ghi.
+- Secure coding là một lớp phòng thủ; vẫn cần threat modeling, dependency scan, runtime hardening.
+
 ## Check yourself
 
 - Boundary nào trong app của bạn đang nhận `untrusted input` rõ nhất?
