@@ -83,6 +83,14 @@ Trong khi đó, khi bạn đang xử lý upload stream hoặc download response,
 - `Files.readAllBytes` hoặc `readString` không phù hợp với file rất lớn.
 - Chỉ vì API ở package `java.nio` không có nghĩa là nó tự nhanh hơn mọi trường hợp.
 
+## Handbook rule
+
+- File task hiện đại default dùng `Path`/`Files`; chỉ rớt xuống stream/reader khi API yêu cầu.
+- NIO không đồng nghĩa non-blocking; phải đọc API trước khi giả định.
+- `Channel`/`Selector` chỉ dùng khi thực sự cần I/O multiplexing; tránh over-engineering cho file nhỏ.
+- File rất lớn không dùng `Files.readAllBytes`/`readString`; stream từng phần.
+- Path string thủ công cho logic phức tạp dễ sai OS; dùng `Path` để an toàn.
+
 ## Check yourself
 
 - Vì sao `Path` và `Files` là điểm vào tốt hơn nhiều so với nhớ hết `Channel` ngay từ đầu?

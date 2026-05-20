@@ -76,6 +76,14 @@ Nó cũng giúp bạn phân biệt rõ chỗ nào đang xử lý text streaming,
 - `BufferedReader` không tự biết charset. Charset phải được xử lý ở `Reader` bên dưới.
 - `readLine()` bỏ ký tự xuống dòng, nên nếu bạn cần giữ nguyên formatting gốc, hãy chủ động ghép lại.
 
+## Handbook rule
+
+- `BufferedReader` chỉ dùng cho text; không bọc binary stream.
+- `readLine()` trả `null` ở EOF; empty line là `""`, đừng nhầm hai trạng thái.
+- Charset phải set ở `Reader` bên dưới; đừng dựa vào default charset của JVM.
+- File rất lớn đọc theo dòng, không load hết vào memory.
+- Mọi reader/stream phải dùng `try-with-resources` để đóng đúng.
+
 ## Check yourself
 
 - Vì sao `BufferedReader` hợp với file text lớn hơn `Files.readString` trong nhiều bài toán batch?

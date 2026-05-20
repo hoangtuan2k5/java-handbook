@@ -85,6 +85,14 @@ Một workflow thực tế thường là:
 - Filename từ user có thể chứa path traversal nếu không validate.
 - Relative path và absolute path khác nhau về điểm neo. Đừng assume working directory giống nhau giữa local và production.
 
+## Handbook rule
+
+- Dùng `Path` và `Files` cho file operation hiện đại; không nối path bằng string thủ công.
+- Filename từ user phải validate path traversal trước khi resolve vào thư mục lưu trữ.
+- `Files.exists()` không phải guarantee; tránh dùng làm guard cho operation tiếp theo (TOCTOU).
+- File lớn không dùng `Files.readString`/`readAllBytes`; stream từng dòng/khối.
+- Relative path phụ thuộc working directory; ưu tiên absolute path hoặc base resolved rõ ràng.
+
 ## Check yourself
 
 - Vì sao `Path` rõ hơn path string thô khi phải nối nhiều segment?

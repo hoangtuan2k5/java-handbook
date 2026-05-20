@@ -89,6 +89,14 @@ Một dấu hiệu tốt là: dữ liệu vào hệ thống của bạn là byte
 - Quên close stream hoặc reader có thể giữ file handle hoặc network connection lâu hơn cần thiết.
 - Chuyển binary sang `Reader` chỉ vì “muốn đọc cho tiện” là bẫy phá dữ liệu rất phổ biến.
 
+## Handbook rule
+
+- Binary dùng `InputStream`; text dùng `Reader` với charset rõ ràng.
+- Không dùng default charset ngầm; data từ file/HTTP/external phải set explicit charset.
+- `read()` có thể trả phần dữ liệu; vòng đọc phải tôn trọng bytes-read trả về.
+- Mọi stream/reader đóng bằng `try-with-resources` để tránh giữ file/connection handle.
+- Convert binary sang text bừa làm hỏng dữ liệu; quyết định encoding trước khi đọc.
+
 ## Check yourself
 
 - Vì sao `InputStream` là abstraction tự nhiên cho ảnh hoặc zip, còn `Reader` thì không?

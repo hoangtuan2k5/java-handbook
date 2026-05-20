@@ -93,6 +93,14 @@ Hiểu schema compatibility giúp tránh phá client khi đổi field, kể cả
 - `transient` field sẽ mất giá trị sau deserialize.
 - `implements Serializable` không tự biến design của bạn thành durable contract tốt.
 
+## Handbook rule
+
+- Không deserialize dữ liệu không tin cậy bằng Java native serialization; dùng JSON/Protobuf/Avro qua boundary external.
+- Đánh dấu `transient` cho field nhạy cảm; secret không được vào snapshot.
+- Khai báo `serialVersionUID` rõ để kiểm soát compatibility, không để compiler tự sinh.
+- Schema phải có versioning rõ; native serialization là khoá vào JVM, không phải contract liên ngôn ngữ.
+- DTO API/service-to-service ưu tiên format có schema, không Java serializable.
+
 ## Check yourself
 
 - Vì sao `implements Serializable` chưa đủ để nói rằng object của bạn “an toàn để lưu lâu dài”?
