@@ -74,7 +74,7 @@ Dùng generic method khi chỉ một operation cần type flexibility.
 
 Không nên generic hóa cả class chỉ vì một helper method cần generic. Ngược lại, nếu nhiều method trong class cùng phụ thuộc vào một typed state, generic class sẽ tự nhiên hơn nhiều method generic rời rạc.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, generic class xuất hiện ở repository, wrapper, handler abstraction, typed adapter. Generic method hay xuất hiện ở utility class, mapper helper, validation helper, common response builder.
 

@@ -64,7 +64,7 @@ Dùng annotation khi cần mô tả role, lifecycle, validation hint, mapping ru
 | “Khi nào logic thật sự chạy?” | Khi compiler, processor, reflection, hoặc framework đọc metadata |
 | “Annotation tự làm gì không?” | Không, nó không tự chạy |
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Spring dựa mạnh vào annotation như `@Component`, `@Service`, `@Configuration`, `@Bean`, `@Transactional`, `@Autowired`, `@RequestMapping`.
 

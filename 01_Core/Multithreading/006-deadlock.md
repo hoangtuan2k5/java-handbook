@@ -71,7 +71,7 @@ Giữ critical section ngắn, tránh gọi code bên ngoài trong lúc đang gi
 
 Không dựa vào hi vọng rằng “đoạn này chắc không bị gọi cùng lúc đâu”. Deadlock thường không ồn ào. Nó chỉ làm app đứng yên và buộc bạn đọc thread dump lúc xấu nhất.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring, deadlock có thể xuất hiện ở nhiều lớp khác nhau:
 

@@ -70,7 +70,7 @@ Không quay lại `finally` thủ công trừ khi bạn đang làm việc với 
 
 Nếu resource do container quản lý ở vòng đời lớn hơn method hiện tại, đừng tự đóng nó theo kiểu local resource.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, nhiều resource lifecycle lớn như datasource pool, bean, hoặc HTTP client pool được container quản lý.
 

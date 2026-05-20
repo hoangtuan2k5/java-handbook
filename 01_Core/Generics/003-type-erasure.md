@@ -63,7 +63,7 @@ Bạn không “chọn dùng” type erasure. Nó là cách Java generics hoạt
 
 Không nên giả định runtime còn giữ đủ generic information nếu bạn chưa verify rõ cơ chế ở chỗ đó.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, hiểu type erasure giúp đọc code reflection, JSON mapping, generic bean resolution, hoặc HTTP client code tốt hơn.
 

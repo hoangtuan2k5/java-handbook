@@ -94,7 +94,7 @@ Không dùng `while` với counter nếu `for` giúp gom counter lifecycle rõ h
 
 Không dùng `do-while` nếu body không nên chạy khi input ban đầu invalid.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring service, loop thường xuất hiện khi validate danh sách request items, transform DTOs, phân trang qua nhiều page, hoặc retry một operation có giới hạn.
 

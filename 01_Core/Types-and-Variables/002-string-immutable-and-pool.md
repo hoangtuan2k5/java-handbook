@@ -88,7 +88,7 @@ Do NOT nối quá nhiều string trong loop dài bằng `+` nếu performance qu
 
 Do NOT gọi `intern()` như một phản xạ. Đây là công cụ đặc thù, không phải bước tối ưu mặc định cho app business thông thường.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring app, `String` đi khắp nơi: request body, header, property key, SQL fragment, log message, bean name, message code. Immutability giúp text không bị một layer sửa làm hỏng layer khác.
 

@@ -68,7 +68,7 @@ Không dùng `record` cho JPA entity mutable, object cần no-arg constructor fr
 
 Nếu business identity khác với tất cả fields hiện có, cần cân nhắc kỹ vì equality của record đi theo toàn bộ components.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, `record` rất hợp cho request hoặc response DTO, config binding hiện đại, projection, hoặc message payload.
 

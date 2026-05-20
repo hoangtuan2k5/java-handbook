@@ -73,7 +73,7 @@ Không nên chọn `clone()` làm default cho thiết kế mới nếu construct
 
 Nếu class có nested mutable state, bạn phải rất rõ mình muốn shallow copy hay deep copy. Không làm rõ điểm này là nguồn bug rất phổ biến.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring app, nhu cầu copy object thường xuất hiện khi tạo DTO snapshot, bảo vệ request state trước khi mutate, hoặc chuẩn bị data cho async processing.
 

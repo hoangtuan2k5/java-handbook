@@ -70,7 +70,7 @@ Không dùng `toString()` làm API contract giữa services, không lưu nó nh�
 
 Nếu object chứa password, token, secret key, hoặc PII nhạy cảm, cần cực kỳ cẩn thận với những gì xuất hiện trong `toString()`.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring app, `toString()` thường xuất hiện khi log request DTO, response DTO, config object, entity, hoặc object đi qua exception message.
 

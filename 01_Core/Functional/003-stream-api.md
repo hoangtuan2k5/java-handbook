@@ -80,7 +80,7 @@ Không nên dùng stream chỉ để thay mọi loop. Nếu logic cần mutation
 
 Stream tốt khi giúp bạn nói rõ ý định. Nếu pipeline dài tới mức người đọc phải giải mã từng stage, lợi thế đó mất đi rất nhanh.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, Stream API hay dùng để map entity sang DTO, filter response list, aggregate dữ liệu nhỏ trong memory, hoặc transform config/result set.
 

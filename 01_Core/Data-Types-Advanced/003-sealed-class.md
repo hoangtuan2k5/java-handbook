@@ -73,7 +73,7 @@ Không dùng sealed class nếu hierarchy phải mở cho plugin hoặc extensib
 
 Nếu subtype list thay đổi liên tục bởi third-party extension, sealed sẽ gây cản trở hơn là lợi ích.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, sealed type hữu ích cho modeling response state, domain command, validation result, hoặc event hierarchy nội bộ.
 

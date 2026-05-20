@@ -73,7 +73,7 @@ Không dùng chỉ để “trông hiện đại hơn” nếu code vốn đã r
 
 Nếu logic không thật sự branch theo type, pattern matching chỉ làm code thêm màu mè.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, pattern matching hữu ích khi xử lý domain result nhiều variant, application event khác loại, hoặc mapping exception hoặc result object sang response.
 

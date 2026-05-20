@@ -78,7 +78,7 @@ Dùng annotation processor khi muốn generate code hoặc fail fast ở compile
 | Gọi API thật để quyết định logic | Không | Không có runtime object hay runtime environment |
 | Đọc bean state sau khi Spring start | Không | Lúc này compile đã xong |
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Spring core truyền thống dựa nhiều vào runtime reflection và proxy.
 

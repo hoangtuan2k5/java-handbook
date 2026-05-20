@@ -1,4 +1,4 @@
-﻿# synchronized
+# synchronized
 
 ## What is it
 
@@ -88,7 +88,7 @@ Nó rất hợp cho các critical section ngắn và rõ ràng, nhất là khi i
 
 Không nên giữ lock trong lúc gọi I/O, gọi database, gọi HTTP, hoặc gọi callback ngoài tầm kiểm soát. Thời gian giữ lock càng dài, contention và nguy cơ deadlock càng tăng.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Spring singleton bean được nhiều request thread gọi cùng lúc. Nếu bean giữ mutable field, bạn cần một chiến lược bảo vệ rõ ràng.
 

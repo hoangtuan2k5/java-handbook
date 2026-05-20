@@ -86,7 +86,7 @@ Dùng deep copy khi:
 
 Không nên deep copy mọi thứ theo phản xạ. Nhiều lúc điều đúng hơn là làm rõ ownership, hoặc dùng immutable model thay vì nhân đôi object graph.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring app, shallow và deep copy xuất hiện ở DTO mapping, cache return value, event publishing, defensive copy trong service, và test fixture reuse.
 

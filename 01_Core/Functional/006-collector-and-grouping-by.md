@@ -81,7 +81,7 @@ Dùng `groupingBy` khi grouping key là trung tâm của bài toán.
 
 Không nên cố nhét mọi aggregation vào một collector lồng nhau nếu một loop đơn giản sẽ dễ hiểu hơn nhiều. Khi pipeline có nhiều tầng `groupingBy` và downstream collector sâu, hãy cân nhắc tách bước hoặc quay về loop.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, collector và `groupingBy` hay dùng khi aggregate dữ liệu nhỏ trong memory như response DTO, report nhỏ, hay config objects.
 

@@ -78,7 +78,7 @@ Không nên nhét quá nhiều business logic vào một lambda dài nhiều dò
 
 Đừng functional hóa mọi thứ chỉ vì cú pháp mới hơn. Nếu một `for` loop đơn giản đọc tự nhiên hơn, cứ dùng loop.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, lambda xuất hiện rất nhiều ở stream pipeline, callback config, retry template, async task, comparator sort response, hoặc mapping entity sang DTO.
 

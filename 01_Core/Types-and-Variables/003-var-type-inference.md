@@ -1,4 +1,4 @@
-﻿# var Type Inference
+# var Type Inference
 
 ## What is it
 
@@ -80,7 +80,7 @@ Không dùng `var` khi:
 
 Không xem `var` là default style cho mọi dòng code. Nó là công cụ đọc dễ hơn trong một số chỗ, không phải mục tiêu tự thân.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring code, `var` thường xuất hiện ở service method, test setup, mapping logic, và stream pipeline để giảm boilerplate. Nó hữu ích khi làm việc với generic type dài như `ResponseEntity<Map<String, Object>>` hoặc `List<Map<String, String>>`.
 

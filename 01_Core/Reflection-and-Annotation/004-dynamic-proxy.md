@@ -86,7 +86,7 @@ Dùng dynamic proxy khi nhiều interface method cần đi qua cùng một rule 
 | Chỉ muốn sửa logic của một method cụ thể | Thường không | Code thường hoặc refactor target rõ hơn |
 | Target không có interface | Không phải JDK proxy chuẩn | Phải dùng kỹ thuật khác |
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Spring AOP, `@Transactional`, và nhiều infrastructure feature dựa trên proxy.
 

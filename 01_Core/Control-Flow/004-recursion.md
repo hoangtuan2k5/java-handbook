@@ -84,7 +84,7 @@ Không dùng recursion chỉ để “code ngắn hơn” nếu người đọc 
 
 Không dùng recursion khi base case không rõ hoặc input có thể tạo độ sâu rất lớn mà không kiểm soát.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring apps, recursion có thể xuất hiện khi xử lý category tree, menu hierarchy, organization chart, comment threads, hoặc folder-like data.
 

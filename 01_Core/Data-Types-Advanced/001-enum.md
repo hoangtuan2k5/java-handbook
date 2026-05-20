@@ -1,4 +1,4 @@
-﻿# enum
+# enum
 
 ## What is it
 
@@ -73,7 +73,7 @@ Dùng `String` khi value set thực sự mở hoặc đến từ dữ liệu bê
 
 Không dùng `enum` nếu domain thay đổi liên tục từ database hoặc config và phải thêm value mà không cần recompile app.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, `enum` xuất hiện nhiều ở request DTO, config property, JPA entity field, business status, và `switch` trong service layer.
 

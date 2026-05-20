@@ -1,4 +1,4 @@
-﻿# null
+# null
 
 ## What is it
 
@@ -68,7 +68,7 @@ Không để nhiều tầng tự suy đoán ý nghĩa của `null`. Hãy chuẩn
 
 Không nhầm `null` với “rỗng” nếu business rule thật sự phân biệt hai trạng thái này.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring, `null` xuất hiện ở request field không gửi lên, value đọc từ database, bean optional dependency, cache miss, hoặc config không tồn tại. Nếu không chuẩn hóa sớm ở controller, mapper, hoặc service boundary, null checks sẽ rải khắp codebase.
 

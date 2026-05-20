@@ -79,7 +79,7 @@ Do NOT dùng `==` thay cho `equals()` khi điều bạn cần là logical equali
 
 Do NOT dùng mutable field trong equality logic nếu object sẽ sống trong `HashMap` hoặc `HashSet`. Sau khi field đổi, object có thể trở nên rất khó lookup lại đúng cách.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring app, equality xuất hiện ở DTO comparison, cache key, entity collection behavior, deduplication, và các data structure trung gian như `Set`, `Map`. Nếu object dùng làm key mà contract sai, bug có thể xuất hiện ở cache miss, duplicate item, hoặc lookup không ra kết quả.
 

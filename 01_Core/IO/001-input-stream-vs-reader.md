@@ -74,7 +74,7 @@ Không dựa vào default charset ngầm định nếu dữ liệu đến từ f
 
 Nếu bạn cần đọc toàn bộ text nhỏ, API cao hơn như `Files.readString` thường rõ hơn việc tự dựng chuỗi wrapper thủ công.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring, request body, upload file, resource file, hoặc response stream đều có thể đi qua `InputStream`.
 

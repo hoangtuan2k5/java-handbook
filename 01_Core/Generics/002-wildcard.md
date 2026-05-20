@@ -78,7 +78,7 @@ Dùng `extends` cho producer read-oriented. Dùng `super` cho consumer write-ori
 
 Không thêm wildcard chỉ để trông generic hơn. Nếu signature với concrete type parameter đã rõ và đủ dùng, cứ giữ đơn giản.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, bạn sẽ không phải tự viết wildcard rất phức tạp mỗi ngày. Nhưng hiểu wildcard giúp đọc framework API, mapper helper, validator, factory, hoặc abstraction chung nhận nhiều subtype tốt hơn.
 

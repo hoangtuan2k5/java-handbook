@@ -92,7 +92,7 @@ Do NOT dùng wrapper chỉ vì nhìn “Java hơn” trong logic tính toán thu
 
 Do NOT dùng primitive nếu business logic thật sự cần phân biệt ba trạng thái như có value, chưa có value, và default value. Khi đó wrapper hoặc một model rõ nghĩa hơn mới đúng contract.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring, wrapper xuất hiện rất nhiều ở DTO, request parameter, entity field, projection, và data binding vì dữ liệu từ HTTP hoặc database có thể thiếu. Ví dụ `Integer age` khác hẳn `int age` nếu request không gửi field đó.
 

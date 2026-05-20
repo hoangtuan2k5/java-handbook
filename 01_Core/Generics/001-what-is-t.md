@@ -71,7 +71,7 @@ Dùng generics khi API nên làm việc với nhiều type nhưng vẫn giữ ty
 
 Không cần generic hóa mọi class. Nếu class chỉ phục vụ đúng một concrete type và việc generic hóa không mang lại lợi ích đọc hoặc tái sử dụng rõ ràng, abstraction đó thường đang thừa.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, generics xuất hiện ở `ResponseEntity<T>`, `JpaRepository<T, ID>`, event handler, mapper utility, wrapper response, và nhiều abstraction khác của framework.
 

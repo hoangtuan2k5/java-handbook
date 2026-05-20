@@ -82,7 +82,7 @@ Không dùng mindset “pool càng to càng tốt”. Đó thường là bước
 
 Không dùng unbounded queue mà không hiểu traffic shape. Queue vô hạn có thể biến overload thành memory problem âm thầm.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Spring MVC, `@Async`, scheduler, application task executor, servlet container, database connection pool, tất cả đều có khái niệm pool ở đâu đó.
 

@@ -1,4 +1,4 @@
-﻿# volatile
+# volatile
 
 ## What is it
 
@@ -83,7 +83,7 @@ Nó đặc biệt hợp khi có một thread publish trạng thái, còn thread 
 
 Không dùng `volatile` cho increment, check-then-act, composite update, hoặc invariant nhiều field. Khi đó bạn đang cần atomicity hoặc locking, không chỉ visibility.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring, `volatile` có thể xuất hiện ở background worker, shutdown flag, health flag, hoặc lightweight cached reference.
 

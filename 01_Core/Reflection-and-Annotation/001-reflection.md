@@ -78,7 +78,7 @@ Dùng `reflection` khi đang viết framework code, serializer, object mapper, t
 | Gọi `userService.save()` khi đã biết type | Không | Direct call rõ hơn nhiều |
 | Chạm vào private field để né thiết kế hiện tại | Thường không | Rất dễ tạo technical debt |
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Spring dùng `reflection` rất nhiều để scan bean, đọc annotation, resolve constructor injection, bind configuration, và gọi lifecycle callback.
 

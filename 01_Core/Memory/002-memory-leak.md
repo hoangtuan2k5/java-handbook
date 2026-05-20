@@ -97,7 +97,7 @@ Các rule thực tế:
 
 Không nên gắn nhãn “memory leak” chỉ vì memory tăng tạm thời. Có thể đó là warm-up, cache có chủ đích, hoặc allocation burst bình thường. Phải nhìn xu hướng và retained path.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Spring singleton beans sống cùng application context. Nếu singleton vô tình giữ request-specific data hoặc collection tăng mãi, leak sẽ tích lũy rất đều.
 

@@ -73,7 +73,7 @@ Nếu loại lỗi không có handling, mapping, branching, hoặc observability
 
 Nói cách khác, đừng tạo custom exception vì “mỗi lỗi phải có class riêng”. Hãy tạo khi type đó giúp người đọc hoặc framework làm decision tốt hơn.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, custom exception rất hữu ích cùng `@ControllerAdvice` để map domain lỗi sang HTTP status ổn định như 400, 404, 409.
 

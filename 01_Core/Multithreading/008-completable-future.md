@@ -86,7 +86,7 @@ Không dùng nó chỉ để làm code “trông async” rồi `join()` ngay sa
 
 Nếu workload là blocking I/O, hãy nghĩ cả về executor. Common pool không phải lúc nào cũng là nơi phù hợp cho tác vụ blocking.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring, `CompletableFuture` thường đi cùng `@Async`, async service method, HTTP client, messaging, hoặc background orchestration.
 

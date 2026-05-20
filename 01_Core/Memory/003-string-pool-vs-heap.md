@@ -86,7 +86,7 @@ Chỉ nghĩ đến `intern()` khi:
 
 Không dùng `==` cho string đến từ request, database, file, JSON, hoặc object runtime khác.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring app, string đi khắp nơi: config key, HTTP header, path variable, JSON field, query param, message code.
 

@@ -79,7 +79,7 @@ Không biến mọi lỗi thành checked exception vì sẽ làm API nặng, cal
 
 Cũng không ném unchecked exception bừa cho IO hoặc network failure nếu caller đáng ra cần biết để xử lý.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, unchecked exception phổ biến ở service layer vì framework đã có `@ControllerAdvice`, transaction rollback, validation, và logging tập trung.
 

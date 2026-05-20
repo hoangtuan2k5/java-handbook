@@ -81,7 +81,7 @@ Soft reference chỉ nên dùng khi bạn chấp nhận retention không determi
 
 Phantom reference rất hiếm khi cần trong application code thông thường. Nếu chưa biết chắc vì sao cần nó, gần như bạn chưa cần dùng nó.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Phần lớn Spring developer không cần tự tạo `SoftReference`, `WeakReference`, hay `PhantomReference` mỗi ngày. Nhưng hiểu chúng rất hữu ích khi đọc library internals, phân tích classloader leak, hoặc hiểu vì sao một số metadata map không giữ object sống mãi.
 

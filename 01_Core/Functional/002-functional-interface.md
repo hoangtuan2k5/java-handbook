@@ -77,7 +77,7 @@ Dùng functional interface khi API cần nhận một behavior nhỏ, rõ input/
 
 Không nên tự tạo custom functional interface nếu JDK đã có type rất khớp như `Function`, `Predicate`, `Consumer`, `Supplier`. Custom type chỉ đáng tạo khi tên domain riêng giúp intent rõ hơn, hoặc signature thật sự không khớp loại built-in.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, functional interface xuất hiện ở callback style API, mapping function, strategy nhỏ, scheduler task, retry callback, hoặc functional bean registration.
 

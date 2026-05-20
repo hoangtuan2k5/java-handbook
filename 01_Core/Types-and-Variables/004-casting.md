@@ -1,4 +1,4 @@
-﻿# Casting
+# Casting
 
 ## What is it
 
@@ -69,7 +69,7 @@ Không dùng narrowing cast trên dữ liệu đến từ external system mà kh
 
 Không xem `(int)` như bước “làm sạch” dữ liệu. Nó chỉ đổi representation, không tự kiểm tra business rule cho bạn.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring app, casting xuất hiện ở data binding, JSON numeric conversion, JDBC result mapping, và khi làm việc với API trả `Object`. Nếu cast sai trong service hoặc mapper, lỗi có thể chỉ nổ ở runtime sau khi request thật chạy qua.
 

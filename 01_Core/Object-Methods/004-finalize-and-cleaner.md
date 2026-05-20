@@ -74,7 +74,7 @@ Không dùng `finalize()` cho code mới.
 
 Không dùng `Cleaner` để thay thế `try-with-resources` cho resource có vòng đời ngắn và cần release đúng lúc.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring app, cleanup chuẩn thường đi qua `@PreDestroy`, `DisposableBean`, `close()` method, lifecycle của bean container, hoặc lifecycle của connection pool.
 

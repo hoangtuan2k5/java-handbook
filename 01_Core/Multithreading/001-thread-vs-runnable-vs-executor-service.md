@@ -102,7 +102,7 @@ Dùng `ExecutorService` khi app cần chạy nhiều task, cần giới hạn co
 
 Không tự tạo thread mới cho từng request, từng event, hoặc từng job nhỏ lặp lại liên tục. Cách đó vừa tốn memory stack, vừa tăng context switching, vừa khó chẩn đoán khi app chậm.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring, bạn hiếm khi tự quản lý thread bằng tay ở controller hoặc service. Thực tế hơn là gặp `TaskExecutor`, `@Async`, scheduler, servlet container thread pool, hoặc executor của HTTP client.
 

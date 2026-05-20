@@ -91,7 +91,7 @@ Không sửa race bằng `Thread.sleep(...)`. Sleep chỉ làm timing thay đổ
 
 Đừng vì test hiện tại xanh mà kết luận không có race. Race thường flaky và chỉ lộ ra dưới load, trên máy khác, hoặc sau một lần refactor nhỏ.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Spring singleton bean là shared object trên heap, được nhiều request thread gọi cùng lúc.
 

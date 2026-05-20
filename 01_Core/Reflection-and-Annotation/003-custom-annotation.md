@@ -71,7 +71,7 @@ Dùng custom annotation khi nhiều nơi cần khai báo cùng một loại meta
 - Default value có rõ nghĩa không?
 - Tên annotation có nói đúng intent không?
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring, custom annotation thường được dùng cho meta-annotation, custom stereotype, security marker, validation marker, hoặc AOP pointcut marker.
 
