@@ -86,6 +86,14 @@ Phần lớn code Spring hiện đại ít dựa vào `clone()`. Mapper, copy co
 - `clone()` khó kết hợp đẹp với inheritance.
 - `super.clone()` và `CloneNotSupportedException` làm API này khá khó chịu so với copy constructor.
 
+## Handbook rule
+
+- Mặc định cho copy là copy constructor hoặc static factory; không dùng `clone()` cho thiết kế mới.
+- Phải nói rõ shallow copy hay deep copy trước khi viết logic copy.
+- `Cloneable` không tự tạo deep copy; nested mutable vẫn dùng chung reference.
+- Tránh `clone()` khi có inheritance phức tạp; ưu tiên immutable design hoặc builder.
+- Nếu phải duy trì `clone()` legacy, document rõ semantics và giới hạn.
+
 ## Check yourself
 
 - Vì sao clone mặc định thường chỉ là shallow copy?

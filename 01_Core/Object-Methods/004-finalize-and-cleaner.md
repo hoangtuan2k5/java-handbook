@@ -87,6 +87,14 @@ Nếu code phụ thuộc vào `finalize()` hoặc `Cleaner` để giải phóng 
 - Cleanup fallback không sửa được ownership design kém.
 - Nếu resource phải release ngay, chỉ cleanup explicit mới đáng tin.
 
+## Handbook rule
+
+- Không dùng `finalize()` trong code mới; coi như deprecated.
+- Resource có vòng đời rõ phải dùng `try-with-resources`/`AutoCloseable`, không dựa vào finalizer/cleaner.
+- `Cleaner` chỉ là fallback an toàn cho resource external khó kiểm soát.
+- Cleanup không deterministic; không thiết kế logic phụ thuộc thời điểm chạy của cleaner.
+- Nếu phải release ngay, ownership phải nằm ở caller có lifecycle rõ ràng.
+
 ## Check yourself
 
 - Vì sao `finalize()` không phù hợp cho resource phải giải phóng đúng lúc?

@@ -87,6 +87,14 @@ Một object có equality sai có thể gây cache miss khó hiểu, duplicate d
 - `==` và `equals()` trả lời hai câu hỏi khác nhau.
 - `hashCode()` giống nhau không có nghĩa hai object chắc chắn `equals()` nhau.
 
+## Handbook rule
+
+- Override `equals()` thì luôn override `hashCode()` cùng tập field.
+- Field tham gia equality phải bất biến trong vòng đời object đang nằm trong hash-based collection.
+- `==` so sánh reference, `equals()` so sánh logical value; không trộn hai khái niệm.
+- Equality contract phải reflexive, symmetric, transitive, consistent, và `null`-safe.
+- Cân nhắc `record` cho value object để Java tự sinh equality đúng theo components.
+
 ## Check yourself
 
 - Vì sao hash collection không thể chỉ dựa vào `equals()`?

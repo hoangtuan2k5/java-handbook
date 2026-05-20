@@ -83,6 +83,14 @@ Một `toString()` tốt giúp đọc log nhanh hơn rất nhiều. Một `toStr
 - Không nên parse `toString()` ở code khác.
 - `toString()` nên ưu tiên readability hơn là đầy đủ tuyệt đối.
 
+## Handbook rule
+
+- Override `toString()` chỉ phục vụ log/debug; không coi như format dữ liệu chính thức.
+- Không đưa password, token, secret, hoặc PII nhạy cảm vào output.
+- Không parse `toString()` ở code khác; viết parser riêng nếu cần text format.
+- Ưu tiên readability hơn liệt kê đầy đủ field; cắt collection lớn hoặc field nội bộ nếu cần.
+- Đừng dựa vào `toString()` mặc định khi class đi vào log thường xuyên.
+
 ## Check yourself
 
 - Vì sao `toString()` là human-facing summary chứ không phải machine contract?
