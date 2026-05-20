@@ -99,6 +99,14 @@ Bug dùng `==` thay vì `equals()` rất dễ lọt qua test nhỏ vì test hay 
 - `intern()` không phải tối ưu mặc định cho mọi app.
 - Pool giúp reuse, nhưng không thay đổi việc `String` vẫn là object trên JVM.
 
+## Handbook rule
+
+- So sánh nội dung dùng `equals()`; `==` chỉ dùng khi muốn so identity reference.
+- `new String("x")` hầu như là code smell; tránh tạo String thừa.
+- `intern()` chỉ dùng khi đo được lợi ích về memory cho lượng lớn string lặp.
+- Pool reuse không đổi semantics: `String` vẫn là object trên JVM.
+- Không dựa vào pool identity cho dữ liệu runtime đến từ request/DB/file.
+
 ## Check yourself
 
 - Vì sao hai string cùng text vẫn có thể là hai object khác nhau?

@@ -115,6 +115,14 @@ Các điểm dễ dính trong Spring:
 - Cache không giới hạn có thể là leak theo behavior dù code vẫn “đúng syntax”.
 - Heap lớn hơn chưa chắc sửa được leak, nhiều khi chỉ làm lỗi xuất hiện muộn hơn.
 
+## Handbook rule
+
+- Memory tăng liên tục theo workload mới là leak; tăng tạm thời chưa chắc.
+- Cache phải có eviction/giới hạn; không bao giờ cache không bound.
+- `ThreadLocal` trong thread pool phải `remove()` sau khi dùng.
+- Static collection giữ request/session object là leak source phổ biến.
+- Tăng heap không sửa leak; chỉ làm lỗi xuất hiện muộn hơn.
+
 ## Check yourself
 
 - Vì sao Java vẫn có memory leak dù có GC?

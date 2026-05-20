@@ -102,6 +102,14 @@ Nếu container bị OOM mà heap chưa đầy, hướng điều tra đúng thư
 - Container memory limit tính cả heap lẫn non-heap/native memory.
 - Tăng `-Xmx` đôi khi còn làm tổng memory tệ hơn nếu bạn quên phần off-heap.
 
+## Handbook rule
+
+- Off-heap chỉ dùng khi I/O/native interop thực sự cần (ví dụ Netty, zero-copy).
+- Direct buffer cấp phát có cost; không lạm dụng cho data thông thường.
+- Container memory limit tính cả heap lẫn non-heap; cấu hình `-Xmx` phải để chỗ cho native.
+- Heap dump không cho bức tranh off-heap; cần native memory tracking riêng.
+- Tăng `-Xmx` để fix “OOM” mà không xét off-heap có thể làm tệ hơn.
+
 ## Check yourself
 
 - Vì sao heap nhỏ không đồng nghĩa process memory nhỏ?

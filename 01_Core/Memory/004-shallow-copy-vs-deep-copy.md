@@ -99,6 +99,14 @@ Ví dụ điển hình là service trả về mutable object đang được cach
 - Deep copy bằng serialization thường chậm, khó đoán, và nhiều edge case.
 - Nếu bạn cần deep copy liên tục, đôi khi đó là tín hiệu model nên chuyển sang immutable hơn.
 
+## Handbook rule
+
+- Shallow copy đủ khi element immutable hoặc share là chủ đích.
+- Deep copy khi cần snapshot độc lập trước khi qua boundary (cache/event/async).
+- Copy collection không tự copy element; phải clone từng phần khi cần.
+- Deep copy bằng serialization là last resort; chậm và nhiều edge case.
+- Nếu phải deep copy liên tục, cân nhắc đổi sang immutable model.
+
 ## Check yourself
 
 - Vì sao `new ArrayList<>(oldList)` chưa chắc tạo snapshot an toàn?

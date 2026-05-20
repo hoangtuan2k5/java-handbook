@@ -94,6 +94,14 @@ Nó cũng giúp tránh một sai lầm phổ biến: dùng reference types để
 - `PhantomReference#get()` luôn trả `null`.
 - Reference types giúp GC linh hoạt hơn, nhưng không sửa được thiết kế ownership kém.
 
+## Handbook rule
+
+- Default là strong reference; chỉ chuyển sang weak/soft khi có lý do rõ.
+- Weak reference cho metadata gắn với owner; dữ liệu biến mất theo owner.
+- Soft reference không phải cache policy; cache có rule rõ ràng tốt hơn.
+- Phantom reference cực hiếm trong app code; chỉ dùng khi thật sự biết vì sao.
+- Reference types không sửa thiết kế ownership tệ; cải thiện model trước.
+
 ## Check yourself
 
 - Vì sao strong reference là mặc định an toàn nhất?
