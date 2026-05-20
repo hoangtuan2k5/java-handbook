@@ -98,6 +98,14 @@ Spring không tự quyết định thay bạn đâu là recoverable failure củ
 - Unchecked exception không có nghĩa là khỏi cần message rõ và contract rõ.
 - Đừng dùng checked vs unchecked như thước đo “mức độ nghiêm trọng”. Nó là thước đo về caller responsibility.
 
+## Handbook rule
+
+- Checked exception cho lỗi recoverable mà caller có action thật; unchecked cho contract violation hoặc programmer error.
+- Không biến mọi failure thành checked; tránh API ngập `throws` xuyên nhiều layer.
+- Khi wrap, luôn giữ root cause; không nuốt stack trace.
+- Checked vs unchecked là thước đo trách nhiệm caller, không phải mức độ nghiêm trọng.
+- IO/network failure caller cần biết phải để dạng có thể xử lý, không che bằng unchecked bừa.
+
 ## Check yourself
 
 - Nếu một method đọc file từ disk, vì sao checked exception thường hợp lý hơn `IllegalArgumentException`?

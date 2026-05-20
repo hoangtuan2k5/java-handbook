@@ -88,6 +88,14 @@ Nói ngắn gọn:
 - Đừng nhầm bean lifecycle với resource local trong method. Cái sau vẫn cần đóng đúng cách.
 - Suppressed exception tồn tại để giữ lỗi cleanup mà không làm mất lỗi chính. Đừng bỏ qua nó khi debug.
 
+## Handbook rule
+
+- Mọi resource có lifecycle close phải dùng `try-with-resources`/`AutoCloseable`, không `finally` thủ công.
+- Khi nhiều resource, đóng theo thứ tự ngược; dependency phải đúng.
+- Không tự đóng resource do container/framework quản lý lifecycle lớn hơn method.
+- Suppressed exception là dấu hiệu cleanup gặp lỗi; không bỏ qua khi debug.
+- Wrapper class custom phải implement `AutoCloseable` đúng để dùng trong header.
+
 ## Check yourself
 
 - Vì sao `try-with-resources` tốt hơn `finally` thủ công trong đa số code mở và đóng resource?

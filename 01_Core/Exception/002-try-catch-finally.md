@@ -91,6 +91,14 @@ Trong Spring Boot, nhiều exception handling được đẩy lên framework qua
 - Nuốt exception rồi trả default value mơ hồ thường tạo bug khó trace hơn để lỗi nổi lên đúng chỗ.
 - `finally` không thay thế được `try-with-resources` cho resource cleanup hiện đại.
 
+## Handbook rule
+
+- Chỉ catch khi có strategy thật: dịch exception, retry, fallback, thêm context, hoặc rethrow kiểu rõ hơn.
+- Không `catch (Exception)` để log rồi nuốt; chọn type cụ thể hoặc để bubble.
+- `finally` chỉ làm cleanup; không đổi return value, không nhét business state.
+- Resource cleanup ưu tiên `try-with-resources`, không `finally` thủ công.
+- Side effect trong `finally` chạy cả khi method `return`/throw; tính trước hệ quả.
+
 ## Check yourself
 
 - Khi nào `catch` nên translate exception, và khi nào nên để nó nổi lên?
