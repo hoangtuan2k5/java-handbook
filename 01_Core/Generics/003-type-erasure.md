@@ -77,6 +77,14 @@ Trong Spring Boot, hiểu type erasure giúp đọc code reflection, JSON mappin
 - Đừng nhầm compile-time generic clarity với runtime type availability.
 - Đừng nói “runtime mất hết generic info” theo nghĩa tuyệt đối; metadata generic có thể còn trong signature, nhưng object instance thường không giữ concrete type argument như bạn muốn.
 
+## Handbook rule
+
+- Coi như runtime không còn concrete type argument; thiết kế API không dựa vào điều đó.
+- Không thể `new T()`, `T.class`, hoặc `instanceof List<String>`; cần `Class<T>` token nếu thật sự bắt buộc.
+- Raw type warning là tín hiệu type safety đang vỡ; sửa thay vì suppress.
+- Reflection/serialization/framework cần runtime type phải truyền `TypeReference`/`TypeToken` rõ.
+- Đừng giả định bridge method/erased signature; đọc bytecode khi nghi ngờ.
+
 ## Check yourself
 
 - Type erasure lấy đi thông tin gì ở runtime?

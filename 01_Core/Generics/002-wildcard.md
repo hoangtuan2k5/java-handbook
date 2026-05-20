@@ -92,6 +92,14 @@ Rất nhiều khó chịu khi đọc generic API thực ra chỉ là câu hỏi:
 - `? super T` ghi tốt nhưng đọc ra không cụ thể.
 - Quá nhiều wildcard lồng nhau làm API khó đọc rất nhanh.
 
+## Handbook rule
+
+- PECS: producer dùng `? extends T`, consumer dùng `? super T`.
+- `List<Object>` không thay được `List<String>`; phương sai phải đi qua wildcard.
+- `List<?>` gần như chỉ đọc; không add ngoài `null`.
+- Tránh wildcard lồng nhau quá nhiều; signature phải đọc được trong một đoạn.
+- Concrete type parameter đủ dùng thì không cần thêm wildcard cho “trông generic hơn”.
+
 ## Check yourself
 
 - Vì sao `List<Object>` và `List<?>` khác nhau?

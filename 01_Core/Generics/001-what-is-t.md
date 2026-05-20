@@ -84,6 +84,14 @@ Hiểu `T` giúp bạn đọc signature bình tĩnh hơn. Phần lớn thời gi
 - Đừng đặt type parameter mơ hồ nếu một tên ngắn nhưng domain-specific sẽ rõ hơn.
 - Nếu chỉ một method cần generic, chưa chắc cả class nên generic.
 
+## Handbook rule
+
+- Generic hóa khi API thật sự phục vụ nhiều type và giữ type safety; đừng generic vì cho “linh hoạt”.
+- Tên type parameter ngắn nhưng có meaning (ví dụ `T`, `K`, `V`, `E`, `R`); domain-specific khi cần.
+- Không nhầm compile-time type safety với runtime type availability; cẩn thận khi reflect/serialize.
+- Một method cần generic không có nghĩa cả class phải generic.
+- Bound type parameter (`<T extends ...>`) khi cần API access; không bound bừa.
+
 ## Check yourself
 
 - `T` giúp compiler việc gì cụ thể?
