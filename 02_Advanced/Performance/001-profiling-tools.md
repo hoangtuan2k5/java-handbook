@@ -119,6 +119,14 @@ Khi chạy trên Spring, stack trace thường có nhiều proxy và framework f
 - Flame graph rộng không tự động là bug, đôi khi đó chỉ là đoạn code đang xử lý phần lớn công việc hợp lệ.
 - Có evidence rồi mới tuning. Đừng đổi JVM flags hoặc viết lại code trước khi biết bottleneck nằm ở đâu.
 
+## Handbook rule
+
+- Profile trước khi tune; không đổi flag/code khi chưa có evidence.
+- Chọn profiler theo câu hỏi (CPU/lock/memory/wall-clock); một tool không trả lời mọi thứ.
+- Profile production-like, không debug mode; instrumentation nặng làm sai shape workload.
+- Lấy mẫu đủ dài để phủ warmup và spike; profile ngắn dễ bỏ lỡ pattern.
+- Flame graph rộng không tự là bug; xác nhận với traffic/business expectation.
+
 ## Check yourself
 
 - Khi app chậm, vì sao nên phân biệt rõ giữa `profiling`, `benchmarking`, và `tuning`?

@@ -92,6 +92,14 @@ Nhiều pitfall còn bị che bởi abstraction. Ví dụ một getter trên ent
 - Logging mức debug trong vòng lặp lớn có thể làm benchmark và production latency sai khác hẳn.
 - Smell list chỉ là hypothesis generator, không phải bản án cuối cùng.
 
+## Handbook rule
+
+- Pitfall list là hypothesis; phải verify trên hot path bằng evidence.
+- N+1 query, cache không bound, log debug trong vòng lặp lớn là smell phổ biến nhất.
+- Cost nhỏ ngoài hot path đáng giữ code đơn giản hơn tối ưu sớm.
+- Không sửa nhiều pitfall cùng lúc; mất khả năng quy nhân quả.
+- Đo trước/sau khi sửa; không sửa để “cảm thấy nhanh hơn”.
+
 ## Check yourself
 
 - Vì sao nhiều performance problem thực tế không đến từ một bug lớn mà đến từ chi phí nhỏ lặp lại?

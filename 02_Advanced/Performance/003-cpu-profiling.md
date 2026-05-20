@@ -90,6 +90,14 @@ Nó cũng rất hữu ích với scheduled jobs và batch step trong Spring, nơ
 - Chạy trong debug mode hoặc với logging quá dày có thể làm shape CPU khác production.
 - Hotspot ở framework frame chưa chắc là lỗi framework. Phải nhìn xuống leaf frame và workload thật.
 
+## Handbook rule
+
+- CPU profile cho compute hotspot; blocking I/O cần wall-clock/lock profile.
+- Đọc leaf frame trước khi đổ tội framework frame.
+- Profile production-like; debug mode/log dày làm shape khác hẳn.
+- Profile đủ dài để phủ spike theo đợt.
+- Tối ưu chỉ trên hot path đã chứng minh, không sửa code lạnh.
+
 ## Check yourself
 
 - Vì sao request latency cao chưa chắc đồng nghĩa CPU hotspot?

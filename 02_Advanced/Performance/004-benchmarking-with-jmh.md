@@ -100,6 +100,14 @@ Ngược lại, nếu mục tiêu là hiểu HTTP throughput hay end-to-end late
 - Microbenchmark đúng chưa chắc đồng nghĩa production cải thiện, vì bottleneck hệ thống có thể nằm ở nơi khác.
 - Chênh lệch nhỏ mà variance lớn thường không đủ để ra quyết định kỹ thuật lớn.
 
+## Handbook rule
+
+- JMH cho microbenchmark JVM; không dùng để dự báo end-to-end latency.
+- Có warmup, fork, và `Blackhole` để chống dead code elimination.
+- Variance lớn thì kết quả không đủ để ra quyết định lớn.
+- Mỗi benchmark đo một biến số; nhiều biến cùng lúc làm khó kết luận.
+- Microbenchmark cải thiện không tự đồng nghĩa production cải thiện; verify trong môi trường thật.
+
 ## Check yourself
 
 - Vì sao `JMH` phù hợp để so sánh implementation A và B, nhưng không tự trả lời production đang chậm ở đâu?

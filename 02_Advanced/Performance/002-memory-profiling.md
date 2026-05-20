@@ -96,6 +96,14 @@ Khi phân tích batch job hoặc scheduled task trong Spring, memory profiling g
 - Allocation rate cao và retained memory cao là hai vấn đề khác nhau, đừng trộn chúng thành một.
 - Heap lớn hơn chỉ làm lỗi xuất hiện muộn hơn nếu retained path gốc vẫn còn nguyên.
 
+## Handbook rule
+
+- Đánh giá memory leak qua retained size, không object count đơn thuần.
+- So sánh dump giữa các thời điểm cùng workload; khác workload là so sai.
+- Cache không có size/eviction là leak tiềm tàng dù hit rate đẹp.
+- Phân biệt allocation rate cao và retained memory cao; fix khác nhau.
+- Tăng heap chỉ trì hoãn; root cause vẫn nằm ở retention path.
+
 ## Check yourself
 
 - Vì sao `allocation rate` cao chưa chắc đồng nghĩa `memory leak`?
