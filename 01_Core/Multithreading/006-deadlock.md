@@ -90,6 +90,14 @@ Vì vậy nếu một request, job, hoặc batch bỗng treo mãi không excepti
 - Giữ lock trong lúc gọi code ngoài tầm kiểm soát làm nguy cơ tăng mạnh.
 - Test đơn giản có thể không lộ deadlock, production load mới lộ.
 
+## Handbook rule
+
+- Khi giữ nhiều lock, định nghĩa lock ordering cố định và tuân thủ nghiêm.
+- Không gọi code ngoài tầm kiểm soát trong lúc giữ lock.
+- Lock có timeout (`tryLock`) cho path tương đối an toàn để tránh treo vô hạn.
+- Lock nesting sâu là tín hiệu thiết kế sai; tách operation hoặc đổi mô hình.
+- Deadlock thường không ném exception; phải đọc thread dump khi nghi ngờ.
+
 ## Check yourself
 
 - Trong bốn Coffman conditions, điều kiện nào bạn có thể chủ động phá dễ nhất trong code app?

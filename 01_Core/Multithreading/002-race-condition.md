@@ -106,6 +106,14 @@ Vì vậy stateless service thường là chiến thắng lớn nhất. Không c
 - Một object thread-safe không tự động làm cả business flow thread-safe nếu flow đó gồm nhiều bước rời nhau.
 - “Chạy ổn trên local” không nói được gì nhiều về race.
 
+## Handbook rule
+
+- Mọi shared mutable state phải có thread-safety strategy rõ; nếu không trả lời được, code đang sống nhờ may mắn.
+- `volatile` không sửa read-modify-write; cần atomic hoặc lock.
+- Object thread-safe không tự làm business flow nhiều bước thread-safe.
+- Không dùng `Thread.sleep()` để fix race; chỉ dời timing, không sửa correctness.
+- Test xanh local không phủ nhận race; race lộ ra dưới load và refactor.
+
 ## Check yourself
 
 - Vì sao nhiều thread cùng chạy chưa chắc đã là race condition?

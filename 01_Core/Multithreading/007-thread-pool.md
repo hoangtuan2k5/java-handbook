@@ -97,6 +97,14 @@ Vì vậy cấu hình thread pool không thể nhìn riêng lẻ. Nó phải đi
 - Quên shutdown custom executor làm app hoặc test treo.
 - Dùng chung một pool cho workload rất khác nhau có thể làm task quan trọng bị starvation.
 
+## Handbook rule
+
+- Pool size phải có giới hạn; pool unbounded biến overload thành memory problem.
+- Queue có cap rõ; chọn rejection policy phù hợp business (caller-runs, abort, drop).
+- Workload khác biệt không dùng chung một pool; cô lập để tránh starvation.
+- Custom executor phải `shutdown()`/`awaitTermination()` trong vòng đời rõ.
+- Đo throughput/latency trước khi tăng pool; “to hơn” không tự nhanh hơn.
+
 ## Check yourself
 
 - Vì sao pool size tốt cho CPU-bound thường khác I/O-bound?

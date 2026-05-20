@@ -96,6 +96,14 @@ Nhưng phần lớn business service nên stateless. Nếu service đã có shar
 - Nếu correctness phụ thuộc nhiều field phải đổi cùng nhau, `volatile` không đủ.
 - Đọc đúng giá trị mới nhất chưa chắc đã giữ đúng business rule.
 
+## Handbook rule
+
+- `volatile` chỉ cho publish/visibility của flag hoặc reference đơn lẻ.
+- Không dùng `volatile` cho increment/check-then-act/composite update; cần atomic hoặc lock.
+- Đọc/ghi nhiều field phụ thuộc nhau không an toàn chỉ với `volatile`.
+- Coi `volatile` là happens-before, không phải atomicity.
+- Nếu logic phức tạp hơn “một biến publish”, đổi sang `AtomicReference`/lock.
+
 ## Check yourself
 
 - `volatile` giải quyết visibility hay atomicity?

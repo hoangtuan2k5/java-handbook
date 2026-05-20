@@ -115,6 +115,14 @@ Nếu hiểu rõ ba tầng `task`, `worker`, `pool`, bạn sẽ đọc được 
 - Quên `shutdown()` custom executor có thể làm app hoặc test không thoát.
 - Tạo quá nhiều thread không làm app tự động nhanh hơn. Nó có thể làm app chậm hơn.
 
+## Handbook rule
+
+- Default cho async work là `ExecutorService`; không tạo `Thread` thủ công cho mỗi task.
+- `Runnable` cho task không có result; cần kết quả thì dùng `Callable`/`Future`.
+- Custom executor phải `shutdown()` trong vòng đời rõ; tránh app/test bị treo.
+- Quan sát exception qua `Future.get()` hoặc handler; đừng để task lỗi chìm.
+- Nhiều thread không tự nhanh hơn; concurrency phải đo, không đoán.
+
 ## Check yourself
 
 - Vì sao `Runnable` không phải là worker thread?

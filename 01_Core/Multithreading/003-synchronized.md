@@ -103,6 +103,14 @@ Nhưng cũng phải rất cẩn thận. Khóa cả service method rồi gọi ti
 - Đọc ngoài lock nhưng ghi trong lock có thể làm logic vẫn sai.
 - `synchronized` không tự cứu bạn khỏi deadlock.
 
+## Handbook rule
+
+- Critical section phải ngắn; không giữ lock khi gọi I/O/DB/HTTP/callback ngoài.
+- Cùng state phải bảo vệ bằng cùng lock; lock object khác nhau là vô nghĩa.
+- Tránh `synchronized` trên `this`/`Class.class` công khai; dùng private final lock object.
+- Đọc và ghi state phải đồng nhất bên trong/ngoài lock; không trộn lẫn.
+- `synchronized` không cứu khỏi deadlock; phải có lock ordering rõ ràng.
+
 ## Check yourself
 
 - `synchronized` giải quyết mutual exclusion thôi, hay còn giải quyết cả visibility?
