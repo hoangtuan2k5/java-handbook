@@ -88,7 +88,7 @@ Trong các trường hợp đó, hãy nghĩ tới `TreeMap`, `LinkedHashMap`, ho
 
 Cũng không nên dùng mutable object làm key nếu field tham gia `equals()` hoặc `hashCode()` có thể đổi sau khi `put`.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, `HashMap` xuất hiện nhiều ở cache tạm, config binding dạng `Map<String, ...>`, grouping response, hoặc lookup trong service layer.
 
@@ -100,6 +100,14 @@ Nếu key là entity hoặc DTO mutable, bug lookup fail rất khó thấy vì m
 - Đừng mutate key sau khi `put`, nhất là field tham gia hash hoặc equality.
 - `HashMap` không thread-safe. Concurrent writes có thể gây race hoặc state không đáng tin.
 - `HashMap` cho phép `null` key và `null` value, nhưng điều này đôi khi làm API mơ hồ hơn.
+
+## Handbook rule
+
+- Mọi key trong `HashMap` phải có `equals()` và `hashCode()` nhất quán.
+- Không mutate field tham gia hash hoặc equality sau khi `put`.
+- Đừng dựa vào iteration order của `HashMap`; nó không phải contract.
+- `HashMap` không thread-safe; concurrent write phải đổi sang `ConcurrentHashMap` hoặc external sync.
+- `null` key/value được phép nhưng nên tránh vì làm API mơ hồ.
 
 ## Check yourself
 

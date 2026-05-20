@@ -92,7 +92,7 @@ Dùng `Map` khi lookup theo key là operation trung tâm, như cache theo ID, co
 
 Không nên dùng `List` rồi gọi `contains()` hoặc scan liên tục nếu bài toán thật ra là membership hoặc key lookup. Khi đó code vừa chậm hơn vừa diễn đạt sai intent.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, request body dạng array thường bind vào `List` vì client gửi dữ liệu có thứ tự. Roles hoặc tags thường hợp với `Set` nếu business rule là không trùng. `Map` xuất hiện nhiều trong config binding, cache nội bộ, grouping, hoặc response dạng lookup.
 
@@ -104,6 +104,14 @@ Chọn đúng type ngay từ service method hoặc DTO giúp contract rõ hơn t
 - `Map` key mutable là bẫy lớn. Đổi field dùng trong hash hoặc equality sau khi `put` có thể làm lookup fail.
 - `HashSet` và `HashMap` không hứa iteration order. Nếu order quan trọng, hãy chọn implementation nói rõ điều đó.
 - `Map` chỉ unique theo `key`, không phải theo `value`.
+
+## Handbook rule
+
+- Hỏi câu hỏi chính trước khi chọn collection: theo vị trí dùng `List`, theo membership dùng `Set`, theo key dùng `Map`.
+- Đừng dùng `List` rồi gọi `contains()` cho membership; chuyển sang `Set` hoặc `Map` đúng intent.
+- Khi cần unique nhưng vẫn giữ order, đó không phải `Set` mặc định mà thường là `LinkedHashSet`.
+- Khi cần lookup theo key, đừng song song hai `List`; biểu diễn quan hệ key-value bằng `Map`.
+- Type ở API hoặc DTO là contract; chọn đúng `List`, `Set`, hoặc `Map` ngay tại boundary.
 
 ## Check yourself
 

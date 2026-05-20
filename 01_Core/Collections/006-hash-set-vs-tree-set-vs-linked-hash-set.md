@@ -79,7 +79,7 @@ Dùng `TreeSet` khi sorted order là requirement thật, như names sorted alpha
 
 Không dùng `TreeSet` chỉ để sort output một lần. Khi đó sort một `List` ở boundary thường rõ hơn.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, `LinkedHashSet` hữu ích khi bind config hoặc request list cần loại trùng nhưng giữ order người dùng nhập. `HashSet` hợp với role hoặc permission membership check. `TreeSet` hợp khi API luôn phải trả sorted unique values.
 
@@ -90,6 +90,14 @@ Nếu dùng `Set` trong DTO response mà không chọn implementation hoặc ord
 - `HashSet` không đảm bảo order, dù output local nhìn có vẻ ổn định.
 - `TreeSet` coi comparator trả `0` là duplicate, kể cả `equals()` trả `false`.
 - Element mutable có thể phá cả hash-based set lẫn tree-based set nếu field dùng trong equality hoặc ordering bị đổi sau khi `add`.
+
+## Handbook rule
+
+- Default cho membership/uniqueness là `HashSet`.
+- Cần unique nhưng giữ insertion order, dùng `LinkedHashSet`, không dùng `HashSet` rồi tự sort.
+- `TreeSet` chỉ chọn khi sorted order hoặc range query là requirement thật.
+- Không phụ thuộc iteration order của `HashSet` cho API/test/snapshot.
+- Element mutable theo field tham gia equality/ordering không an toàn trong bất kỳ `Set` nào.
 
 ## Check yourself
 

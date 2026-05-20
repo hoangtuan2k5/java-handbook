@@ -73,7 +73,7 @@ Dùng `ConcurrentHashMap` cho shared mutable map trong singleton service, cache 
 
 Không dùng `ConcurrentHashMap` để che giấu thiết kế shared mutable state phức tạp. Nếu cần eviction, size limit, TTL, hoặc metrics tốt, hãy cân nhắc cache library như Caffeine.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, singleton beans được share giữa request threads. Nếu bean giữ một `HashMap` mutable làm cache hoặc registry và nhiều request cùng update, đó là race condition thật.
 
@@ -86,6 +86,14 @@ Với cache production, Spring Cache cộng với provider phù hợp thường 
 - `ConcurrentHashMap` không cho phép `null` key hoặc `null` value.
 - Check-then-act nhiều bước vẫn race. Dùng `compute()`, `computeIfAbsent()`, hoặc `merge()` khi phù hợp.
 - Thread-safe map không làm object value bên trong thread-safe. Mutable value vẫn có thể bị race.
+
+## Handbook rule
+
+- Shared mutable map giữa nhiều thread phải là `ConcurrentHashMap` hoặc tương đương, không phải `HashMap`.
+- Atomicity là per-operation; chuỗi check-then-act phải dùng `compute*`/`merge` thay vì `containsKey` rồi `put`.
+- `ConcurrentHashMap` không cho `null` key/value; `get()` trả `null` luôn nghĩa là không có mapping.
+- Iterator của `ConcurrentHashMap` weakly consistent; đừng coi như snapshot tại một thời điểm.
+- Single-thread local thì `HashMap` vẫn là default; không over-use `ConcurrentHashMap` khi không cần.
 
 ## Check yourself
 

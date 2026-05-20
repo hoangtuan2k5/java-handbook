@@ -72,7 +72,7 @@ Dùng `removeIf()` nếu logic xoá đơn giản, vì nó ngắn hơn và diễn
 
 Không dùng iterator như một giải pháp thread-safety. Nếu nhiều thread cùng đọc hoặc ghi, bạn cần collection concurrent hoặc synchronization rõ ràng.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, bạn thường iterate qua list DTO, entity, validation errors, hoặc bean definitions. Nếu service vừa enhanced for-loop vừa remove trực tiếp khỏi collection, lỗi `ConcurrentModificationException` có thể xuất hiện dù chỉ có một request.
 
@@ -83,6 +83,14 @@ Với shared collection trong singleton bean, vấn đề còn nghiêm trọng h
 - `ConcurrentModificationException` không nhất thiết là bug multi-thread. Một thread sửa collection sai cách cũng gây ra.
 - `Iterator#remove()` chỉ được gọi sau `next()` và thường chỉ một lần cho mỗi phần tử vừa lấy.
 - Fail-fast là best-effort để phát hiện bug sớm, không phải cơ chế đồng bộ hoá đáng tin.
+
+## Handbook rule
+
+- Không gọi `Collection#remove(...)` bên trong enhanced for-loop; dùng `Iterator#remove()` hoặc `removeIf()`.
+- `ConcurrentModificationException` là dấu hiệu code đang sai, không phải bug multi-thread.
+- Fail-fast iterator là best-effort, không phải cơ chế thread-safety.
+- Khi remove theo predicate đơn giản, ưu tiên `removeIf()` cho intent rõ.
+- Multi-thread đụng cùng collection cần concurrent collection hoặc synchronization rõ ràng, không phải iterator.
 
 ## Check yourself
 

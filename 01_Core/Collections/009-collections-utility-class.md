@@ -73,7 +73,7 @@ Không dùng `unmodifiableList()` nếu bạn cần immutable snapshot. Khi đó
 
 Không dùng synchronized wrappers như giải pháp concurrency mặc định cho code phức tạp. Concurrent collections hoặc thiết kế immutable thường rõ hơn.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, `Collections.emptyList()` rất hữu ích để trả response không `null`. `unmodifiableList()` có thể bảo vệ config hoặc cached data khỏi bị caller sửa qua reference public, nhưng nếu source list vẫn mutable trong bean thì nó chưa thật sự immutable.
 
@@ -84,6 +84,14 @@ Với singleton bean, synchronized wrapper có thể tránh một số race đơ
 - `Collections.unmodifiableList()` là unmodifiable view, không nhất thiết là immutable copy.
 - `Collections.sort(list)` mutate list tại chỗ. Copy trước nếu cần giữ order gốc.
 - `Collections.synchronizedList()` cần manual synchronization khi iterate qua nhiều bước.
+
+## Handbook rule
+
+- Trả `Collections.emptyList()`/`emptyMap()`/`emptySet()` thay vì `null` để caller iterate an toàn.
+- `unmodifiableList()` là view, không phải snapshot; cần immutable thực sự thì copy hoặc dùng `List.copyOf()`.
+- `Collections.sort()` mutate in-place; copy trước nếu cần giữ order gốc.
+- `synchronizedList()` không thay thế thiết kế thread-safe cho multi-step iteration.
+- Phân biệt rõ `Collection` (interface) và `Collections` (utility class) khi đọc code.
 
 ## Check yourself
 

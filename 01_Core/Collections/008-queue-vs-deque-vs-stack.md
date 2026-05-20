@@ -86,7 +86,7 @@ Không dùng `Stack` cho code mới trừ khi đang làm việc với API legacy
 
 Không dùng `PriorityQueue` nếu bạn cần FIFO thật sự. Nó phục vụ priority ordering, không phải arrival order.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, queue mental model xuất hiện trong xử lý events, retry jobs, batch processing, hoặc buffer tạm trong service.
 
@@ -99,6 +99,14 @@ Với async processing thật, thường nên dùng message broker hoặc task e
 - `Stack` là legacy. Dùng `Deque` và `ArrayDeque` cho stack behavior trong code mới.
 - `PriorityQueue` không giữ FIFO. Nó lấy phần tử nhỏ nhất hoặc theo comparator trước.
 - `ArrayDeque` không cho phép `null`, vì `null` được dùng làm signal cho `poll()` khi rỗng.
+
+## Handbook rule
+
+- Default cho stack/queue local non-concurrent là `ArrayDeque`, không phải legacy `Stack`.
+- Cần FIFO thật, dùng `Queue`/`Deque`; `PriorityQueue` không giữ FIFO.
+- Cần xử lý ở cả hai đầu, dùng `Deque` để diễn đạt intent rõ hơn `List`.
+- `null` không hợp lệ trong `ArrayDeque`; dùng sentinel khác nếu cần báo rỗng.
+- Trong singleton bean hoặc shared state, queue phải là concurrent queue hoặc có sync rõ ràng.
 
 ## Check yourself
 

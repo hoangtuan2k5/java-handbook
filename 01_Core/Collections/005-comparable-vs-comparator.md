@@ -82,7 +82,7 @@ Dùng `Comparator` khi ordering phụ thuộc trường hợp sử dụng: sort 
 
 Không implement `Comparable` chỉ để phục vụ một màn hình hoặc một query cụ thể. Điều đó làm domain class mang một assumption dễ lỗi thời.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, sorting thường xuất hiện ở repository query, API response, DTO list, hoặc in-memory post-processing. Nếu sort là concern của endpoint hoặc query, `Comparator` thường rõ hơn vì rule nằm gần trường hợp sử dụng.
 
@@ -93,6 +93,14 @@ Với JPA entities, cẩn thận khi dùng `Comparable` dựa trên mutable fiel
 - Comparator trả `0` trong `TreeSet` nghĩa là “coi như cùng phần tử” theo ordering, không chỉ là “đứng cạnh nhau”.
 - Đừng viết comparator bằng phép trừ như `a - b`. Có thể overflow. Hãy dùng `Integer.compare()` hoặc `Long.compare()`.
 - Natural ordering nên ổn định. Dùng mutable field để compare có thể phá sorted collection sau khi object đã được thêm vào.
+
+## Handbook rule
+
+- `Comparable` là natural ordering của domain; chỉ implement khi thật sự có một thứ tự mặc định cho cả team.
+- Nhiều use case sort khác nhau là tín hiệu phải dùng `Comparator` thay vì gắn vào `Comparable`.
+- Không viết comparator bằng `a - b`; dùng `Integer.compare()`, `Long.compare()`, hoặc `Comparator` chain.
+- Comparator trả `0` trong `TreeSet`/`TreeMap` nghĩa là cùng phần tử theo ordering; tránh mất dữ liệu nếu rule chỉ so sánh một field.
+- Field mutable không nên dùng để compare nếu phần tử nằm trong sorted collection.
 
 ## Check yourself
 

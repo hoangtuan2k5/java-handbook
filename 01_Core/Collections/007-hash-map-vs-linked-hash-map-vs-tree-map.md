@@ -78,7 +78,7 @@ Dùng `TreeMap` khi sorted key hoặc range query là requirement thật.
 
 Không dùng `TreeMap` chỉ vì muốn “nhìn đẹp” trong log. Sort output ở boundary có thể đơn giản hơn và tránh coupling ordering vào data structure chính.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot, `Map<String, ...>` trong `@ConfigurationProperties` thường cần order ổn định nếu config được render lại hoặc serialize. `LinkedHashMap` khi đó có thể phù hợp hơn `HashMap`.
 
@@ -91,6 +91,14 @@ Cache tạm thường bắt đầu bằng `HashMap`, nhưng nếu nằm trong si
 - `HashMap` không đảm bảo iteration order. Đừng để API response phụ thuộc vào nó.
 - `TreeMap` key phải comparable hoặc có comparator. Key không comparable sẽ nổ runtime khi `put`.
 - `LinkedHashMap` giữ order bằng linked list phụ, nên có overhead nhưng đổi lại output ổn định.
+
+## Handbook rule
+
+- Default cho key-value lookup là `HashMap`.
+- Cần insertion order ổn định cho serialize/render, chuyển sang `LinkedHashMap`.
+- Cần sorted key hoặc range query, mới chọn `TreeMap`.
+- Không dùng `TreeMap` chỉ để output đẹp; sort ở boundary thường rõ hơn.
+- API/JSON/snapshot không nên phụ thuộc iteration order của `HashMap`.
 
 ## Check yourself
 
