@@ -10,6 +10,7 @@ Mục tiêu của nó không phải là gom mọi thứ vào một chỗ thật 
 - đặt tên class, interface, enum, record
 - chia file và sắp xếp code trong file
 - viết exception, logging, Javadoc
+- setup build, test, static analysis, và quality gates
 - review xem code có “giống Java” hay không
 
 ## Suggested reading order
@@ -24,6 +25,7 @@ Nếu mới bắt đầu, nên đọc theo thứ tự này:
 6. `008-method-naming.md`
 7. `009-variable-parameter-field-naming.md`
 8. `011-code-organization.md`
+9. `017-toolchain-and-quality-gates.md`
 
 Các file còn lại nên dùng như reference khi cần.
 
@@ -55,6 +57,7 @@ Nếu một framework có convention riêng mạnh hơn, ví dụ Spring Boot, J
 - `014-logging-guidelines.md`
 - `015-javadoc-and-comments.md`
 - `016-common-java-anti-patterns.md`
+- `017-toolchain-and-quality-gates.md`
 
 ## Related notes
 
@@ -65,3 +68,5 @@ Nếu một framework có convention riêng mạnh hơn, ví dụ Spring Boot, J
 [[011-code-organization]]
 
 [[015-javadoc-and-comments]]
+
+[[017-toolchain-and-quality-gates]]
