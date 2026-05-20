@@ -101,6 +101,14 @@ Pool ít khi là thứ mình chủ động dùng trong Spring business code. Đi
 * Nối string lặp đi lặp lại trong loop lớn có thể tạo nhiều object trung gian.
 * `intern()` có use case riêng, nhưng không nên dùng bừa chỉ để sửa bug so sánh reference.
 
+## Handbook rule
+
+- `String` immutable; mọi method trả về object mới, phải gán lại để giữ kết quả.
+- So sánh nội dung text dùng `equals()` hoặc `equalsIgnoreCase()`, không bao giờ dùng `==`.
+- Concat trong loop dài dùng `StringBuilder`, không dùng `+` nối liên tục.
+- `intern()` là công cụ đặc thù; không gọi để fix bug so sánh reference.
+- Treat `String` như value type ổn định cho key, log, config; tránh giả định identity.
+
 ## Check yourself
 
 * Vì sao `text.trim();` không làm biến `text` đổi nếu không gán lại?

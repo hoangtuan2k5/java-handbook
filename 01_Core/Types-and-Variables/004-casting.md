@@ -82,6 +82,14 @@ Một chỗ hay gặp khác là đọc config hoặc payload rồi ép sang type
 * Reference cast compile được chưa có nghĩa là runtime sẽ an toàn.
 * Cast có thể che đi bug ở tầng trước, ví dụ source data đã sai type từ đầu.
 
+## Handbook rule
+
+- Chỉ cast khi đã hiểu rõ domain trước/sau và rule chuyển đổi.
+- Narrowing cast trên dữ liệu external phải có validation hoặc clamp; không tin compiler thay cho business rule.
+- Reference cast compile xong vẫn có thể nổ runtime; ưu tiên `instanceof` pattern matching.
+- `(int) double` là truncate, không phải round; cần round dùng `Math.round()` hoặc tương đương.
+- Nếu phải cast nhiều, đó là tín hiệu type ở tầng trên đang sai, không phải nơi để patch.
+
 ## Check yourself
 
 * Vì sao `(int) 3.9` ra `3` chứ không phải `4`?

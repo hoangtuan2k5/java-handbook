@@ -105,6 +105,14 @@ Primitive lại hợp hơn cho internal computation trong service hoặc helper 
 * `List<int>` là không hợp lệ vì generics làm việc với reference type, không phải primitive.
 * Wrapper kéo theo thêm object semantics và có thể tốn memory hơn primitive khi số lượng lớn.
 
+## Handbook rule
+
+- Default cho biến cục bộ và arithmetic là primitive; chỉ chuyển sang wrapper khi API/collection bắt buộc.
+- Wrapper được phép `null`; phải xử lý null trước khi unbox để tránh `NullPointerException`.
+- Đừng so sánh wrapper bằng `==`; dùng `equals()` hoặc compare method.
+- `List<int>` không hợp lệ; collection chỉ chấp nhận reference type, đó là lý do `Integer` xuất hiện.
+- Nếu cần phân biệt “không có giá trị” khác “0”, dùng wrapper hoặc `Optional`, không bóp méo primitive.
+
 ## Check yourself
 
 * Nếu một field có thể “không được gửi”, vì sao `Integer` thường hợp lý hơn `int`?

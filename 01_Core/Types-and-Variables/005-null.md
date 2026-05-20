@@ -81,6 +81,14 @@ Một practice hay là convert `null` sang contract rõ hơn ngay khi vào hệ 
 * `Objects.equals(a, b)` thường an toàn hơn `a.equals(b)` khi `a` có thể là `null`.
 * Một field có thể không `null` ở layer này nhưng lại `null` ở boundary khác như HTTP hoặc database.
 
+## Handbook rule
+
+- Mặc định trả empty collection hoặc default object thay vì `null`; chỉ dùng `null` khi contract bắt buộc.
+- Phân biệt rõ `null`, empty, và `0`; không gộp chúng trong cùng business rule.
+- Validate/normalize null ở boundary (HTTP, DB, queue) sớm nhất có thể.
+- Dùng `Objects.equals(a, b)` khi một bên có thể null; tránh `a.equals(b)` không kiểm tra.
+- Wrapper unbox phải kiểm tra null trước; autoboxing không tạo cảm giác an toàn giả.
+
 ## Check yourself
 
 * Vì sao `null` và `""` không nên bị xem là cùng nghĩa?

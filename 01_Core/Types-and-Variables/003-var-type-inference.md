@@ -93,6 +93,14 @@ Tuy vậy, ở public API, chỗ cần nhấn mạnh abstraction boundary, hoặ
 * Dùng `var` với `null` trực tiếp là không hợp lệ vì compiler không suy ra được type.
 * `var` có thể che mất abstraction quan trọng nếu initializer dùng implementation cụ thể.
 
+## Handbook rule
+
+- `var` chỉ áp dụng cho local variable đã có initializer rõ ràng; không dùng cho field/parameter/return.
+- Khi initializer là factory hoặc method có return type mơ hồ, viết type cụ thể thay vì `var`.
+- Tên biến phải đủ rõ để người đọc đoán được kiểu nếu dùng `var`; nếu không, viết type ra.
+- Đừng `var` để giấu interface quan trọng như `Map`, `List`; giữ abstraction khi cần nhấn mạnh contract.
+- `var = null` không hợp lệ; cần initializer có type cụ thể.
+
 ## Check yourself
 
 * Vì sao `var` không làm Java thành dynamic language?

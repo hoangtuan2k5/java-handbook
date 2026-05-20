@@ -92,6 +92,14 @@ Ngay cả khi bạn chưa tự override hai method này, hiểu contract vẫn r
 * `==` trên object chỉ so sánh reference, không phản ánh logical equality.
 * Dùng mutable field trong equality logic có thể làm key bị “mất tích” sau khi đã `put` vào hash-based collection.
 
+## Handbook rule
+
+- Override `equals()` thì phải override `hashCode()` cùng lúc, dùng cùng tập field.
+- Field tham gia equality phải bất biến trong vòng đời object đang nằm trong hash-based collection.
+- `==` chỉ so sánh reference; logical equality phải dùng `equals()` hoặc `Objects.equals(...)`.
+- `hashCode()` không phải id duy nhất; collision được phép, equality vẫn dùng `equals()` để xác định.
+- Đảm bảo equality contract: reflexive, symmetric, transitive, consistent, và `null`-safe.
+
 ## Check yourself
 
 * Vì sao `equals()` và `hashCode()` phải nhất quán với nhau?
