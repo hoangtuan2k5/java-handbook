@@ -89,6 +89,14 @@ Spring Boot service thường chạy lâu, nên phần lớn giá trị performa
 - Profile test nhỏ có thể khác xa production traffic thật.
 - `Deoptimization` làm performance thay đổi theo traffic pattern, không chỉ theo source code.
 
+## Handbook rule
+
+- Benchmark phải có warmup; số liệu lần chạy đầu thường vô nghĩa.
+- Đọc startup latency và steady-state throughput tách biệt; chúng có trade-off khác nhau.
+- Inlining có thể làm stack/profiler khó đọc; tham chiếu compiler log khi cần.
+- Microbenchmark viết tay dễ sai; ưu tiên JMH cho số liệu đáng tin.
+- Deoptimization là hiện tượng bình thường; theo dõi pattern, không panic mỗi lần xảy ra.
+
 ## Check yourself
 
 - Vì sao request đầu hoặc vòng benchmark đầu thường không đại diện cho hiệu năng dài hạn?

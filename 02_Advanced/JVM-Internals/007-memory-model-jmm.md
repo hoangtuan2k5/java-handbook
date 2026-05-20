@@ -111,6 +111,14 @@ Các bug hay gặp:
 - Thêm log hoặc debug có thể làm race condition “biến mất” vì timing đổi.
 - Code chạy đúng nhiều lần không chứng minh nó đúng theo JMM.
 
+## Handbook rule
+
+- Shared mutable state phải có visibility + atomicity; `volatile` chỉ cover visibility.
+- Read-modify-write hoặc nhiều field đi cùng cần atomic class hoặc lock.
+- Publish object qua final field hoặc safe initialization để tránh thấy object nửa khởi tạo.
+- Code chạy đúng nhiều lần không chứng minh đúng theo JMM; reasoning theo happens-before.
+- Thêm log/debug đổi timing có thể che bug; không tin “fix” chỉ nhờ thay đổi observability.
+
 ## Check yourself
 
 - `happens-before` thực sự cho bạn guarantee gì?

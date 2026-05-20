@@ -89,6 +89,14 @@ Spring Boot thường đọc nhiều cấu hình từ environment và `system pr
 - Diagnostic logging quá mạnh có thể tạo overhead và log volume lớn.
 - `-D` property nằm chung startup command nhưng không phải JVM tuning flag.
 
+## Handbook rule
+
+- Flag chỉ đúng trong bối cảnh JDK/version/workload/container; không copy block flag từ hệ thống khác.
+- Không lặp/đè flag mơ hồ; biết flag nào ghi đè flag nào.
+- Flag deprecated/đổi tên giữa version; review khi upgrade JDK.
+- Diagnostic logging mạnh có chi phí; bật khi điều tra, tắt khi xong.
+- `-D` property là app config, không phải JVM tuning flag; phân biệt rõ trong startup command.
+
 ## Check yourself
 
 - Vì sao cần tách `-X`, `-XX`, và `-D` theo vai trò thay vì đọc cả command như một khối?

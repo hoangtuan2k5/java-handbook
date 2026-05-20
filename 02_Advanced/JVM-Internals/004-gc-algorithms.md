@@ -87,6 +87,14 @@ Nếu app chạy trong container với memory budget chặt, chọn collector sa
 - `Full GC` lặp lại thường là symptom mạnh, không nên xem như chuyện bình thường.
 - Average latency đẹp không cứu được SLA nếu tail latency xấu.
 
+## Handbook rule
+
+- Chọn collector theo goal (latency/throughput/memory), không theo ý kiến chung chung.
+- Pause thấp hơn thường đổi bằng overhead/memory; biết trade-off trước khi quyết.
+- Full GC lặp là symptom; không bỏ qua.
+- Average latency không phản ánh tail latency; đo p99/p999 cho service nhạy độ trễ.
+- Tăng young pressure có thể đẩy vấn đề sang promotion/old gen; theo dõi cả pipeline.
+
 ## Check yourself
 
 - Vì sao “most objects die young” lại ảnh hưởng mạnh tới thiết kế collector?

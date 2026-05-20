@@ -97,6 +97,14 @@ Vì vậy khi app fail vì module access, incompatible class version, hoặc gen
 - Bytecode hợp lệ không nhất thiết phải đến từ `javac`.
 - Source code nhìn “tương đương” chưa chắc có bytecode tương đương.
 
+## Handbook rule
+
+- Compile JDK mới chạy runtime cũ gây `UnsupportedClassVersionError`; thống nhất `--release`.
+- Bytecode hợp lệ không nhất thiết đến từ `javac`; framework có thể generate.
+- Source “tương đương” không có nghĩa bytecode tương đương; xác nhận bằng `javap` khi cần.
+- Constant pool chứa nhiều loại entry; đừng coi nó chỉ là string/number.
+- Đi sâu opcode chỉ khi debug instrumentation/AOT/agent, không phải để viết CRUD.
+
 ## Check yourself
 
 - Vì sao JVM không cần Java source để chạy chương trình?

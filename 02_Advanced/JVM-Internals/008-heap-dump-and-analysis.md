@@ -90,6 +90,14 @@ Heap dump rất mạnh trong bối cảnh này vì nó giúp nối symptom “me
 - Một snapshot duy nhất chưa chắc đủ, nhất là khi cần so sánh trước và sau load.
 - `HeapDumpOnOutOfMemoryError` hữu ích, nhưng phải chuẩn bị sẵn disk, path, và quy trình bảo mật.
 
+## Handbook rule
+
+- Lấy heap dump khi có symptom retention thật; tránh lấy bừa trên production nhạy latency.
+- Xử lý dump cẩn thận: chứa dữ liệu user và secrets; bảo mật nghiêm.
+- Phân tích dùng retained size, không chỉ shallow size.
+- So sánh nhiều dump trước/sau workload để thấy pattern leak.
+- Heap dump không cho bức tranh off-heap/native; cần native memory tracking riêng.
+
 ## Check yourself
 
 - Vì sao heap dump thường hữu ích trước cả khi app nổ `OutOfMemoryError`?
