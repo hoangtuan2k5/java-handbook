@@ -113,6 +113,14 @@ Ngay cả khi Spring inject bean bằng constructor, builder vẫn hữu ích ch
 - Nếu object vẫn mutable mạnh sau khi build, lợi ích safety của builder giảm nhiều.
 - Builder quá sớm cho object đơn giản sẽ làm code verbose vô ích.
 
+## Handbook rule
+
+- Builder dùng khi nhiều field optional hoặc cần validate ở `build()`.
+- Không reuse builder instance; tạo mới mỗi object để tránh state leak.
+- DTO nhỏ với constructor rõ thì không cần builder.
+- `build()` phải validate required field; không tin compiler.
+- Cân nhắc `record` thay builder khi object thuần immutable và nhỏ.
+
 ## Check yourself
 
 - `Builder` sửa nhược điểm nào của constructor nhiều tham số?

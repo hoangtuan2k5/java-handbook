@@ -103,6 +103,14 @@ Spring Security filter chain là ví dụ rất thực tế. Một HTTP request 
 - Logging thiếu context sẽ làm rất khó biết request dừng ở mắt xích nào.
 - Chain quá dài mà không có naming rõ ràng sẽ rất khó đọc.
 
+## Handbook rule
+
+- Chain dùng khi request đi qua nhiều rule và có handler dừng ở mắt xích phù hợp.
+- Order phải rõ và document; sai order có thể bỏ qua bước bảo mật.
+- Phải có fallback cho request không match handler nào.
+- Logging mỗi mắt xích cần đủ context để trace request dừng ở đâu.
+- Không nhầm với Observer: chain dừng, observer fan out.
+
 ## Check yourself
 
 - `Chain of Responsibility` khác `Observer` ở điểm fan-out và stop condition như thế nào?

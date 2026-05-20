@@ -98,6 +98,14 @@ Nó cũng xuất hiện ở các contract như `Converter`, `Validator`, `Authen
 - Đặt tên strategy theo kỹ thuật thay vì theo business rule làm intent khó đọc.
 - Có lúc thứ bạn cần là data-driven configuration, không phải thêm một class mới.
 
+## Handbook rule
+
+- Strategy dùng khi có nhiều thuật toán thay thế nhau theo cùng contract.
+- Đặt tên strategy theo business rule, không theo kỹ thuật.
+- Selection logic không nên là `switch` lớn; ưu tiên registry/factory.
+- Strategy không nên giữ mutable state shared trong singleton bean.
+- Variation nhỏ hoặc data-driven thì cấu hình tốt hơn tạo class mới.
+
 ## Check yourself
 
 - `Strategy` sửa nhầm lẫn nào của một khối `if/else` dài?

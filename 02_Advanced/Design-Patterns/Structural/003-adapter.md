@@ -97,6 +97,14 @@ Trong Spring app, adapter xuất hiện khi map DTO external sang domain model, 
 - Nếu caller vẫn phải biết chi tiết contract cũ, adapter chưa che được complexity thật sự.
 - Naming không rõ giữa target model và legacy model dễ làm mapping khó hiểu.
 
+## Handbook rule
+
+- Adapter chỉ làm translation giữa hai contract; không nhồi business rule.
+- Mapping field/enum phải đầy đủ; thiếu hoặc normalize sai gây bug âm thầm.
+- Một adapter chỉ phục vụ một cặp model; nhiều shape là dấu hiệu thiết kế sai.
+- Caller phải dùng target model, không thấy contract cũ.
+- Naming target/legacy phải rõ để mapping đọc được.
+
 ## Check yourself
 
 - `Adapter` khác `Facade` ở mục tiêu chính như thế nào?

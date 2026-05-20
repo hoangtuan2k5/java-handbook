@@ -107,6 +107,14 @@ Spring có `ApplicationEventPublisher` và `@EventListener`, đây là ví dụ 
 - Nếu business logic phụ thuộc order notify nhưng không nói rõ order, bug sẽ rất khó tái hiện.
 - Dùng event cho mọi thứ có thể biến flow đơn giản thành flow khó hiểu.
 
+## Handbook rule
+
+- Observer chỉ dùng khi nhiều reaction độc lập cần fan out từ cùng một thay đổi.
+- Không phụ thuộc vào order notify; nếu order quan trọng phải làm rõ trong contract.
+- Event payload phải immutable; tránh observer trước mutate state observer sau đọc.
+- Observer chạy đồng bộ kéo chậm publisher; cân nhắc async hoặc batch.
+- Đừng nhầm với Chain of Responsibility: chain dừng ở 1 handler, observer fan out tới mọi handler.
+
 ## Check yourself
 
 - Khi nào `Observer` tốt hơn gọi trực tiếp một service phụ?

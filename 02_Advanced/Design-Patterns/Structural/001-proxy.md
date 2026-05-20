@@ -104,6 +104,14 @@ Spring AOP, `@Transactional`, `@Cacheable`, và nhiều security advice thườn
 - Proxy cache stale data mà không có invalidation rule rõ sẽ tạo bug khó tái hiện.
 - Dùng proxy để nhét business logic chính sẽ làm intent bị lệch.
 
+## Handbook rule
+
+- Proxy cho cross-cutting concern (security/log/cache/transaction); không nhét business logic chính.
+- Self-invocation trong bean bypass Spring proxy; gọi qua bean injected khi cần.
+- Proxy ẩn call path; debug/log phải thêm context để trace.
+- Cache trong proxy phải có invalidation rule rõ ràng.
+- Đừng giả định proxy là target object; equality/serialization/type check có thể bất ngờ.
+
 ## Check yourself
 
 - `Proxy` khác `Decorator` ở intent chính như thế nào?

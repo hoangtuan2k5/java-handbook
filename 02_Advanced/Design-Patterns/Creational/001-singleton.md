@@ -100,6 +100,14 @@ Loại đầu thường testable và linh hoạt hơn nhiều.
 - Pattern này hay bị lạm dụng để che hidden dependency.
 - Trong môi trường có nhiều classloader hoặc nhiều context, khái niệm “chỉ một instance” còn phải nói rõ là trong phạm vi nào.
 
+## Handbook rule
+
+- Singleton chỉ dành cho stateless coordinator/resource thật sự duy nhất.
+- Trong Spring, dùng default singleton scope thay vì tự viết Singleton.
+- Singleton không được giữ mutable state per-request/session.
+- Tránh Singleton để bypass dependency injection; truyền dependency rõ ràng.
+- Trong môi trường nhiều classloader/context, “một instance” phải định nghĩa rõ phạm vi.
+
 ## Check yourself
 
 - Vì sao “dùng nhiều nơi” chưa đủ để biện minh cho `Singleton`?

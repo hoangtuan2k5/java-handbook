@@ -99,6 +99,14 @@ Spring có nhiều API mang tinh thần template như `JdbcTemplate`, `RestTempl
 - Thêm một bước mới vào abstract base class có thể ảnh hưởng hàng loạt subclass.
 - Dùng template khi variation thực ra độc lập sẽ làm code cứng hơn mức cần thiết.
 
+## Handbook rule
+
+- Template Method khi skeleton cố định, chỉ vài bước biến đổi.
+- Lock skeleton bằng `final` method; cho subclass override hook rõ ràng.
+- Inheritance quá sâu là dấu hiệu nên chuyển sang composition.
+- Variation về toàn bộ thuật toán thuộc Strategy, không phải Template Method.
+- Hook phải có default an toàn; tránh subclass quên override gây behavior sai.
+
 ## Check yourself
 
 - `Template Method` khác `Strategy` ở chỗ class cha giữ quyền gì?

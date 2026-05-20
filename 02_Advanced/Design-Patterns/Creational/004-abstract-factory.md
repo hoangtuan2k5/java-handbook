@@ -99,6 +99,14 @@ Nó cũng xuất hiện khi một module cần thay nguyên bộ dependency theo
 - Naming product và family không rõ khiến team khó thấy quan hệ tương thích.
 - Dễ dùng quá tay khi bài toán thật ra chỉ là registry của một implementation đơn lẻ.
 
+## Handbook rule
+
+- Abstract Factory khi cần family of products tương thích cùng lúc.
+- Nếu chỉ có 1 family hiện dùng, đừng generic hóa sớm.
+- Caller không được tự trộn product từ family khác; phá invariant pattern.
+- Naming product và family rõ; quan hệ tương thích phải đọc được từ tên.
+- Cân nhắc DI configuration thay vì pattern khi chỉ là chọn implementation.
+
 ## Check yourself
 
 - `Abstract Factory` khác `Factory` ở đâu nếu nhìn từ số lượng product được tạo?

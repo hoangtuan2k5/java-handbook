@@ -106,6 +106,14 @@ Trong Spring app, decorator-style composition hay xuất hiện ở service wrap
 - Mutable shared state trong decorator chain có thể tạo side effect khó đoán.
 - Decorator quá hạt nhỏ có thể làm code đọc khó hơn lợi ích nó mang lại.
 
+## Handbook rule
+
+- Decorator thêm behavior bao quanh; không sửa contract của target.
+- Order decorator quan trọng; document và test order tường minh.
+- Decorator không nên biết concrete type bên trong; abstraction phải rò rỉ.
+- Mutable state trong chain phá tính composable; ưu tiên stateless decorator.
+- Quá nhiều decorator hạt nhỏ làm stack trace khó đọc; gộp khi không tăng giá trị.
+
 ## Check yourself
 
 - `Decorator` khác `Proxy` ở mục tiêu chính như thế nào?
