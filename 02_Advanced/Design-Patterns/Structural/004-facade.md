@@ -89,7 +89,7 @@ Do NOT use `Facade` khi:
 
 Misconception thường gặp là nghĩ facade phải đứng trên toàn bộ hệ thống. Thực tế facade tốt thường khá hẹp và bám sát một nhóm use case liên quan.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring, facade thường là application service hoặc orchestration service đứng giữa controller và nhiều domain hoặc integration service.
 

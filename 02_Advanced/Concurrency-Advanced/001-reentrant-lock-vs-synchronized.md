@@ -101,7 +101,7 @@ Dùng `ReentrantLock` khi:
 
 Không nên chọn `ReentrantLock` chỉ vì nghĩ nó “nhanh hơn”. Cũng không nên nhét `synchronized` vào chỗ mà requirement thật sự là timeout hoặc cancel khi chờ lock.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring, chỗ cần hỏi đầu tiên không phải “dùng lock gì”, mà là “vì sao bean này lại có shared mutable state”. Với singleton bean, state mutable mới là nguồn rủi ro chính.
 

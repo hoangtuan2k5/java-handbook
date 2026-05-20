@@ -73,7 +73,7 @@ Dùng memory profiling khi:
 
 Không chỉ nhìn tổng heap rồi kết luận có leak. Cũng không nên so retained size giữa các snapshot khác workload mà không có cùng traffic pattern hoặc cùng thời điểm warmup.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring app, memory issue thường xuất hiện ở cache tự chế, request/response object quá lớn, `Hibernate` persistence context giữ entity quá lâu, hoặc bean singleton giữ reference tới data đáng ra chỉ sống theo request. Những thứ này ít khi lộ ra nếu chỉ nhìn controller code.
 

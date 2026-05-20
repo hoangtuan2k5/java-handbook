@@ -90,7 +90,7 @@ Không verify mọi lời gọi một cách máy móc. Nếu assertion business 
 
 Không xem mock như bản thay thế hoàn chỉnh cho integration test. Nó chỉ giúp unit test nhanh và tập trung hơn.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring, `Mockito` xuất hiện nhiều ở service unit test hoặc test slice khi mình muốn cắt bớt dependency như external client, mail sender, message publisher, hoặc payment gateway.
 

@@ -83,7 +83,7 @@ Do NOT use `Adapter` khi:
 
 Misconception hay gặp là dùng adapter như nơi nhét business rule. Khi đó nó không còn là translator nữa.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring app, adapter xuất hiện khi map DTO external sang domain model, bọc third-party client vào interface nội bộ, hoặc chuẩn hóa response và status từ hệ thống cũ trước khi service layer dùng tiếp.
 

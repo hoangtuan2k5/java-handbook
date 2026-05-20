@@ -1,4 +1,4 @@
-﻿# Secure Coding Practices
+# Secure Coding Practices
 
 ## What is it
 
@@ -78,7 +78,7 @@ Không xem secure coding như một checklist hình thức chỉ để pass revi
 
 Cũng không nên nghĩ secure coding thay thế hoàn toàn cho threat modeling, dependency scanning, hoặc runtime hardening. Nó là một lớp phòng thủ, không phải toàn bộ hệ thống phòng thủ.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring app, secure coding xuất hiện ở rất nhiều chỗ quen thuộc: `@Valid` và custom validator ở request DTO, `@PreAuthorize` hoặc method security cho authorization, `PasswordEncoder` cho password handling, và logging filter để mask dữ liệu nhạy cảm.
 

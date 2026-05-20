@@ -96,7 +96,7 @@ Dùng profiling tools khi:
 
 Không dùng một profiler duy nhất cho mọi bài toán. Cũng không nên kết luận từ profile quá ngắn, profile lấy trong debug mode, hoặc profile lấy khi traffic không giống production.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot app, profiler rất hữu ích để phân biệt chậm ở controller, serialization, ORM, cache, proxy, hay downstream call. Ví dụ request chậm có thể không nằm ở business logic mà nằm ở `Jackson`, `Hibernate`, connection pool wait, hoặc excessive logging filter.
 

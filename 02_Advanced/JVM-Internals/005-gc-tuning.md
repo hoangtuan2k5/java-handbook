@@ -67,7 +67,7 @@ Hãy dùng mental model này khi:
 
 Không nên tune chỉ vì nghe nói một flag nào đó “best practice cho mọi app”. Không có tuning phổ quát tách rời workload.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Spring Boot app thường chạy trong container, nên heap chỉ là một phần của tổng process memory. Ngoài heap còn có metaspace, direct memory, code cache, thread stack, native overhead, và đôi khi memory của thư viện ngoài JVM heap.
 

@@ -99,7 +99,7 @@ Do NOT use `Builder` khi:
 
 Misconception thường gặp là nghĩ mọi DTO đều nên có builder. Nếu DTO nhỏ và rõ, builder chỉ thêm ceremony.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring app, `Builder` hay xuất hiện ở DTO response, domain command object, test data setup, hoặc object dữ liệu không do container quản lý.
 

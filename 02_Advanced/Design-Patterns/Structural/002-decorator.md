@@ -92,7 +92,7 @@ Do NOT use `Decorator` khi:
 
 Misconception thường gặp là thấy có wrapper rồi gọi luôn là `Decorator`. Nếu wrapper chủ yếu làm gatekeeper, `Proxy` thường đúng hơn.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring app, decorator-style composition hay xuất hiện ở service wrappers, response formatting layers, hoặc các bean bọc bean khác để cộng thêm logging, resilience, hoặc tracing.
 

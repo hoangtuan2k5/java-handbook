@@ -104,7 +104,7 @@ Không dùng khi:
 
 Trong nhiều case, `ReadWriteLock` hoặc immutable snapshot sẽ là lựa chọn ít rủi ro hơn.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring app, `StampedLock` chỉ nên xuất hiện ở component thực sự nóng về read path, như in-memory index, snapshot metadata, hoặc cấu trúc tra cứu đặc thù.
 

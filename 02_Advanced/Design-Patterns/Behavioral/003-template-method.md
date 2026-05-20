@@ -85,7 +85,7 @@ Do NOT use `Template Method` khi:
 
 Misconception thường gặp là dùng `Template Method` cho mọi reusable flow. Nếu reuse đến từ composition tự nhiên hơn, ép vào inheritance sẽ làm cây class cứng và khó bảo trì.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Spring có nhiều API mang tinh thần template như `JdbcTemplate`, `RestTemplate`, `TransactionTemplate`. Không phải lúc nào chúng cũng hiện thực đúng bằng inheritance pattern cổ điển, nhưng idea chung vẫn là framework giữ workflow chuẩn, còn caller chỉ cung cấp phần biến thiên.
 

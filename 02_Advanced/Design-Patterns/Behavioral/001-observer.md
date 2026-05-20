@@ -93,7 +93,7 @@ Do NOT use `Observer` khi:
 
 Misconception hay gặp là thấy nhiều object tham gia rồi gọi luôn là `Observer`. Nếu request đi qua từng tầng và thường dừng ở một tầng nào đó, đó gần hơn với `Chain of Responsibility`, không phải `Observer`.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Spring có `ApplicationEventPublisher` và `@EventListener`, đây là ví dụ rất gần của `Observer`. Service gốc publish `OrderCreatedEvent`, còn nhiều listener độc lập có thể phản ứng.
 

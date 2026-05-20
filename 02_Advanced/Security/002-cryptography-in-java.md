@@ -70,7 +70,7 @@ Do NOT dùng crypto chỉ vì thấy dữ liệu `Base64` trông khó đọc hơ
 
 Nếu requirement chỉ là obfuscation nhẹ cho UX hoặc định danh nội bộ không có security value, hãy nói rõ đó không phải crypto security thật. Crypto chỉ giúp khi nó khớp đúng threat model.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring ecosystem, crypto thường xuất hiện qua `Spring Security`, `PasswordEncoder`, token signing hoặc verification, HTTPS/TLS config, và secret management integration. Ví dụ thực tế nhất là password hashing cho user account, nơi framework giúp mình gắn primitive đúng vào authentication flow.
 

@@ -67,7 +67,7 @@ Dùng CPU profiling khi:
 
 Không mong CPU profiler giải thích đầy đủ các case chậm do blocking I/O, DB wait, hay thread contention nếu bạn không bật thêm góc nhìn phù hợp như lock hoặc wall-clock profile.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring Boot service, CPU hotspot hay nằm ở JSON serialization, validation, mapping DTO, proxy chain quá dày, template rendering, hoặc custom data transformation. CPU profiler giúp bóc tách xem thời gian ở framework frame chỉ là đường đi hay chính converter, interceptor, hay application code mới là hotspot.
 

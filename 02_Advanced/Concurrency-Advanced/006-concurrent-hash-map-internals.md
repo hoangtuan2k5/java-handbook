@@ -84,7 +84,7 @@ Không dùng hoặc cần cân nhắc kỹ khi:
 - cần snapshot chính xác tuyệt đối trong lúc concurrent update,
 - invariant business trải dài qua nhiều key hoặc nhiều cấu trúc dữ liệu.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring, `ConcurrentHashMap` rất hay xuất hiện trong singleton bean làm local cache, metadata registry, idempotency helper, hoặc state theo key.
 

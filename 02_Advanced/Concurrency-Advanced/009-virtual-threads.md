@@ -97,7 +97,7 @@ Không dùng như thuốc tiên khi:
 - downstream resource như DB pool hoặc semaphore gate mới là giới hạn thật,
 - bài toán thực ra cần backpressure pipeline hơn là nhiều blocking task.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring, virtual threads đặc biệt hấp dẫn cho app MVC hoặc service imperative muốn scale concurrency mà không chuyển sang reactive hoàn toàn.
 

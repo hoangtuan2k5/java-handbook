@@ -82,7 +82,7 @@ Hãy bật mental model này khi:
 
 Không nên tự viết custom classloader trong app business bình thường chỉ để “học sâu”. Đây là vùng rất dễ tạo class identity bug, memory leak sau redeploy, và behavior khó tái hiện trong production.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Spring dựa mạnh vào scanning, reflection, proxy, resource loading, và dynamic type discovery. Vì vậy classloader issue thường biểu hiện thành lỗi rất vòng vo ở startup.
 

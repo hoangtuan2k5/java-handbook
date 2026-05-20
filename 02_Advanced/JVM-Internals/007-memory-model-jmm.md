@@ -92,7 +92,7 @@ Hãy dùng mental model này khi:
 
 Không nên dùng `volatile` như thuốc chữa bách bệnh. Nếu operation là read-modify-write hoặc nhiều field phải đi cùng nhau, visibility đơn thuần là chưa đủ.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Phần lớn Spring bean nên stateless. Nhưng ngay khi một singleton bean giữ mutable state dùng chung giữa các request, bạn bước vào territory của `JMM`.
 

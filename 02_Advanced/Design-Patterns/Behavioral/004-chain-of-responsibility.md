@@ -89,7 +89,7 @@ Do NOT use `Chain of Responsibility` khi:
 
 Misconception hay gặp là thấy có nhiều class nối nhau rồi gọi là chain. Nếu nhiều bên cùng phản ứng sau một sự kiện, đó thường là `Observer`, không phải chain.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Spring Security filter chain là ví dụ rất thực tế. Một HTTP request đi qua nhiều filter theo thứ tự. Filter nào cũng có thể kiểm tra, enrich context, reject, hoặc cho request đi tiếp.
 

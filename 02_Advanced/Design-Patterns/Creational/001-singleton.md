@@ -81,7 +81,7 @@ Do NOT use `Singleton` khi:
 
 Misconception cần sửa là: dùng nhiều nơi không đồng nghĩa với singleton. Nhiều khi thứ bạn thật sự cần chỉ là dependency injection bình thường.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring, scope mặc định của bean là singleton trong `ApplicationContext`. Điều đó có nghĩa rất nhiều service đã là singleton theo container.
 

@@ -76,7 +76,7 @@ Hãy dùng note này khi:
 
 Không nên copy nguyên block flags từ hệ thống khác chỉ vì “họ đang chạy ổn”. Flag chỉ đúng trong bối cảnh JDK version, workload, container limits, và mục tiêu vận hành cụ thể.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Spring Boot thường đọc nhiều cấu hình từ environment và `system properties`, nên `-D...` flags ảnh hưởng trực tiếp tới profile, port, log config, SSL config, hoặc feature toggle.
 

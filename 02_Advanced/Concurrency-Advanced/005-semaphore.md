@@ -92,7 +92,7 @@ Không dùng khi:
 - bạn đang cần full backpressure hoặc overload strategy,
 - queue hoặc executor policy mới là abstraction phù hợp hơn.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring app, `Semaphore` rất hợp cho bulkhead nhỏ trong service layer, ví dụ giới hạn số call song song sang hệ thống chậm hoặc giới hạn số job nền chạm vào tài nguyên hiếm.
 

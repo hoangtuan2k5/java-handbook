@@ -124,7 +124,7 @@ Không dùng khi:
 - shared mutable state làm parallelism mất ý nghĩa,
 - code chỉ cần một executor đơn giản để chạy task thường.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring app, `ForkJoinPool` hợp hơn cho job tính toán trong memory, xử lý dữ liệu lớn, hoặc utility CPU-heavy. Nó ít hợp cho service business thông thường vì tầng đó hay dính I/O.
 

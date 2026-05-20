@@ -68,7 +68,7 @@ Dùng checklist các pitfall này khi:
 
 Không tối ưu mọi pitfall một cách mù quáng. Nếu code không nằm trên hot path hoặc chưa có evidence, đừng biến code đơn giản thành phức tạp chỉ vì sợ một cost nhỏ chưa chắc quan trọng.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Spring app gặp pitfall rất thường ở `N+1 queries` với `Hibernate`, conversion hoặc validation chạy lặp lại, excessive logging trong filter/interceptor, cache annotation dùng với key quá lớn, hoặc collection xử lý quá nhiều trong controller/service layer.
 

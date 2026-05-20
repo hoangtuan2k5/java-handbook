@@ -81,7 +81,7 @@ Do NOT use `Factory` khi:
 
 Misconception cần sửa là nghĩ factory luôn làm code “enterprise hơn”. Nếu không có creation branching đáng kể, pattern chỉ thêm một lớp vòng vo.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring, bạn có thể dùng `@Bean` method, configuration class, factory bean, hoặc registry bean để chọn implementation theo property, profile, hoặc request type.
 

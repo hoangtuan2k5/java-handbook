@@ -90,7 +90,7 @@ Do NOT use `Proxy` khi:
 
 Misconception thường gặp là cứ thấy wrapper là gọi `Proxy`. Nếu wrapper chủ yếu cộng thêm behavior chồng lớp, `Decorator` thường đúng hơn.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Spring AOP, `@Transactional`, `@Cacheable`, và nhiều security advice thường dựa trên proxy. Bean được inject có thể là proxy đứng trước object thật để thêm transaction boundary, cache lookup, hoặc authorization check.
 

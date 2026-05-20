@@ -74,7 +74,7 @@ Hãy dùng note này khi:
 
 Không nên đổi collector chỉ vì một bài blog nói collector nào đó “luôn tốt hơn”. Không có collector thắng mọi shape traffic.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Spring apps thường tạo nhiều object ngắn sống ở web layer, JSON serialization, mapping, logging, hoặc reactive pipeline. Vì vậy behavior của vùng trẻ ảnh hưởng trực tiếp tới request latency.
 

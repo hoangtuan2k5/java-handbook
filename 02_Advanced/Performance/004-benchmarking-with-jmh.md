@@ -77,7 +77,7 @@ Dùng JMH khi:
 
 Không dùng JMH để thay thế load test toàn hệ thống. Cũng không nên lấy kết quả microbenchmark rồi suy ra trực tiếp endpoint latency nếu benchmark không chứa các chi phí thật như serialization, network, DB, hoặc framework lifecycle.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong hệ Spring, JMH hữu ích khi tách một đoạn logic thuần Java ra khỏi framework để đo riêng, ví dụ mapper, validator, parser, cache key builder, hoặc custom serializer. Nó giúp trả lời xem bản thân đoạn code có đáng tối ưu không trước khi nghi ngờ cả framework.
 

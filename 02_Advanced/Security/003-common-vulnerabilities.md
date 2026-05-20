@@ -1,4 +1,4 @@
-﻿# Common Vulnerabilities
+# Common Vulnerabilities
 
 ## What is it
 
@@ -67,7 +67,7 @@ Không học danh sách vulnerability như flashcard rồi tin rằng nhớ tên
 
 Cũng không nên chỉ vá chỗ payload đã được report mà bỏ qua mẫu sai ở các call path khác. Mục tiêu là nhận ra family của bug, không chỉ một example cụ thể.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring app, các vulnerability phổ biến thường xuất hiện quanh controller input, data access, file upload, template rendering, deserialization của request body, và authorization ở service layer. `JdbcTemplate`, JPA parameters, Bean Validation, Spring Security, và message converters đều có thể giúp mình đi theo safe path nếu dùng đúng.
 

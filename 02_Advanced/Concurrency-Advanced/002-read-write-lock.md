@@ -101,7 +101,7 @@ Không dùng khi:
 
 Trong các case đó, lock thường hoặc immutable snapshot thường dễ sống hơn.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring app, `ReadWriteLock` có thể hợp cho local cache, config snapshot, hoặc lookup table in-memory được refresh theo đợt.
 

@@ -84,7 +84,7 @@ Hãy dùng mental model này khi:
 
 Không cần đi sâu từng opcode nếu mục tiêu trước mắt chỉ là viết business logic CRUD. Khi đó hiểu layout lớn và vài failure mode quan trọng là đủ.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Spring và ecosystem xung quanh thường tạo proxy hoặc enhance class bằng bytecode, không phải bằng cách sửa source. CGLIB, Byte Buddy, Hibernate enhancement, và nhiều AOP path đều hoạt động ở tầng này.
 

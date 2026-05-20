@@ -76,7 +76,7 @@ Hãy dùng mental model này khi:
 
 Không nên kết luận performance từ một lần chạy ngắn, từ debug mode, hoặc từ microbenchmark viết tay không có warmup tử tế.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Spring Boot service thường chạy lâu, nên phần lớn giá trị performance nằm ở steady state. Request đầu sau deploy có thể chậm vì class loading, bean init, proxy creation, cache cold, và JIT chưa tối ưu đủ.
 

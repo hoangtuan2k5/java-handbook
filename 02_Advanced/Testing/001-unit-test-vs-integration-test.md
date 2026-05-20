@@ -1,4 +1,4 @@
-﻿# Unit Test vs Integration Test
+# Unit Test vs Integration Test
 
 ## What is it
 
@@ -94,7 +94,7 @@ Không dùng `unit test` để giả lập quá nhiều framework behavior phứ
 
 Không dùng toàn `integration test` cho mọi branch logic nhỏ. Suite sẽ chậm, khó debug, và team sẽ ngại chạy test thường xuyên.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring, phân biệt mức test còn quan trọng hơn vì framework cho rất nhiều điểm vào khác nhau.
 

@@ -80,7 +80,7 @@ Không dùng chỉ để theo trend, nhất là khi:
 - app chủ yếu là CRUD đơn giản,
 - team chưa quen mental model lazy execution và scheduler.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring, đây là vùng của WebFlux, Reactor `Mono` và `Flux`, SSE, RSocket, và nhiều integration non-blocking khác.
 

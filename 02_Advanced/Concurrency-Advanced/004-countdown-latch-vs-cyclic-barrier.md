@@ -88,7 +88,7 @@ Dùng `CyclicBarrier` khi:
 
 Không dùng `CountDownLatch` nếu bài toán cần reset. Không dùng `CyclicBarrier` nếu thực ra chỉ có một bên chờ còn bên kia chỉ cần gửi tín hiệu hoàn tất.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring, `CountDownLatch` hay gặp trong integration test, startup orchestration nhỏ, hoặc demo race condition. `CyclicBarrier` hiếm hơn trong business flow thường ngày, nhưng có thể hữu ích trong batch nhiều phase hoặc test đồng bộ worker.
 

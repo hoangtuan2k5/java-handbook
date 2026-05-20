@@ -85,7 +85,7 @@ Do NOT use `Abstract Factory` khi:
 
 Misconception cần sửa là nghĩ pattern này luôn “chuẩn kiến trúc” hơn `Factory`. Không phải. Nếu không có nhu cầu family consistency, nó chỉ thêm ceremony.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring, pattern này xuất hiện khi một configuration chọn cả bộ bean theo environment, profile, tenant, hoặc vendor. Ví dụ chọn một family adapter cho AWS, GCP, hoặc local mock mà các bean trong family phải đi cùng nhau.
 

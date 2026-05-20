@@ -84,7 +84,7 @@ Do NOT use `Strategy` khi:
 
 Misconception phổ biến là áp dụng `Strategy` chỉ vì “muốn code sạch”. Nếu domain không có variation thật, pattern sẽ biến thành ceremony.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Trong Spring, `Strategy` xuất hiện rất tự nhiên khi inject `List<PaymentStrategy>` hoặc `Map<String, PaymentStrategy>` rồi chọn bean phù hợp theo request type, channel, hoặc feature flag.
 

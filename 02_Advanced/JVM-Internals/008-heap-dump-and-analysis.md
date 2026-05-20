@@ -77,7 +77,7 @@ Hãy dùng heap dump khi:
 
 Không nên tạo heap dump lớn bừa bãi trên production nhạy latency nếu chưa hiểu chi phí disk, thời gian dừng, và rủi ro dữ liệu nhạy cảm trong dump.
 
-## How this connects to Spring
+## How this connects to real Java projects
 
 Spring apps dễ giữ memory ở singleton bean, cache không giới hạn, request/session data sống quá lâu, Hibernate persistence context, listener, scheduler, hoặc `ThreadLocal` trên thread pool.
 
