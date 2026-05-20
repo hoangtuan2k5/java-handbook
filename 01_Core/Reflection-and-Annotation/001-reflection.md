@@ -92,6 +92,14 @@ Khi viết application code, mình ít khi gọi reflection bằng tay. Nhưng c
 - Đổi tên member có thể làm code reflection hỏng âm thầm nếu đang dùng string literal.
 - Java module system có thể chặn deep reflection nếu package không được mở phù hợp.
 
+## Handbook rule
+
+- Reflection chỉ dùng cho framework/serializer/test util/plugin loader; không dùng cho business logic thông thường.
+- Tránh truy cập private để né design hiện tại; refactor thay vì hack.
+- Reflection call chậm hơn direct call và không thân thiện với refactor tool.
+- Module system (`--add-opens`) có thể chặn deep reflection; thiết kế phải tôn trọng module boundary.
+- String literal cho member name dễ vỡ khi rename; dùng `MethodHandles`/constant nếu có.
+
 ## Check yourself
 
 - Vì sao đọc metadata bằng reflection ít rủi ro hơn `invoke()` hoặc ghi thẳng vào field?

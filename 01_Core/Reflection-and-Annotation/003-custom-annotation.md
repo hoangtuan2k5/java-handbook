@@ -85,6 +85,14 @@ Ví dụ, team có thể tạo `@InternalApi`, `@TenantRequired`, hoặc `@Audit
 - Đổi tên attribute sau này là breaking change cho mọi nơi đang dùng annotation.
 - Nếu annotation name nghe rất “mạnh” nhưng không có consumer thật, người đọc sẽ kỳ vọng sai về behavior.
 
+## Handbook rule
+
+- Custom annotation chỉ tạo khi nhiều nơi cần cùng metadata và có consumer chung.
+- Phải thiết kế consumer trước annotation; annotation không tự chạy.
+- `@Target` và `@Retention` phải khớp đúng nơi dùng và pha đọc metadata.
+- Đừng dùng custom annotation thay cho method call rõ ở một chỗ nhỏ.
+- Document rõ semantics: ai đọc, đọc khi nào, behavior ra sao khi vắng annotation.
+
 ## Check yourself
 
 - Vì sao custom annotation chỉ có giá trị khi có consumer rõ ràng?

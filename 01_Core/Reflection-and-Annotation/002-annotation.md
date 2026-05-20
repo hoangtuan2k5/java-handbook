@@ -78,6 +78,14 @@ Các annotation này không tự tạo bean hay mở transaction. Spring contain
 - Lạm dụng annotation có thể làm rule bị rải rác và khó trace luồng xử lý thật.
 - `RUNTIME` retention tiện cho framework, nhưng cũng có nghĩa là runtime behavior bắt đầu phụ thuộc vào metadata này.
 
+## Handbook rule
+
+- Annotation chỉ là metadata; logic thực vẫn phải có consumer (compiler/processor/framework).
+- Chọn `@Retention` đúng nhu cầu: `SOURCE`/`CLASS`/`RUNTIME`; chọn `RUNTIME` chỉ khi reflection cần.
+- Hai annotation cùng tên khác package là hai type khác nhau; tránh import nhầm.
+- Annotation không thay thế naming và class design tốt; đừng giấu logic sau marker.
+- Rải annotation khắp codebase mà không có consumer trung tâm là tín hiệu over-use.
+
 ## Check yourself
 
 - Vì sao annotation được gọi là metadata chứ không phải behavior?
