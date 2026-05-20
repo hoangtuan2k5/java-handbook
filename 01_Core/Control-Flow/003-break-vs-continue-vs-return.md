@@ -103,6 +103,14 @@ Chọn đúng keyword giúp service method tránh nested `if` quá sâu.
 - `return` trong `try` vẫn chạy `finally`, nên side effect trong `finally` có thể gây bất ngờ.
 - Nhiều `continue` liên tiếp có thể là dấu hiệu loop đang ôm quá nhiều trách nhiệm.
 
+## Handbook rule
+
+- Skip iteration không cần xử lý dùng `continue`; loop đã đạt mục tiêu dùng `break`; method đã có kết quả dùng `return`.
+- `break` chỉ thoát loop gần nhất; nested loop muốn thoát hết phải tách method hoặc dùng labeled break có chủ ý.
+- `return` trong `try` vẫn chạy `finally`; tính cả side effect ở đó trước khi quyết định.
+- Nhiều `continue`/`break` lồng nhau là dấu hiệu loop đang ôm nhiều trách nhiệm; tách method.
+- Không dùng `return` sớm khi logic phía sau bắt buộc chạy, trừ khi đã đặt trong `finally` hoặc helper rõ.
+
 ## Check yourself
 
 - Khi nào `return` rõ hơn `break`?

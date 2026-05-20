@@ -87,6 +87,14 @@ Với domain enum, `switch expression` cũng làm rule business dễ đọc hơn
 - Block branch phải dùng `yield`, không dùng `return` để trả value cho expression.
 - Nếu branch chủ yếu làm side effect chứ không tạo result, có thể bạn đang ép expression vào sai bài toán.
 
+## Handbook rule
+
+- Dùng `switch expression` khi map từ input rời rạc sang output rõ ràng; dùng `if-else` khi predicate là range hoặc nhiều selector.
+- Arrow case không fall-through; muốn fall-through hãy viết lại logic cho rõ.
+- Block branch phải dùng `yield` để trả value, không phải `return`.
+- Cover đủ branch hoặc thêm `default` để expression exhaustive.
+- Switch nặng side effect là tín hiệu nên tách method, không nén vào expression.
+
 ## Check yourself
 
 - Khi nào `switch expression` rõ hơn `if-else`?

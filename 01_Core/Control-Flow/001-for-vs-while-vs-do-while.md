@@ -109,6 +109,14 @@ Với stream processing trong Spring apps, `for` vẫn đáng dùng khi control 
 - `do-while` luôn chạy ít nhất một lần, kể cả khi điều kiện ban đầu đáng lẽ không cho chạy.
 - Đừng chọn loop theo thói quen cá nhân. Hãy chọn loop làm người đọc đoán đúng flow ngay lần đầu.
 
+## Handbook rule
+
+- Counter cố định/iterate collection dùng `for` hoặc enhanced `for`; điều kiện open-ended dùng `while`.
+- Enhanced `for` không cho mutate structure đang duyệt; cần remove dùng `Iterator` hoặc `removeIf()`.
+- `do-while` chỉ dùng khi body bắt buộc chạy ít nhất một lần.
+- `while` luôn phải có cập nhật điều kiện trong body để tránh infinite loop.
+- Chọn loop theo người đọc đoán flow đúng lần đầu, không theo thói quen cá nhân.
+
 ## Check yourself
 
 - Vì sao `for` thường rõ hơn `while` khi đang duyệt index từ `0` tới `n - 1`?

@@ -99,6 +99,14 @@ Với API nhận nested JSON, recursion giúp validate cấu trúc con, nhưng c
 - Recursion trên graph có cycle cần visited set, nếu không sẽ lặp vô hạn.
 - Recursion đẹp trên bảng trắng chưa chắc là lựa chọn tốt trong production nếu input depth không kiểm soát.
 
+## Handbook rule
+
+- Recursion phải có base case rõ và mọi nhánh phải tiến gần base case.
+- Java không đảm bảo tail-call optimization; sâu stack đáng lo phải dùng loop hoặc explicit stack.
+- Recursion trên graph có cycle bắt buộc dùng visited set.
+- Khi input depth không kiểm soát được, ưu tiên iterative để tránh `StackOverflowError`.
+- Code ngắn không phải lý do chọn recursion; người đọc state phải dễ trace.
+
 ## Check yourself
 
 - Base case đóng vai trò gì trong recursion?
