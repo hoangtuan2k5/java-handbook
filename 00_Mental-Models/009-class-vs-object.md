@@ -100,5 +100,5 @@ Proxy cũng dựa trên ranh giới này. Spring có thể tạo proxy class ho�
 
 ## Links
 
-[[005-JVM-load-class]]
-[[008-Object-lifecycle]]
+[[005-jvm-load-class]]
+[[008-object-lifecycle]]

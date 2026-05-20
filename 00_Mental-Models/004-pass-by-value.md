@@ -130,6 +130,6 @@ Trong Spring Boot, controller gọi service rồi truyền DTO, entity, hoặc r
 
 ## Links
 
-[[003-Stack-vs-Heap]]
+[[003-stack-vs-heap]]
 [[011-value-type-vs-reference-type]]
 - JLS Chapter 4, Types, Values, and Variables: https://docs.oracle.com/javase/specs/jls/se21/html/jls-4.html

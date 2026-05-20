@@ -25,6 +25,6 @@ Mục tiêu là hiểu correctness trước performance: visibility, atomicity, 
 
 ## Related notes
 
-[[../../00_Mental-Models/003-Stack-vs-Heap]]
+[[../../00_Mental-Models/003-stack-vs-heap]]
 
 [[01-programming-languages/java/02_Advanced/Concurrency-Advanced/README]]

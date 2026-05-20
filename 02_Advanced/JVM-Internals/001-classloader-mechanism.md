@@ -201,8 +201,8 @@ Ràng buộc:
 
 ## Links
 
-- [[../../00_Mental-Models/005-JVM-load-class]]
-- [[../../00_Mental-Models/006-Compile-time-vs-Runtime]]
+- [[../../00_Mental-Models/005-jvm-load-class]]
+- [[../../00_Mental-Models/006-compile-time-vs-runtime]]
 - [[002-bytecode-and-class-file]]
 - [JVMS Chapter 5, Loading, Linking, and Initializing](https://docs.oracle.com/javase/specs/jvms/se21/html/jvms-5.html)
 - [JLS Chapter 12, Execution](https://docs.oracle.com/javase/specs/jls/se21/html/jls-12.html)

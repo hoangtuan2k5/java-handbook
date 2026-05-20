@@ -205,7 +205,7 @@ Ràng buộc:
 - [[001-GC]]
 - [[005-strong-soft-weak-phantom-reference]]
 - [[006-off-heap-memory]]
-- [[../../00_Mental-Models/008-Object-lifecycle]]
+- [[../../00_Mental-Models/008-object-lifecycle]]
 - [Java SE 21, `ThreadLocal` Javadoc](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ThreadLocal.html)
 - [Java SE 21, `WeakHashMap` Javadoc](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/WeakHashMap.html)
 - [Java SE 21 Troubleshooting Guide](https://docs.oracle.com/en/java/javase/21/troubleshoot/)

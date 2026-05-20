@@ -85,7 +85,7 @@ Annotation như `@Autowired`, `@Transactional`, `@ConfigurationProperties` nhìn
 
 ## Links
 
-- [[005-JVM-load-class]]
-- [[001-Java-in-JVM-eyes]]
+- [[005-jvm-load-class]]
+- [[001-java-in-jvm-eyes]]
 - [JLS Chapter 12, Execution](https://docs.oracle.com/javase/specs/jls/se21/html/jls-12.html)
 - [JLS Chapter 15, Expressions](https://docs.oracle.com/javase/specs/jls/se21/html/jls-15.html)

@@ -21,6 +21,6 @@ Mục tiêu là kiểm soát construction complexity mà không giấu dependenc
 
 ## Related notes
 
-[[../../../00_Mental-Models/008-Object-lifecycle]]
+[[../../../00_Mental-Models/008-object-lifecycle]]
 
 [[../../../00_Java-Conventions/005-class-naming]]

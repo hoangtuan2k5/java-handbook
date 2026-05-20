@@ -107,9 +107,9 @@ Spring Boot chạy trên đúng runtime model này: bean là object trên `heap`
 
 ## Links
 
-- [[005-JVM-load-class]]
-- [[003-Stack-vs-Heap]]
-- [[004-Pass-by-value]]
+- [[005-jvm-load-class]]
+- [[003-stack-vs-heap]]
+- [[004-pass-by-value]]
 - [[011-value-type-vs-reference-type]]
 - [JVMS Chapter 2, The Structure of the Java Virtual Machine](https://docs.oracle.com/javase/specs/jvms/se21/html/jvms-2.html)
 - [JLS Chapter 4, Types, Values, and Variables](https://docs.oracle.com/javase/specs/jls/se21/html/jls-4.html)

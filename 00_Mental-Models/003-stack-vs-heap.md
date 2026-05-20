@@ -102,8 +102,8 @@ Trong Spring Boot, mỗi request đang được xử lý sẽ chạy trên call 
 
 ## Links
 
-- [[001-Java-in-JVM-eyes]]
-- [[008-Object-lifecycle]]
-- [[004-Pass-by-value]]
+- [[001-java-in-jvm-eyes]]
+- [[008-object-lifecycle]]
+- [[004-pass-by-value]]
 - [[011-value-type-vs-reference-type]]
 - [JVMS Chapter 2, The Structure of the Java Virtual Machine](https://docs.oracle.com/javase/specs/jvms/se21/html/jvms-2.html)

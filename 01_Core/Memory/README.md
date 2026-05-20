@@ -23,6 +23,6 @@ Mục tiêu là debug lifecycle và memory issue bằng reachability, reference 
 
 ## Related notes
 
-[[../../00_Mental-Models/003-Stack-vs-Heap]]
+[[../../00_Mental-Models/003-stack-vs-heap]]
 
-[[../../00_Mental-Models/008-Object-lifecycle]]
+[[../../00_Mental-Models/008-object-lifecycle]]

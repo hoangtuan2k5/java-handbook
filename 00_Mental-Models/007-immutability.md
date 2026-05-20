@@ -105,6 +105,6 @@ Các object như DTO read-only, config object, hoặc result object nếu đư�
 
 ## Links
 
-[[004-Pass-by-value]]
+[[004-pass-by-value]]
 [[011-value-type-vs-reference-type]]
 - String Javadoc: https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html

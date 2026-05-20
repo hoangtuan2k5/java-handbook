@@ -26,7 +26,7 @@ Mục tiêu là debug hành vi runtime bằng model đúng, không biến JVM th
 
 ## Related notes
 
-[[../../00_Mental-Models/005-JVM-load-class]]
+[[../../00_Mental-Models/005-jvm-load-class]]
 
 [[01-programming-languages/java/01_Core/Memory/README]]
 

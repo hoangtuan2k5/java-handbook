@@ -22,8 +22,8 @@ Mục tiêu là hiểu các cơ chế framework như Spring/JUnit/Mockito thư�
 
 ## Related notes
 
-[[../../00_Mental-Models/005-JVM-load-class]]
+[[../../00_Mental-Models/005-jvm-load-class]]
 
-[[../../00_Mental-Models/006-Compile-time-vs-Runtime]]
+[[../../00_Mental-Models/006-compile-time-vs-runtime]]
 
 [[../../00_Java-Conventions/007-enum-record-annotation-naming]]

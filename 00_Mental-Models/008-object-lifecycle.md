@@ -108,8 +108,8 @@ Trong Spring Boot, lifecycle của object thường bị container và scope chi
 
 ## Links
 
-- [[003-Stack-vs-Heap]]
-- [[005-JVM-load-class]]
-- [[004-Pass-by-value]]
+- [[003-stack-vs-heap]]
+- [[005-jvm-load-class]]
+- [[004-pass-by-value]]
 - [[011-value-type-vs-reference-type]]
 - [JLS Chapter 12, Execution](https://docs.oracle.com/javase/specs/jls/se21/html/jls-12.html)
