@@ -14,6 +14,37 @@ Nhiều codebase Java không rối vì syntax, mà rối vì boundary không rõ
 
 ## Good examples
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+left to right direction
+
+package "com.example.orders" {
+  package "order" as OrderPkg
+  package "payment" as PaymentPkg
+  package "shipping" as ShippingPkg
+}
+
+package "external integration" {
+  package "payment-gateway" as GatewayPkg
+}
+
+OrderPkg --> PaymentPkg : domain call
+OrderPkg --> ShippingPkg : domain call
+PaymentPkg --> GatewayPkg : integration boundary
+
+note bottom of OrderPkg
+  Package tốt nói rõ responsibility.
+end note
+
+note bottom of GatewayPkg
+  Boundary external nên nhìn ra ngay.
+end note
+@enduml
+```
+
 ```text
 com.example.orders.order
 com.example.orders.payment
@@ -52,6 +83,8 @@ Các tên này không cho biết boundary thực sự là gì.
 ## Notes
 
 Một package boundary tốt có thể giải thích dependency direction bằng một câu. Nếu phải mở nhiều file mới hiểu package nào được quyền gọi package nào, boundary đang yếu.
+
+Sơ đồ trên giúp nhìn dependency direction trước khi đi vào từng class.
 
 ## Official references
 

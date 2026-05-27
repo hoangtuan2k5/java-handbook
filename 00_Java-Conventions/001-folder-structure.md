@@ -18,6 +18,37 @@ Nếu folder structure lẫn lộn, package naming và dependency direction phí
 
 ## Standard Java project shape
 
+```plantuml
+@startwbs
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+skinparam ArrowColor #7A9CC0
+skinparam BoxPadding 16
+skinparam NodeFontSize 16
+skinparam NodeBackgroundColor #F0F4FF
+skinparam NodeBorderColor #7A9CC0
+
+* <&box> my-service
+** <&file> pom.xml
+** <&folder> src/main
+*** <&folder> java/com/example/orders
+**** <&file> OrderApplication.java
+**** <&folder> order
+**** <&folder> payment
+**** <&folder> shipping
+*** <&folder> resources
+**** <&file> application.yml
+** <&folder> src/test
+*** <&folder> java/com/example/orders
+**** <&folder> order
+**** <&folder> payment
+**** <&folder> shipping
+*** <&folder> resources
+**** <&file> application-test.yml
+@endwbs
+```
+
 ```text
 my-service/
   pom.xml
@@ -60,6 +91,8 @@ Với Gradle, ý tưởng vẫn giống nhau dù file build có thể là `build
 - `src/main/resources/db/migration/`
 
 Các folder này nói rõ code thuộc source set nào và thuộc business area nào.
+
+PlantUML ở trên hữu ích khi cần nhìn nhanh source set nào chứa production code, test code, và resource mà không phải đọc cây thư mục dài bằng mắt.
 
 ## Bad examples
 

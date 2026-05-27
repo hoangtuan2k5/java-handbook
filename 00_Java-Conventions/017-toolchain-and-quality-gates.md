@@ -29,12 +29,40 @@ Nếu chỉ nói code “nên giống Java” mà không nói build/test/check c
 
 ## Minimum gates by project style
 
-| Project style | Minimum gate | Extra gate when project grows |
-|---|---|---|
-| Learning/exercise project | compile + unit tests | Checkstyle/formatter nếu nhiều người sửa |
-| Library | compile, unit tests, static analysis, coverage, package artifact | multi-JDK matrix, javadoc jar/source jar checks |
-| Spring/service | compile, unit tests, integration tests, package image/jar | container smoke test, dependency vulnerability scan |
-| CLI/batch job | compile, unit tests, package runnable artifact | end-to-end sample input test |
+| Project style             | Minimum gate                                                     | Extra gate when project grows                       |
+| ------------------------- | ---------------------------------------------------------------- | --------------------------------------------------- |
+| Learning/exercise project | compile + unit tests                                             | Checkstyle/formatter nếu nhiều người sửa            |
+| Library                   | compile, unit tests, static analysis, coverage, package artifact | multi-JDK matrix, javadoc jar/source jar checks     |
+| Spring/service            | compile, unit tests, integration tests, package image/jar        | container smoke test, dependency vulnerability scan |
+| CLI/batch job             | compile, unit tests, package runnable artifact                   | end-to-end sample input test                        |
+|                           |                                                                  |                                                     |
+|                           |                                                                  |                                                     |
+
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+participant Developer
+participant "Formatter / Static analysis" as StaticChecks
+participant "Compile" as Compile
+participant "Unit tests" as UnitTests
+participant "Integration tests" as IntegrationTests
+participant "Package" as Package
+participant CI
+
+Developer -> StaticChecks : run local checks
+StaticChecks -> Compile : if clean
+Compile -> UnitTests : if compile passes
+UnitTests -> IntegrationTests : if project needs it
+IntegrationTests -> Package : build artifact
+Package -> CI : same lifecycle in pipeline
+
+note over Developer, CI
+  Local verification và CI nên bám cùng lifecycle hoặc task chính.
+end note
+@enduml
+```
 
 ## Maven and Gradle lifecycle map
 

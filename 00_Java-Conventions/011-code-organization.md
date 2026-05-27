@@ -6,6 +6,30 @@ Ngay cả khi naming tốt, một file Java vẫn có thể khó đọc nếu th
 
 ## Recommended order inside a class
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+top to bottom direction
+
+rectangle "constants" as Constants
+rectangle "fields" as Fields
+rectangle "constructors" as Constructors
+rectangle "public methods" as PublicMethods
+rectangle "protected methods" as ProtectedMethods
+rectangle "package-private methods" as PackagePrivateMethods
+rectangle "private helper methods" as PrivateHelpers
+
+Constants --> Fields
+Fields --> Constructors
+Constructors --> PublicMethods
+PublicMethods --> ProtectedMethods
+ProtectedMethods --> PackagePrivateMethods
+PackagePrivateMethods --> PrivateHelpers
+@enduml
+```
+
 1. constants
 2. fields
 3. constructors
@@ -27,6 +51,8 @@ Ngay cả khi naming tốt, một file Java vẫn có thể khó đọc nếu th
 - Người đọc hiểu class từ trên xuống.
 - Tên field, constructor, và public methods kể được “câu chuyện” của class.
 - Private helper không lấn át main API.
+
+PlantUML ở trên diễn tả reading flow top-down: người đọc nên thấy public contract trước khi phải lội xuống helper logic.
 
 ## Bad signs
 

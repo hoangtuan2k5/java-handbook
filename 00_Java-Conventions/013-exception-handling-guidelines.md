@@ -41,7 +41,39 @@ throw new RuntimeException("error");
 
 ## Boundary rule
 
-Broad catches should live at boundaries: controller advice, CLI entry point, worker loop, scheduler boundary, or integration adapter. Domain logic should catch specific exceptions only when it can add meaning or recover.
+Broad catches nên nằm ở các boundary như: controller advice, CLI entry point, worker loop, scheduler boundary hoặc integration adapter. Domain logic chỉ nên catch các exception cụ thể khi nó thật sự có thể bổ sung thêm ngữ nghĩa hoặc recover được tình huống đó.
+
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+
+participant Caller
+participant "Domain logic" as Domain
+participant "Integration adapter" as Adapter
+participant "Boundary handler" as Boundary
+database "External system" as External
+
+Caller -> Domain : invoke use case
+Domain -> Adapter : call dependency
+Adapter -> External : request
+External --> Adapter : timeout / failure
+Adapter --> Domain : translate with context
+Domain --> Boundary : let exception bubble
+Boundary -> Boundary : catch broad once
+Boundary --> Caller : safe response / logged error
+
+note right of Domain
+  Domain chỉ catch khi có recovery
+  hoặc thêm meaning rõ ràng.
+end note
+
+note right of Boundary
+  Broad catch nên sống ở boundary.
+end note
+@enduml
+```
 
 ## Nuance
 
