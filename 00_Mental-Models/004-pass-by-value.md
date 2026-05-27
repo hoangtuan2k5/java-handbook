@@ -18,7 +18,61 @@ Hiểu nhầm thứ hai là nghĩ gán parameter sang object mới sẽ đổi l
 
 ## How it actually works
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+participant Caller
+participant "parameter user" as Param
+participant "User object" as UserObject
+participant "parameter reassignedUser" as Reassigned
+participant "User object mới" as NewObject
+
+Caller -> Param : copy reference value
+Param --> UserObject : refers to same object
+
+Param -> UserObject : mutate field
+note right of UserObject
+  Caller thấy thay đổi
+  vì cùng đi tới một object.
+end note
+
+Caller -> Reassigned : copy reference value
+Reassigned -> NewObject : assign new User(...)
+
+note over Caller, Reassigned
+  Reassign chỉ đổi bản copy local.
+  Binding của caller không đổi.
+end note
+@enduml
+```
+
 Khi gọi method, Java luôn copy argument sang parameter.
+
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+participant Caller
+participant "parameter trong callee" as CalleeParam
+database "User object trên heap" as UserObject
+
+Caller -> CalleeParam : copy reference value
+Caller --> UserObject : reference tới cùng object
+CalleeParam --> UserObject : reference tới cùng object
+
+note over Caller, CalleeParam
+  Hai biến giữ hai bản copy của cùng reference value.
+end note
+
+note right of CalleeParam
+  reassign parameter chỉ đổi biến local.
+  mutate object thì caller vẫn thấy.
+end note
+@enduml
+```
 
 - Nếu argument là `int`, bản copy là một số nguyên độc lập.
 - Nếu argument là `User`, bản copy là một `reference value` tới object `User` đó.

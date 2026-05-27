@@ -26,7 +26,76 @@ Hiểu nhầm thứ hai là tưởng `stack vs heap` là câu chuyện về type
 
 ## How it actually works
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+
+participant "main() frame" as MainFrame
+participant "createUser() frame" as CreateFrame
+participant "reference value\nuserRef" as UserRef
+database "heap object\nUser{name='Linh'}" as UserObject
+
+MainFrame -> CreateFrame : call createUser()
+activate CreateFrame
+
+CreateFrame -> UserObject : new User("Linh")
+activate UserObject
+
+UserObject --> UserRef : return reference value
+deactivate UserObject
+
+UserRef --> CreateFrame : store in local variable
+CreateFrame --> MainFrame : return same reference value
+deactivate CreateFrame
+
+note right of CreateFrame
+  Frame giữ local variables
+  và execution state của method.
+end note
+
+note right of UserObject
+  Object thật nằm trên heap.
+end note
+
+note over CreateFrame, UserObject
+  stack frame giữ reference value.
+  heap giữ object có lifetime linh hoạt hơn.
+end note
+
+@enduml
+```
+
 Flow thật là: khi `main()` chạy, JVM tạo một `stack frame` cho nó. Nếu `main()` gọi `createUser()`, JVM đẩy thêm một frame mới lên `stack`. Trong frame này có local variables như `age` hoặc `userRef`.
+
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+left to right direction
+
+rectangle "JVM Stack" as Stack {
+  rectangle "frame: main()" as MainFrame
+  rectangle "frame: createUser()\nage = 20\nuserRef" as CreateUserFrame
+}
+
+database "Heap" as Heap {
+  rectangle "User{name=\"Linh\"}" as UserObject
+}
+
+CreateUserFrame --> UserObject : userRef refers to
+
+note bottom of Stack
+  Stack giữ frame theo method call.
+end note
+
+note bottom of Heap
+  Object thật sống trên heap.
+end note
+@enduml
+```
 
 Nếu code gặp `new User(...)`, JVM cấp phát object trên `heap`, rồi local variable trong frame chỉ giữ reference tới object đó. Cũng nên nhắc lại một điểm chính xác: reference trong Java là abstract reference value, không nhất thiết là machine pointer literal theo cách mình hay tưởng tượng khi mới học.
 

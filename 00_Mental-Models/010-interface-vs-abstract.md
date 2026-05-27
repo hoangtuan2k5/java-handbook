@@ -24,6 +24,35 @@ Một hiểu nhầm khác là chọn abstract class chỉ để reuse vài helpe
 
 Một class có thể `implement` nhiều interface. Vì vậy interface rất hợp để mô tả các capability độc lập như `Runnable`, `Comparable`, hoặc `PaymentProcessor`. Caller chỉ cần biết contract, không cần biết implementation cụ thể là gì.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+left to right direction
+
+interface PaymentProcessor
+abstract "AbstractPaymentProcessor" as AbstractProcessor
+class StripeProcessor
+class PaypalProcessor
+class PaymentService
+
+StripeProcessor ..|> PaymentProcessor
+PaypalProcessor ..|> PaymentProcessor
+StripeProcessor --|> AbstractProcessor
+PaypalProcessor --|> AbstractProcessor
+PaymentService --> PaymentProcessor : depends on contract
+
+note bottom of PaymentProcessor
+  Interface nói caller được mong đợi gì.
+end note
+
+note bottom of AbstractProcessor
+  Abstract class giữ shared state hoặc flow.
+end note
+@enduml
+```
+
 Đó là lý do interface hay xuất hiện ở API boundary, plugin point, test double, và nhiều chỗ trong dependency injection.
 
 Nhưng đừng biến nó thành khẩu hiệu kiểu “hễ DI là phải có interface”. Nếu hệ thống chỉ có đúng một implementation ổn định và chưa có nhu cầu tách contract rõ ràng, một concrete class vẫn có thể là lựa chọn hợp lý.
@@ -91,14 +120,14 @@ Ví dụ này cho thấy ba lớp ý nghĩa khác nhau:
 
 ### Quick decision table
 
-| If your main need is... | `interface` | `abstract class` | `composition` |
-|---|---|---|---|
-| Mô tả contract cho caller | Best fit | Có thể, nhưng thường nặng tay | Không phải lựa chọn chính |
-| Nhiều implementation rất khác nhau | Best fit | Thường không hợp | Thường kết hợp tốt |
-| Shared state hoặc constructor logic | Không hợp | Best fit | Có thể, nhưng phải tách state holder riêng |
-| Ép invariant hoặc algorithm skeleton | Hạn chế với `default method` | Best fit | Có thể, nếu tách flow sang collaborator |
-| Chỉ muốn reuse một ít logic | Thường không phải mục tiêu chính | Dễ bị lạm dụng | Best fit |
-| Muốn giữ thiết kế linh hoạt, ít ràng buộc | Tốt | Kém hơn vì khoá inheritance | Tốt nhất trong nhiều trường hợp |
+| If your main need is...                   | `interface`                      | `abstract class`              | `composition`                              |
+| ----------------------------------------- | -------------------------------- | ----------------------------- | ------------------------------------------ |
+| Mô tả contract cho caller                 | Best fit                         | Có thể, nhưng thường nặng tay | Không phải lựa chọn chính                  |
+| Nhiều implementation rất khác nhau        | Best fit                         | Thường không hợp              | Thường kết hợp tốt                         |
+| Shared state hoặc constructor logic       | Không hợp                        | Best fit                      | Có thể, nhưng phải tách state holder riêng |
+| Ép invariant hoặc algorithm skeleton      | Hạn chế với `default method`     | Best fit                      | Có thể, nếu tách flow sang collaborator    |
+| Chỉ muốn reuse một ít logic               | Thường không phải mục tiêu chính | Dễ bị lạm dụng                | Best fit                                   |
+| Muốn giữ thiết kế linh hoạt, ít ràng buộc | Tốt                              | Kém hơn vì khoá inheritance   | Tốt nhất trong nhiều trường hợp            |
 
 ### Practical rule of thumb
 

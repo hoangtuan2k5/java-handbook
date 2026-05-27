@@ -18,7 +18,62 @@ Một nhầm lẫn khác là immutable object như `String` hoặc `Money` “ch
 
 ## How it actually works
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+participant "int a" as IntA
+participant "int b" as IntB
+participant "userA" as RefA
+participant "userB" as RefB
+database "User object" as UserObject
+
+IntA -> IntB : copy actual value
+
+RefA -> RefB : copy reference value
+RefB --> UserObject : refers to same object
+
+note over IntA, IntB
+  Primitive copy tạo ra value độc lập.
+end note
+
+note over RefA, UserObject
+  Reference copy không copy whole object.
+  Nó chỉ copy cách đi tới object.
+end note
+@enduml
+```
+
 Ở note này, “value type vs reference type” là mental model để học Java hiện tại. Mình không nói tới future JVM value classes hay Project Valhalla. Cách dạy thực dụng và đúng cho Java ngày nay là:
+
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+left to right direction
+
+rectangle "primitive variable A\nvalue = 10" as PrimitiveA
+rectangle "primitive variable B\nvalue = 10" as PrimitiveB
+
+rectangle "reference variable X" as RefX
+rectangle "reference variable Y" as RefY
+database "User object" as UserObject
+
+PrimitiveA --> PrimitiveB : copy actual value
+RefX --> UserObject : refers to
+RefY --> UserObject : refers to after assignment copy
+
+note bottom of PrimitiveA
+  Primitive copy tạo bản value độc lập.
+end note
+
+note bottom of RefX
+  Reference copy không copy whole object.
+end note
+@enduml
+```
 
 - primitive có value behavior
 - object được truy cập qua `reference value`

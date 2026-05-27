@@ -16,7 +16,53 @@ Một nhầm lẫn nữa là thấy có `static` block thì tưởng nó chạy 
 
 ## How it actually works
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+participant "ClassLoader" as Loader
+participant JVM
+collections "Class metadata" as Metadata
+
+Loader -> JVM : load
+JVM -> Metadata : create runtime representation
+JVM -> JVM : link
+JVM -> JVM : verify
+JVM -> JVM : prepare
+JVM -> JVM : resolve when needed
+JVM -> JVM : initialize
+
+note right of JVM
+  static field initializers và static blocks
+  chỉ chạy ở pha initialize.
+end note
+@enduml
+```
+
 Pha `load` xảy ra khi `ClassLoader` đọc binary definition của class và tạo ra `Class` object tương ứng trong JVM.
+
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+participant "ClassLoader" as Loader
+participant "JVM" as JVM
+collections "Class metadata" as Metadata
+participant "Static initialization" as Init
+
+Loader -> JVM : load
+JVM -> Metadata : create runtime representation
+JVM -> JVM : link\nverify, prepare, resolve
+JVM -> Init : initialize if triggered
+
+note right of Init
+  static field initializers và static blocks
+  chỉ chạy ở pha initialize.
+end note
+@enduml
+```
 
 Sau đó đến `link`. Nếu nhìn ở mức vừa đủ để debug, `link` gồm ba ý chính: `verify` kiểm tra bytecode có hợp lệ không, `prepare` cấp phát và gán default value cho static fields, còn `resolve` biến symbolic references thành các runtime-resolved target mà JVM có thể dùng trực tiếp khi cần.
 

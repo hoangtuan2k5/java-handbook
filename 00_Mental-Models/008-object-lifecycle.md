@@ -28,7 +28,57 @@ Cũng nhiều người nghĩ GC chạy là object chết ngay lập tức, trong
 
 ## How it actually works
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+participant "GC root\nstatic CACHE" as Root
+participant "reference chain" as RefChain
+database "User object" as UserObject
+participant "GC" as GC
+
+Root -> RefChain : keeps reachable path
+RefChain -> UserObject : object is reachable
+
+Root --> RefChain : path removed
+RefChain --> UserObject : no live path remains
+GC -> UserObject : eligible for collection
+
+note right of UserObject
+  Eligible for GC không có nghĩa
+  bị thu hồi ngay lập tức.
+end note
+@enduml
+```
+
 Object lifecycle thường bắt đầu khi JVM cấp phát object trên `heap`, thường qua `new`. Từ đó, object sống miễn là còn reachable từ `GC roots` như local variables trong `stack frame` đang sống, static fields, active threads, hoặc reference chain đi ra từ các root đó.
+
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+top to bottom direction
+
+rectangle "GC Root" as Root
+rectangle "static CACHE" as Cache
+rectangle "User object" as UserObject
+rectangle "eligible for GC" as Eligible
+
+Root --> Cache : reaches
+Cache --> UserObject : holds reference
+UserObject --> Eligible : when no path remains
+
+note right of UserObject
+  Reachable thì chưa bị GC.
+end note
+
+note right of Eligible
+  Eligible không có nghĩa là bị thu hồi ngay.
+end note
+@enduml
+```
 
 Nếu một object không còn được chạm tới từ bất kỳ root nào, nó trở thành `eligible for garbage collection`. Chữ “eligible” rất quan trọng: object đã hết ý nghĩa với chương trình, nhưng memory của nó chưa chắc được thu hồi ngay ở dòng code tiếp theo.
 

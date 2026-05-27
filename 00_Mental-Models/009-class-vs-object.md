@@ -16,7 +16,48 @@ Cũng rất dễ nhầm rằng mỗi lần `new User()` là JVM load class lại
 
 ## How it actually works
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+collections "User class metadata" as ClassMetadata
+participant "User.count\nstatic field" as StaticField
+database "User object #1\nname = Linh" as User1
+database "User object #2\nname = An" as User2
+database "User object #3\nname = Mai" as User3
+
+ClassMetadata --> StaticField : owns class-level state
+ClassMetadata --> User1 : creates instance
+ClassMetadata --> User2 : creates instance
+ClassMetadata --> User3 : creates instance
+
+note over ClassMetadata, User3
+  Một class metadata,
+  nhiều object instance.
+end note
+@enduml
+```
+
 Khi JVM load một class, nó tạo runtime representation cho class đó: metadata về tên class, fields, methods, superclass, interfaces, và một `Class` object mà reflection có thể dùng.
+
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+left to right direction
+
+rectangle "User class metadata\nfields: name, age\nstatic: count" as UserClass
+rectangle "User object #1\nname = Linh\nage = 20" as User1
+rectangle "User object #2\nname = An\nage = 25" as User2
+rectangle "User object #3\nname = Mai\nage = 19" as User3
+
+UserClass --> User1 : creates instances from same class
+UserClass --> User2 : creates instances from same class
+UserClass --> User3 : creates instances from same class
+@enduml
+```
 
 Metadata này là “bản thiết kế runtime”. Khi code gọi `new User(...)`, JVM không tạo lại class definition. Nó cấp phát object mới, gắn object đó với class metadata đã có, rồi chạy constructor để thiết lập state ban đầu.
 

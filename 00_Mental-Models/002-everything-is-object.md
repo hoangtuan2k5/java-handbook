@@ -18,14 +18,48 @@ Hiểu nhầm thứ hai là cứ chỗ nào Java cho gọi API “giống object
 
 Java được thiết kế quanh object vì object gom `state` và `behavior` vào một đơn vị dễ truyền, dễ mở rộng, dễ áp dụng polymorphism. Nhưng nếu mọi giá trị cơ bản đều là object, runtime sẽ phải cấp phát quá nhiều object nhỏ, tốn memory và tăng áp lực cho GC.
 
-Vì vậy Java tách ra ba thứ mà người mới rất hay trộn lẫn:
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+left to right direction
 
-| Kind | Ví dụ | Có phải object không | Có thể là `null` không | Có method instance không | Ghi chú |
-| --- | --- | --- | --- | --- | --- |
-| Primitive | `int`, `double`, `boolean` | Không | Không | Không | Nhẹ, fixed-size, hợp cho tính toán |
-| Wrapper | `Integer`, `Double`, `Boolean` | Có | Có | Có | Là object dùng để đi qua API cần reference type |
-| Regular object | `String`, `User`, `List` | Có | Có | Có | Sống trong object world của Java |
-| Array | `int[]`, `String[]` | Có | Có | Kế thừa method từ `Object` | Array là object, nhưng bản thân phần tử trong array có thể mutable |
+rectangle "primitive world" as PrimitiveWorld {
+  rectangle "int" as Int
+  rectangle "double" as Double
+  rectangle "boolean" as Boolean
+}
+
+rectangle "object world" as ObjectWorld {
+  rectangle "Integer" as IntegerWrapper
+  rectangle "String" as StringObject
+  rectangle "List<Integer>" as IntegerList
+  rectangle "int[]" as IntArray
+}
+
+Int --> IntegerWrapper : autoboxing khi API cần object
+IntegerWrapper --> IntegerList : dùng được trong generics
+IntArray --> ObjectWorld : array cũng là object
+
+note bottom of PrimitiveWorld
+  Primitive không phải object.
+end note
+
+note bottom of ObjectWorld
+  Wrapper và array sống trong object world.
+end note
+@enduml
+```
+
+Vì vậy Java tách ra ba thứ mà người mới rất hay trộn lẫn lần lượt là Primitive, Wrapper, Regular object:
+
+| Kind           | Ví dụ                          | Có phải object không | Có thể là `null` không | Có method instance không   | Ghi chú                                                               |
+| -------------- | ------------------------------ | -------------------- | ---------------------- | -------------------------- | --------------------------------------------------------------------- |
+| Primitive      | `int`, `double`, `boolean`     | Không                | Không                  | Không                      | Nhẹ, fixed-size, hợp cho tính toán                                    |
+| Wrapper        | `Integer`, `Double`, `Boolean` | Có                   | Có                     | Có                         | Primitive được “bọc” thành object để dùng trong object world của Java |
+| Regular object | `String`, `User`, `List`       | Có                   | Có                     | Có                         | Sống trong object world của Java                                      |
+| Array          | `int[]`, `String[]`            | Có                   | Có                     | Kế thừa method từ `Object` | Array là object đặc biệt chứa nhiều phần tử fixed-size                |
 
 `Wrapper` như `Integer`, `Long`, `Boolean` là cầu nối giữa primitive world và object world. Chúng tồn tại vì nhiều API của Java cần object, đặc biệt là `Collections`, `Generics`, reflection, và framework layer như Spring data binding.
 

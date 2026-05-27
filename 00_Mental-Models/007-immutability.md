@@ -18,6 +18,29 @@ Cũng nhiều người dùng `String` rồi nghĩ nó “bị đổi”, trong k
 
 Một object immutable thường có vài đặc điểm cốt lõi:
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+skinparam ParticipantPadding 60  
+skinparam BoxPadding 20  
+skinparam Padding 15
+participant "original" as Original
+participant "updated" as Updated
+database "Money(100)" as Money100
+database "Money(150)" as Money150
+
+Original --> Money100 : refers to
+Updated --> Money150 : updated refers to the object created after add(50)
+
+note over Original, Updated
+  original và updated không cùng trỏ một object.
+  Object cũ không bị mutate.
+end note
+@enduml
+```
+
 - state được set đầy đủ lúc construction
 - không có đường hợp lệ nào để đổi state sau đó
 - dữ liệu mutable đi vào hoặc đi ra đều được defensive copy nếu cần

@@ -14,7 +14,69 @@ Hiểu nhầm thứ hai là tưởng runtime chỉ đơn giản là execute code
 
 ## How it actually works
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+participant "source code" as Source
+participant Compiler
+participant "bytecode" as Bytecode
+participant JVM
+database "runtime state" as RuntimeState
+
+Source -> Compiler : parse + type check
+Compiler -> Bytecode : emit bytecode
+Bytecode -> JVM : execute
+JVM -> RuntimeState : load class, create object,
+JVM -> RuntimeState : dispatch method, throw exception
+
+note right of Compiler
+  Thấy syntax, type rules,
+  overload, access rules.
+end note
+
+note right of RuntimeState
+  Thấy object thật, null thật,
+  input thật, config thật.
+end note
+@enduml
+```
+
 Ở `compile-time`, Java compiler làm các việc như parse syntax, check type, resolve overload, áp dụng access rules, và đôi khi tối ưu nhỏ như constant folding. Ví dụ, compiler có thể chặn `String s = 10;` ngay vì type mismatch là thứ nó thấy rõ từ source.
+
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+left to right direction
+
+rectangle "compile-time" as CompileTime {
+  rectangle "parse syntax"
+  rectangle "check type"
+  rectangle "resolve overload"
+  rectangle "access rules"
+}
+
+rectangle "runtime" as Runtime {
+  rectangle "load class"
+  rectangle "create object"
+  rectangle "dispatch method"
+  rectangle "throw real exception"
+}
+
+CompileTime --> Runtime : bytecode passes here
+
+note bottom of CompileTime
+  Biết rule tĩnh của source code.
+end note
+
+note bottom of Runtime
+  Biết state, data, null, config, và object thật.
+end note
+@enduml
+```
 
 Nhưng compiler không thể biết một biến object có đang là `null` ở đúng nhánh runtime hay không, file config có tồn tại không, hay request input thực tế có giá trị gì.
 

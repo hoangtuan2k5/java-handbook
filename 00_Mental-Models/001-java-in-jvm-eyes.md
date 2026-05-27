@@ -6,14 +6,64 @@ Khi nhìn bằng mắt của JVM, Java không còn là những dòng source code
 
 Điểm mấu chốt là JVM không chạy file `.java`. Nó chạy model runtime đã được chuẩn hóa sau khi compile. Giống như shipper không đọc đoạn chat gốc của bạn, họ chỉ nhìn địa chỉ đã được chuẩn hóa để giao hàng.
 
-```text
-source (.java)
-  -> bytecode (.class)
-  -> class loading
-  -> execution
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+title Java dưới mắt JVM
 
-execution view:
-stack frame --holds--> reference value --refers to--> heap object
+skinparam backgroundColor #FAFAF7
+skinparam shadowing false
+
+participant "source\n(.java)" as Source
+participant "javac" as Javac
+participant "bytecode\n(.class)" as Bytecode
+participant "ClassLoader" as Loader
+participant "JVM" as JVM
+collections "class metadata" as Metadata
+participant "stack frame\nmethod hiện tại" as Frame
+database "heap object" as HeapObject
+participant "reference value" as Ref
+
+Source -> Javac : compile
+activate Javac
+Javac -> Bytecode : tạo bytecode
+deactivate Javac
+
+Bytecode -> Loader : class được dùng lần đầu
+activate Loader
+Loader -> JVM : nạp class
+JVM -> Metadata : lưu metadata của class
+deactivate Loader
+
+JVM -> Frame : gọi method
+activate Frame
+note right of Frame
+  Mỗi lần gọi method,
+  JVM tạo một stack frame mới.
+end note
+
+Frame -> HeapObject : gặp new, cấp phát object
+activate HeapObject
+HeapObject --> Ref : trả về reference value
+deactivate HeapObject
+
+Ref --> Frame : lưu vào local variable hoặc operand stack
+
+note over Ref
+  reference value không phải object.
+  Nó là một giá trị trong frame,
+  dùng để JVM tìm tới heap object.
+end note
+
+note over Frame, HeapObject
+  stack frame giữ reference value.
+  heap mới là nơi object thật nằm.
+end note
+
+deactivate Frame
+@enduml
 ```
 
 ## How I used to misunderstand it
@@ -34,7 +84,75 @@ Flow thật nên đọc thành từng bước nhỏ:
 - Khi gọi method, JVM tạo `stack frame`.
 - Khi gặp `new`, JVM cấp phát object và trả về một `reference value` cho frame hiện tại.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+actor Developer
+participant javac
+participant JVM
+participant ClassLoader
+participant Metaspace
+participant "JVM Stack" as stack
+participant Heap
+
+Developer -> javac : source code (.java)
+javac --> Developer : bytecode (.class)
+
+Developer -> JVM : java MyClass
+JVM -> ClassLoader : load class
+ClassLoader -> JVM : read bytecode (.class)
+JVM -> Metaspace : store class metadata\n(fields, methods, constants)
+JVM -> JVM : run [clinit] if needed\n(static fields, static blocks)
+
+Developer -> JVM : invoke method
+JVM -> stack : create stack frame\n(local vars, operand stack)
+
+stack -> Heap : encounter [new] -> allocate object
+Heap --> stack : return reference value\n(memory address)
+
+note right of stack
+  reference value != object
+  reference = địa chỉ trỏ tới object
+  object nằm trên heap
+end note
+
+@enduml
+```
+
 Ở đây cần nói rất rõ về chữ `reference`.
+
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+package "JVM Stack (frame hiện tại)" {
+  object "local variable" as ref {
+    type = "MyClass"
+    value = 0x7f3a (reference value)
+  }
+}
+
+package "Heap" {
+  object "MyClass instance" as obj {
+    field1 = "hello"
+    field2 = 42
+    address = 0x7f3a
+  }
+}
+
+ref --> obj : trỏ tới\n(reference)
+
+note bottom of ref
+  reference chỉ là một con số —
+  địa chỉ bộ nhớ của object
+  thật sự trên heap
+end note
+
+@enduml
+```
 
 Trong Java language và JVM spec, reference là một giá trị tham chiếu trừu tượng. Nó không nhất thiết là một machine pointer literal giống cách mình hay tưởng tượng khi học C. JVM implementation có thể biểu diễn reference theo cách riêng, miễn là runtime behavior đúng.
 
