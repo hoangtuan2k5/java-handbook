@@ -31,6 +31,31 @@ Consumer          = nơi đọc metadata và tạo ra behavior thật
 
 Vì vậy, custom annotation gần giống một mini language cho framework hoặc tooling của bạn. Nó không phải business logic. Nó là input cho một cơ chế khác.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+left to right direction
+
+annotation AuditAction
+class Target
+enum ElementType
+enum RetentionPolicy
+class Consumer
+
+AuditAction --> ElementType : target
+AuditAction --> RetentionPolicy : retention
+Target ..> AuditAction : annotated with
+Consumer --> AuditAction : reads metadata
+
+note bottom of Consumer
+Custom annotation chỉ có giá trị
+khi có consumer đọc nó nhất quán.
+end note
+@enduml
+```
+
 ### Compile-time vs runtime boundary
 
 | Nếu consumer là... | Retention thường cần gì |

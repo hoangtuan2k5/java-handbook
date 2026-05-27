@@ -37,6 +37,30 @@ Framework runtime = phản ứng theo metadata đã đọc
 
 Vì vậy, annotation nên được hiểu là `metadata`, không phải `behavior`. Behavior luôn nằm ở consumer của annotation.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+
+actor Developer
+participant "Annotated element" as Element
+participant Compiler
+participant "Runtime framework" as Framework
+
+Developer -> Element : add annotation
+Element -> Compiler : metadata available at compile time
+Compiler -> Framework : metadata kept if retention allows
+Framework -> Element : read annotation at runtime
+
+note right of Framework
+Annotation chỉ là metadata.
+Behavior xuất hiện khi compiler,
+processor hoặc framework đọc metadata đó.
+end note
+@enduml
+```
+
 ## Code example
 
 ```java

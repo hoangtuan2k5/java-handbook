@@ -29,6 +29,31 @@ Nếu đọc text UTF-8, CSV, JSON, hoặc log file, dùng `Reader` hoặc API c
 
 Vì vậy khi chuyển từ `InputStream` sang `Reader`, bạn phải chọn charset rõ ràng, thường bằng `InputStreamReader`.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+left to right direction
+
+component "Byte source" as ByteSource
+component "InputStream" as InputStream
+component "InputStreamReader" as InputStreamReader
+component "Reader" as Reader
+component "Character data" as CharacterData
+
+ByteSource --> InputStream : bytes
+InputStream --> InputStreamReader : bytes + charset
+InputStreamReader --> Reader : decoded chars
+Reader --> CharacterData : text API
+
+note bottom of InputStreamReader
+Charset decision nằm ở boundary
+từ byte sang character.
+end note
+@enduml
+```
+
 ### Byte vs char table
 
 | Câu hỏi | `InputStream` | `Reader` |

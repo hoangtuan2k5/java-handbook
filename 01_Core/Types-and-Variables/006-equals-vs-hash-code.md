@@ -21,6 +21,35 @@ Contract cơ bản là: nếu `a.equals(b)` là `true` thì `a.hashCode()` phả
 
 Hash-based collection thường làm hai bước:
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+
+start
+:Receive lookup key;
+:Call hashCode();
+:Choose bucket;
+if (Candidates in bucket?) then (yes)
+  :Call equals();
+  if (Logical match?) then (yes)
+    :Return stored value;
+  else (no)
+    :Continue search;
+  endif
+else (no)
+  :Not found;
+endif
+stop
+
+note right
+hashCode chọn bucket trước.
+equals xác nhận logical equality bên trong bucket.
+end note
+@enduml
+```
+
 1. dùng `hashCode()` để chọn bucket nhanh hơn
 2. dùng `equals()` để phân biệt object trong bucket đó
 

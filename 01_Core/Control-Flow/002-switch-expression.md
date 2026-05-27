@@ -27,6 +27,29 @@ Nếu branch cần nhiều statement, dùng block và `yield value`.
 
 Vì là expression, nó phải có type thống nhất giữa các branch và phải cover đủ khả năng input, thường bằng `default` nếu selector không phải enum hoặc sealed type được cover hết.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+
+start
+:Evaluate selector;
+if (case matches?) then (yes)
+  :Produce branch value;
+else (no)
+  :Use default branch;
+endif
+:Assign expression result;
+stop
+
+note right
+switch expression là mapping từ selector
+sang một result value thống nhất.
+end note
+@enduml
+```
+
 Arrow case không fall-through như `case` cũ có dấu `:`. Đây là lợi ích lớn vì nhiều bug `switch` cổ điển đến từ việc quên `break`.
 
 ### Comparison table

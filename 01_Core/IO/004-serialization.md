@@ -30,14 +30,53 @@ Field `transient` không được serialize.
 
 Với app hiện đại, JSON hoặc format có schema rõ thường dễ kiểm soát hơn cho API hoặc storage. Native Java serialization nên dùng rất thận trọng.
 
+Ví dụ flow bên trong:
+
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+participant "Dog\n(heap)" as Dog
+participant "ObjectOutputStream" as OOS
+participant "Byte stream\n(file/network)" as Stream
+participant "ObjectInputStream" as OIS
+participant "Dog'\n(new heap)" as Dog2
+
+Dog -> OOS : writeObject(dog)
+activate OOS
+OOS -> Stream : AC ED 00 05  (magic header)
+OOS -> Stream : class descriptor Dog
+OOS -> Stream : field values - name, age
+OOS -> Stream : class descriptor Collar
+OOS -> Stream : field values - color
+deactivate OOS
+...
+Stream -> OIS : read bytes
+activate OIS
+OIS -> OIS : verify magic header
+OIS -> OIS : lookup class in classpath
+note right : NO constructor called
+OIS -> OIS : set fields via reflection
+OIS -> OIS : rebuild Collar + reference
+OIS --> Dog2 : return instance
+deactivate OIS
+
+note over Dog, Dog2
+  dog != dog'  (khác reference)
+  dog.equals(dog')  (cùng state)
+end note
+@enduml
+```
+
 ### Comparison table
 
-| Câu hỏi | Native Java serialization | JSON hoặc schema-first format |
-|---|---|---|
-| Gắn chặt với Java class | Yes | Thường ít hơn |
-| Dễ đọc ngoài Java | No | Thường yes |
-| Compatibility cần kỷ luật | Rất cần | Vẫn cần, nhưng thường minh bạch hơn |
-| Deserialize input không tin cậy | Rủi ro cao | Vẫn phải cẩn thận, nhưng mô hình khác |
+| Câu hỏi                         | Native Java serialization | JSON hoặc schema-first format         |
+| ------------------------------- | ------------------------- | ------------------------------------- |
+| Gắn chặt với Java class         | Yes                       | Thường ít hơn                         |
+| Dễ đọc ngoài Java               | No                        | Thường yes                            |
+| Compatibility cần kỷ luật       | Rất cần                   | Vẫn cần, nhưng thường minh bạch hơn   |
+| Deserialize input không tin cậy | Rủi ro cao                | Vẫn phải cẩn thận, nhưng mô hình khác |
 
 ### Serialization checklist
 

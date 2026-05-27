@@ -16,6 +16,29 @@ Thực ra giá trị của nó nằm ở việc giảm nhiễu. Khi lambda chỉ
 
 Method reference vẫn cần target functional interface giống lambda. Compiler sẽ map signature của functional interface vào method phù hợp.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+left to right direction
+
+interface "Function<String, String>" as FunctionType
+class "String::trim" as MethodReference
+class "name -> name.trim()" as Lambda
+class "Stream.map(...)" as MapStage
+
+MethodReference ..|> FunctionType
+Lambda ..|> FunctionType
+MapStage --> FunctionType : needs target type
+
+note bottom of MethodReference
+Method reference hợp khi lambda chỉ forward
+gần như một-một tới method có sẵn.
+end note
+@enduml
+```
+
 ### Bốn dạng hay gặp
 
 | Dạng | Ví dụ | Nghĩ là |

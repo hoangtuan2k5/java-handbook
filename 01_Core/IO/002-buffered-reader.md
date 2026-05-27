@@ -20,6 +20,30 @@ Mình từng nghĩ `BufferedReader` chỉ dùng để đọc từng dòng cho đ
 
 Khi gọi `readLine()`, nó gom character cho đến line terminator hoặc EOF.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+left to right direction
+
+component "Reader" as Reader
+component "BufferedReader" as BufferedReader
+component "Internal buffer" as Buffer
+component "readLine()" as ReadLine
+component "Line String" as Line
+
+Reader --> BufferedReader : character stream
+BufferedReader --> Buffer : fill buffer
+Buffer --> ReadLine : serve chars
+ReadLine --> Line : return line
+
+note bottom of Buffer
+Buffer giảm số lần chạm resource bên dưới.
+end note
+@enduml
+```
+
 Dòng trả về không chứa ký tự xuống dòng.
 
 ### Reader stack mental model

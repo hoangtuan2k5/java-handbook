@@ -26,6 +26,33 @@ Mình cũng từng dùng `extends` và `super` theo cảm tính, rồi bị comp
 
 Wildcard là cách Java mô tả variance ở **use-site**. Nó giúp API nói rõ: input này cần linh hoạt kiểu nào, để **đọc**, để **ghi**, hay chỉ để **quan sát**.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+left to right direction
+
+class "List<? extends Number>" as Producer
+class "List<? super Integer>" as Consumer
+class "List<?>" as Unknown
+
+Producer --> "Number value" : read safely
+Consumer --> "Integer value" : write safely
+Unknown --> "Object value" : observe only
+
+note bottom of Producer
+Producer extends: đọc ra như parent type,
+nhưng không add child tuỳ ý.
+end note
+
+note bottom of Consumer
+Consumer super: ghi child type an toàn,
+nhưng đọc ra chỉ chắc là Object.
+end note
+@enduml
+```
+
 ### Bảng mental model quan trọng nhất
 
 | Signature | Bạn làm tốt việc gì | Bạn không làm tốt việc gì |

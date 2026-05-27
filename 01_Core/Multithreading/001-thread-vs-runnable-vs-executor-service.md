@@ -32,6 +32,29 @@ Khi bạn viết `new Thread(task).start()`, bạn đang gắn một task với 
 
 Khi bạn `submit()` task vào `ExecutorService`, bạn tách hai chuyện ra:
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+actor Caller
+participant ExecutorService
+queue "Task queue" as Queue
+participant "Worker thread" as Worker
+participant Runnable
+
+Caller -> ExecutorService : submit(task)
+ExecutorService -> Queue : enqueue task
+Worker -> Queue : take task
+Worker -> Runnable : run()
+
+note right of ExecutorService
+ExecutorService tách task submission
+khỏi worker lifecycle và reuse.
+end note
+@enduml
+```
+
 - task nào cần chạy,
 - worker nào sẽ chạy task đó.
 

@@ -29,6 +29,29 @@ Frame cũ tạm chờ frame mới trả kết quả.
 
 Base case là điểm không gọi tiếp nữa.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+
+participant "sumDigits(472)" as Call472
+participant "sumDigits(47)" as Call47
+participant "sumDigits(4)" as Call4
+
+Call472 -> Call47 : call smaller problem
+Call47 -> Call4 : call smaller problem
+Call4 --> Call47 : return 4
+Call47 --> Call472 : return 11
+Call472 --> Call472 : return 13
+
+note over Call472, Call4
+Mỗi recursive call tạo stack frame mới.
+Khi base case trả về, kết quả unwind ngược lại.
+end note
+@enduml
+```
+
 Recursive case phải giảm kích thước bài toán, ví dụ giảm index, cắt chuỗi ngắn hơn, hoặc đi xuống node con trong tree.
 
 ### Recursion checklist

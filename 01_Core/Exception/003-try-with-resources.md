@@ -18,6 +18,29 @@ Khi code làm việc với stream, reader, connection, statement, hoặc custom 
 
 Resource được khai báo trong header của `try`, và JVM sẽ gọi `close()` tự động khi block kết thúc.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+
+participant "try block" as TryBlock
+participant "Resource A" as A
+participant "Resource B" as B
+
+TryBlock -> A : open first
+TryBlock -> B : open second
+TryBlock -> TryBlock : execute body
+TryBlock -> B : close first
+TryBlock -> A : close second
+
+note over A, B
+Resource đóng theo thứ tự ngược lại
+với thứ tự khai báo.
+end note
+@enduml
+```
+
 Nếu có nhiều resource, chúng được đóng theo thứ tự ngược lại với thứ tự khai báo.
 
 Nếu cả business logic và `close()` cùng ném exception, lỗi từ `close()` thường trở thành suppressed exception thay vì che mất lỗi chính.

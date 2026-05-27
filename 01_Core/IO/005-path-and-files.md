@@ -26,6 +26,33 @@ Cách đó dễ sai khi gặp separator khác OS, path thừa slash, hoặc cầ
 
 `Files` thao tác với filesystem thật, nên có thể ném `IOException` hoặc chịu ảnh hưởng quyền truy cập, symbolic link, và race condition.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+left to right direction
+
+component "String path" as StringPath
+component "Path" as Path
+component "resolve()" as Resolve
+component "normalize()" as Normalize
+component "Files operation" as FilesOperation
+database "Filesystem" as Filesystem
+
+StringPath --> Path : Path.of(...)
+Path --> Resolve : append child
+Resolve --> Normalize : simplify syntax
+Normalize --> FilesOperation : read, write, copy, move
+FilesOperation --> Filesystem : real IO
+
+note bottom of FilesOperation
+Files thao tác với filesystem thật,
+nên vẫn phải xử lý IOException và race condition.
+end note
+@enduml
+```
+
 ### Path workflow table
 
 | Bước | API thường dùng | Ý nghĩa |

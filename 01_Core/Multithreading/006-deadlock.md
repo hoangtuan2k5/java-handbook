@@ -31,6 +31,28 @@ Chỉ cần phá một điều kiện, deadlock có thể tránh được.
 
 ### Vòng chờ hay gặp nhất
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+participant "Thread A" as ThreadA
+participant "Lock 1" as Lock1
+participant "Lock 2" as Lock2
+participant "Thread B" as ThreadB
+
+ThreadA -> Lock1 : holds
+ThreadB -> Lock2 : holds
+ThreadA -> Lock2 : waits for
+ThreadB -> Lock1 : waits for
+
+note over ThreadA, ThreadB
+Circular wait làm cả hai thread đứng yên.
+Phá lock ordering sai là cách phòng tránh chính.
+end note
+@enduml
+```
+
 ```text
 Thread A holds Lock 1, waits for Lock 2
 Thread B holds Lock 2, waits for Lock 1

@@ -37,6 +37,30 @@ Runtime:      reflection đọc metadata thật của class đã được load
 
 Điểm quan trọng là `reflection` luôn đi sau compile time. Compiler không bảo vệ được các string như tên field hoặc tên method mà bạn truyền vào reflection API.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+
+actor Caller
+participant "Class object" as ClassObject
+participant "Method metadata" as MethodMetadata
+participant "Target object" as TargetObject
+
+Caller -> ClassObject : getDeclaredMethod(name)
+ClassObject -> MethodMetadata : return Method
+Caller -> MethodMetadata : invoke(target, args)
+MethodMetadata -> TargetObject : call method reflectively
+TargetObject --> Caller : return result
+
+note right of MethodMetadata
+Reflection đi qua metadata runtime,
+nên refactor tên method hoặc field có thể làm hỏng code muộn hơn.
+end note
+@enduml
+```
+
 ### Mental model ngắn gọn
 
 ```text

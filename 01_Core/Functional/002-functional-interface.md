@@ -33,6 +33,29 @@ Functional interface vẫn có thể chứa:
 
 Những thứ đó không phá rule, vì lambda chỉ cần implement abstract method chính.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+left to right direction
+
+interface "PriceFormatter" as PriceFormatter {
+  +format(price: int): String
+}
+class "lambda" as Lambda
+class "method reference" as MethodReference
+
+Lambda ..|> PriceFormatter
+MethodReference ..|> PriceFormatter
+
+note bottom of PriceFormatter
+Functional interface có đúng một abstract method.
+Default và static method không phá contract này.
+end note
+@enduml
+```
+
 ### So sánh các contract phổ biến
 
 | Type | Nhận vào | Trả về | Dùng khi |

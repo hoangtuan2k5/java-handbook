@@ -32,6 +32,29 @@ Một hiểu nhầm khác là xem `hashCode()` như unique id. Nó không cần 
 
 ### Hash collection mental model
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+participant "HashSet / HashMap" as HashCollection
+participant "hashCode()" as HashCode
+collections "Bucket" as Bucket
+participant "equals()" as Equals
+database "Stored object" as StoredObject
+
+HashCollection -> HashCode : choose bucket
+HashCode -> Bucket : locate candidates
+Bucket -> Equals : compare logical equality
+Equals -> StoredObject : match or reject
+
+note right of HashCode
+Equal objects must produce
+the same hashCode value.
+end note
+@enduml
+```
+
 ```text
 put / contains / get
     -> dùng hashCode() để chọn bucket

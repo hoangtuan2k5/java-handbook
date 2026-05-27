@@ -18,6 +18,33 @@ JDK `Proxy` API tạo một object implement cùng interface với target. Khi c
 
 ### Call flow
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+
+actor Caller
+participant "Proxy object" as Proxy
+participant "InvocationHandler" as Handler
+participant "Target service" as Target
+
+Caller -> Proxy : call interface method
+Proxy -> Handler : invoke(proxy, method, args)
+Handler -> Handler : add cross-cutting logic
+Handler -> Target : method.invoke(target, args)
+Target --> Handler : return result
+Handler --> Proxy : return result
+Proxy --> Caller : return result
+
+note right of Handler
+Proxy đổi call path để logging,
+transaction, security, retry hoặc metrics
+có điểm chặn trước target thật.
+end note
+@enduml
+```
+
 ```text
 Without proxy: caller -> target.method()
 With proxy:    caller -> proxy -> InvocationHandler -> target.method()

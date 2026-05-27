@@ -23,6 +23,37 @@ Ví dụ `(int) 3.9` cho ra `3`, không làm tròn. Còn cast một `long` quá 
 
 Với reference types, cast không đổi object thật sự là gì. Nó chỉ nói với compiler rằng mình tin object hiện tại có type phù hợp. Nếu niềm tin đó sai, runtime sẽ ném `ClassCastException`.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+
+start
+:Choose cast target;
+if (Numeric cast?) then (yes)
+  if (Widening?) then (yes)
+    :Convert safely;
+  else (no)
+    :Validate range and precision;
+    :Narrow explicitly;
+  endif
+else (no)
+  if (Object really matches target type?) then (yes)
+    :Reference cast succeeds;
+  else (no)
+    :ClassCastException;
+  endif
+endif
+stop
+
+note right
+Cast không đổi bản chất object thật.
+Nó chỉ đổi cách compiler nhìn reference.
+end note
+@enduml
+```
+
 ### Comparison table
 
 | Loại cast | Ví dụ | Có thể mất dữ liệu không | Có thể fail ở runtime không |

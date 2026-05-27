@@ -22,6 +22,30 @@ Thứ hai, với I/O-bound workload, pool lớn hơn có thể hợp lý hơn, n
 
 Một thread pool thực tế thường có mấy phần quan trọng:
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+actor Caller
+participant "ThreadPoolExecutor" as Pool
+queue "Task queue" as Queue
+participant "Worker thread" as Worker
+participant "Rejection policy" as Rejection
+
+Caller -> Pool : submit(task)
+Pool -> Worker : run immediately if available
+Pool -> Queue : enqueue if workers are busy
+Pool -> Rejection : reject if queue is full
+Worker -> Queue : take next task
+
+note right of Pool
+Pool design gồm worker count,
+queue capacity, rejection policy,
+end note
+@enduml
+```
+
 - worker count,
 - task queue,
 - rejection policy,

@@ -24,6 +24,27 @@ Một hiểu nhầm khác là thấy lambda rồi nghĩ code tự nhiên “func
 
 Lambda không tồn tại độc lập như một function top-level. Nó phải có **target type**, thường là một functional interface có đúng một abstract method.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+left to right direction
+
+interface "Predicate<T>" as Predicate
+class "lambda expression" as Lambda
+class "Stream.filter(...)" as Filter
+
+Lambda ..|> Predicate : target type
+Filter --> Predicate : consumes behavior
+
+note bottom of Lambda
+Lambda cần target functional interface
+để compiler biết input và output shape.
+end note
+@enduml
+```
+
 Ví dụ:
 
 - `name -> name.length() >= 3` có thể là `Predicate<String>`

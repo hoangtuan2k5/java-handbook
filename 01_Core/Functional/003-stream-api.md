@@ -31,6 +31,32 @@ Intermediate operations thường lazy. Terminal operation mới là thứ kéo 
 
 ### Pipeline mental model
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+
+participant "Collection source" as Source
+participant "Stream view" as Stream
+participant "filter" as Filter
+participant "map" as Map
+participant "terminal operation" as Terminal
+database "Result" as Result
+
+Source -> Stream : stream()
+Stream -> Filter : define lazy stage
+Filter -> Map : define lazy stage
+Map -> Terminal : execute pipeline
+Terminal -> Result : collect output
+
+note over Filter, Map
+Intermediate operations thường chỉ mô tả pipeline.
+Terminal operation mới kéo dữ liệu chạy thật.
+end note
+@enduml
+```
+
 ```text
 source -> filter -> map -> collect
 ```

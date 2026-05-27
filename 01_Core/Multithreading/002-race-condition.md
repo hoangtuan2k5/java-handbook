@@ -32,6 +32,29 @@ Nếu hai thread cùng đọc cùng một giá trị cũ trước khi ai đó gh
 
 ### Lost update, nhìn bằng timeline
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+
+participant "Thread A" as A
+participant "Shared count" as Count
+participant "Thread B" as B
+
+A -> Count : read 0
+B -> Count : read 0
+A -> A : add 1
+B -> B : add 1
+A -> Count : write 1
+B -> Count : write 1
+
+note over Count
+Expected final value is 2,
+end note
+@enduml
+```
+
 ```text
 Initial count = 0
 

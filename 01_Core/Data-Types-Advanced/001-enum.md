@@ -26,6 +26,30 @@ Vì vậy so sánh `enum` thường dùng `==` là đúng.
 
 Ngoài ra, `switch expression` với `enum` là cặp rất mạnh vì compiler có thể cảnh báo khi bạn chưa xử lý đủ trường hợp.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+left to right direction
+
+enum OrderStatus {
+  CREATED
+  PAID
+  SHIPPED
+  CANCELLED
+}
+
+class "switch expression" as SwitchExpression
+SwitchExpression --> OrderStatus : covers finite constants
+
+note bottom of OrderStatus
+Enum là một type hữu hạn,
+không chỉ là nhóm String constant.
+end note
+@enduml
+```
+
 ### Advanced type comparison
 
 | Nếu bạn cần... | `enum` | `record` | `sealed class` |

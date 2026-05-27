@@ -26,6 +26,29 @@ Kết quả là viết xong rồi mới ngạc nhiên vì output là `Map<K, Lis
 
 Collector là contract mà terminal operation `collect(...)` dùng để xây kết quả cuối.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+participant "Stream elements" as Elements
+participant "classifier" as Classifier
+collections "Group bucket" as Bucket
+participant "Downstream collector" as Downstream
+database "Map<K, Result>" as ResultMap
+
+Elements -> Classifier : compute key
+Classifier -> Bucket : place element by key
+Bucket -> Downstream : aggregate group
+Downstream -> ResultMap : produce final map
+
+note right of Bucket
+groupingBy trước hết là gom theo key,
+sau đó mới quyết định aggregate mỗi group.
+end note
+@enduml
+```
+
 Một vài collector phổ biến:
 
 - `toList()`

@@ -26,6 +26,34 @@ Khi kết hợp với sealed class, compiler có thể hỗ trợ reasoning về
 
 Điều quan trọng là pattern variable chỉ sống trong nhánh mà pattern đã được chứng minh đúng.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+
+start
+:Receive value;
+if (value is String?) then (yes)
+  :Bind text;
+  :Use String branch;
+else (no)
+  if (value is Integer?) then (yes)
+    :Bind number;
+    :Use Integer branch;
+  else (no)
+    :Use default branch;
+  endif
+endif
+stop
+
+note right
+Pattern variable chỉ hợp lệ
+trong branch mà compiler đã chứng minh pattern đúng.
+end note
+@enduml
+```
+
 ### Advanced type comparison
 
 | Câu hỏi | Pattern matching | Cast tay kiểu cũ |

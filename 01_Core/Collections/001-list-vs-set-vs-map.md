@@ -34,6 +34,42 @@ Hiểu nhầm thứ hai là xem `Set` như `List` có thêm bước xoá trùng.
 
 Điểm quan trọng nhất là interface thể hiện rõ dữ liệu được phép như thế nào:
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+left to right direction
+
+interface List
+interface Set
+interface Map
+
+class "OrderLine collection" as OrderLines
+class "Role collection" as Roles
+class "User lookup" as UsersById
+
+OrderLines --> List : order and duplicates matter
+Roles --> Set : uniqueness matters
+UsersById --> Map : key to value lookup
+
+note bottom of List
+List phù hợp khi vị trí, thứ tự,
+hoặc duplicate là một phần của model.
+end note
+
+note bottom of Set
+Set phù hợp khi membership
+và uniqueness là contract chính.
+end note
+
+note bottom of Map
+Map phù hợp khi key lookup
+là operation trung tâm.
+end note
+@enduml
+```
+
 - `List<OrderLine>` nói thứ tự hoặc duplicates có thể có ý nghĩa.
 - `Set<Role>` nói role không được trùng.
 - `Map<Long, User>` nói lookup theo `id` là trường hợp sử dụng chính.

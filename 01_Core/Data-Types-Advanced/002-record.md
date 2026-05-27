@@ -24,6 +24,30 @@ Bạn vẫn có thể thêm validation trong canonical constructor, thêm method
 
 Nhưng record không phù hợp nếu object cần setter, mutable field, hoặc kế thừa class khác.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+
+class "UserSummary record" as UserSummary {
+  id: long
+  name: String
+  id(): long
+  name(): String
+  equals(other): boolean
+  hashCode(): int
+  toString(): String
+}
+
+note right of UserSummary
+Record components định nghĩa data shape
+và compiler sinh accessor, equality,
+hashCode, toString theo components.
+end note
+@enduml
+```
+
 ### Advanced type comparison
 
 | Nếu bạn cần... | `record` | `enum` | `sealed class` |

@@ -38,6 +38,29 @@ Vì vậy `finally` hợp với cleanup như đóng resource, clear `ThreadLocal
 
 ### Cleanup flow scaffold
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+
+start
+:try block;
+if (exception thrown?) then (yes)
+  :matching catch block;
+else (no)
+  :normal result;
+endif
+:finally block;
+stop
+
+note right
+finally hợp cho cleanup nhất quán,
+không nên dùng để đổi business result bất ngờ.
+end note
+@enduml
+```
+
 ```text
 try      -> work may succeed or fail
 catch    -> recover, translate, or rethrow

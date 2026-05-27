@@ -16,6 +16,29 @@ Bug khó chịu nhất không phải lúc code nổ ngay. Khó nhất là lúc m
 
 `null` chỉ áp dụng cho reference type. Primitive như `int` hay `boolean` không thể nhận `null`. Nếu gọi method, truy cập field, hoặc unbox một reference đang là `null`, Java sẽ ném `NullPointerException`.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+left to right direction
+
+object "name:String reference" as NameReference
+object "String object" as StringObject {
+  value = "Linh"
+}
+object "missingName:String reference" as MissingReference
+
+NameReference --> StringObject : refers to
+MissingReference --> "no object" : null
+
+note bottom of MissingReference
+null là absence of reference,
+không phải object rỗng.
+end note
+@enduml
+```
+
 Điều khó của `null` không nằm ở syntax mà ở semantics. Khi thấy `String nickname = null;`, ta phải tự hỏi: đây là chưa gửi dữ liệu, chưa load dữ liệu, hay kết quả không tồn tại? Nếu ý nghĩa không rõ, bug dễ lan sang nhiều tầng.
 
 Null handling tốt thường bắt đầu bằng contract rõ ràng:

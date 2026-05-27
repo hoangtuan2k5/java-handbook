@@ -22,6 +22,29 @@ Hiểu nhầm nữa là xem `CompletableFuture` như chuyện “chạy nền”
 
 Sau đó bạn có thể nối các stage khác nhau tuỳ nhu cầu.
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+participant "supplyAsync" as Supply
+participant "thenApply" as Apply
+participant "thenCompose" as Compose
+participant "thenCombine" as Combine
+participant "exceptionally" as Exceptionally
+
+Supply -> Apply : transform value
+Apply -> Compose : flatten async stage
+Compose -> Combine : merge independent result
+Compose -> Exceptionally : fallback on failure
+
+note right of Compose
+thenCompose dùng khi stage tiếp theo
+cũng trả về CompletableFuture.
+end note
+@enduml
+```
+
 ### Composition table
 
 | Method | Dùng khi nào | Kết quả |

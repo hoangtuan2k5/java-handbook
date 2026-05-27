@@ -24,6 +24,35 @@ Vấn đề là chỉ cần đổi từ `int` sang `Integer`, code đã bước 
 
 Primitive lưu value trực tiếp theo type system của Java. Wrapper là reference type trỏ tới object. JVM hỗ trợ autoboxing và unboxing để chuyển qua lại giữa hai bên:
 
+```plantuml
+@startuml
+skinparam defaultFontSize 16
+skinparam maxMessageSize 200
+skinparam wrapWidth 200
+left to right direction
+
+object "primitiveCount:int" as PrimitiveCount {
+  value = 10
+}
+
+object "boxedCount:Integer reference" as BoxedReference
+object "Integer object" as IntegerObject {
+  value = 10
+}
+
+PrimitiveCount ..> IntegerObject : boxing creates wrapper
+BoxedReference --> IntegerObject : refers to
+
+note bottom of PrimitiveCount
+Primitive giữ value trực tiếp.
+end note
+
+note bottom of BoxedReference
+Wrapper là reference type nên có thể là null.
+end note
+@enduml
+```
+
 ```java
 // boxing
 Integer x = 10;
