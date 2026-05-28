@@ -24,7 +24,7 @@ Sau đó bạn có thể nối các stage khác nhau tuỳ nhu cầu.
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 participant "supplyAsync" as Supply

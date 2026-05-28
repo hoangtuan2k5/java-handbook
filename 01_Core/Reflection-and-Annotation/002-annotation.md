@@ -39,7 +39,7 @@ Vì vậy, annotation nên được hiểu là `metadata`, không phải `behavi
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 

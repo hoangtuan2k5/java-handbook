@@ -20,7 +20,7 @@ JDK `Proxy` API tạo một object implement cùng interface với target. Khi c
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 

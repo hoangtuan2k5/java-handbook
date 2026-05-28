@@ -16,7 +16,7 @@ Hiểu nhầm thứ hai là tưởng runtime chỉ đơn giản là execute code
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 participant "source code" as Source
@@ -47,7 +47,7 @@ end note
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 left to right direction

@@ -28,7 +28,7 @@ Cách đó dễ sai khi gặp separator khác OS, path thừa slash, hoặc cầ
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 left to right direction

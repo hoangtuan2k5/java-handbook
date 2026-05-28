@@ -39,7 +39,7 @@ Runtime:      reflection đọc metadata thật của class đã được load
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 

@@ -26,7 +26,7 @@ Nhưng record không phù hợp nếu object cần setter, mutable field, hoặc
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 

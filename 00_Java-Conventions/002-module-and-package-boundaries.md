@@ -16,7 +16,7 @@ Nhiều codebase Java không rối vì syntax, mà rối vì boundary không rõ
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 left to right direction

@@ -30,7 +30,7 @@ Cũng nhiều người nghĩ GC chạy là object chết ngay lập tức, trong
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 participant "GC root\nstatic CACHE" as Root
@@ -56,7 +56,7 @@ Object lifecycle thường bắt đầu khi JVM cấp phát object trên `heap`,
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 top to bottom direction

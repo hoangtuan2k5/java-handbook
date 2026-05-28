@@ -31,7 +31,7 @@ Vì vậy khi chuyển từ `InputStream` sang `Reader`, bạn phải chọn cha
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 left to right direction

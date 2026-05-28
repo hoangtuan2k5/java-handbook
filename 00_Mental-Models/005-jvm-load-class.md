@@ -18,7 +18,7 @@ Một nhầm lẫn nữa là thấy có `static` block thì tưởng nó chạy 
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 participant "ClassLoader" as Loader
@@ -44,7 +44,7 @@ Pha `load` xảy ra khi `ClassLoader` đọc binary definition của class và t
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 participant "ClassLoader" as Loader

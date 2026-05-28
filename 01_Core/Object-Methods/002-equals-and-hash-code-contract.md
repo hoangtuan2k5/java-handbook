@@ -34,7 +34,7 @@ Một hiểu nhầm khác là xem `hashCode()` như unique id. Nó không cần 
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 participant "HashSet / HashMap" as HashCollection

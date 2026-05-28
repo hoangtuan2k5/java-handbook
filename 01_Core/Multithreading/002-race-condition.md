@@ -34,7 +34,7 @@ Nếu hai thread cùng đọc cùng một giá trị cũ trước khi ai đó gh
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 

@@ -35,12 +35,10 @@ Nếu chỉ nói code “nên giống Java” mà không nói build/test/check c
 | Library                   | compile, unit tests, static analysis, coverage, package artifact | multi-JDK matrix, javadoc jar/source jar checks     |
 | Spring/service            | compile, unit tests, integration tests, package image/jar        | container smoke test, dependency vulnerability scan |
 | CLI/batch job             | compile, unit tests, package runnable artifact                   | end-to-end sample input test                        |
-|                           |                                                                  |                                                     |
-|                           |                                                                  |                                                     |
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 participant Developer

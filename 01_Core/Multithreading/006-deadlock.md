@@ -33,7 +33,7 @@ Chỉ cần phá một điều kiện, deadlock có thể tránh được.
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 participant "Thread A" as ThreadA

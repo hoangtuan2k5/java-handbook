@@ -31,7 +31,7 @@ NIO không tự động làm mọi thứ non-blocking. Non-blocking là một ph
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 

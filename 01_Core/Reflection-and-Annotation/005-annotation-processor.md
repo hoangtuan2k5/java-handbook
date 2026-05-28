@@ -18,7 +18,7 @@ Annotation processor thường extend `AbstractProcessor` và được compiler 
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 participant "Source code" as Source

@@ -27,7 +27,7 @@ biến `name` vẫn là `"java"` nếu không gán lại kết quả. Method t�
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 left to right direction

@@ -26,7 +26,7 @@ Lambda không tồn tại độc lập như một function top-level. Nó phải
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 left to right direction

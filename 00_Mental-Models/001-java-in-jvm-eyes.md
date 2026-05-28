@@ -8,7 +8,7 @@ Khi nhìn bằng mắt của JVM, Java không còn là những dòng source code
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 title Java dưới mắt JVM
@@ -86,7 +86,7 @@ Flow thật nên đọc thành từng bước nhỏ:
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 actor Developer
@@ -125,7 +125,7 @@ end note
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 package "JVM Stack (frame hiện tại)" {

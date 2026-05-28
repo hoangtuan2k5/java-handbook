@@ -28,7 +28,7 @@ Khi kết hợp với sealed class, compiler có thể hỗ trợ reasoning về
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 

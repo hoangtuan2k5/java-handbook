@@ -18,7 +18,7 @@ Cũng rất dễ nhầm rằng mỗi lần `new User()` là JVM load class lại
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 collections "User class metadata" as ClassMetadata
@@ -43,7 +43,7 @@ Khi JVM load một class, nó tạo runtime representation cho class đó: metad
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 left to right direction

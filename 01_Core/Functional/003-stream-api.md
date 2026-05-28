@@ -33,7 +33,7 @@ Intermediate operations thường lazy. Terminal operation mới là thứ kéo 
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 

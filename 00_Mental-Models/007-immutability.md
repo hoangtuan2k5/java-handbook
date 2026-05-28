@@ -20,7 +20,7 @@ Một object immutable thường có vài đặc điểm cốt lõi:
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 skinparam ParticipantPadding 60  

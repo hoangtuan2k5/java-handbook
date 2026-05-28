@@ -26,7 +26,7 @@ Một class có thể `implement` nhiều interface. Vì vậy interface rất h
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 left to right direction

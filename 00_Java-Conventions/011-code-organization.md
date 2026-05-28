@@ -8,7 +8,7 @@ Ngay cả khi naming tốt, một file Java vẫn có thể khó đọc nếu th
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 top to bottom direction

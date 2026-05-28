@@ -18,7 +18,7 @@ Bug khó chịu nhất không phải lúc code nổ ngay. Khó nhất là lúc m
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 left to right direction

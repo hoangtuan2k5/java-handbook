@@ -24,7 +24,7 @@ Một thread pool thực tế thường có mấy phần quan trọng:
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 actor Caller

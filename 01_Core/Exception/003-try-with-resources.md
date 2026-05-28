@@ -20,7 +20,7 @@ Resource được khai báo trong header của `try`, và JVM sẽ gọi `close(
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 

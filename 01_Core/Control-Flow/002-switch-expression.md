@@ -29,7 +29,7 @@ Vì là expression, nó phải có type thống nhất giữa các branch và ph
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 

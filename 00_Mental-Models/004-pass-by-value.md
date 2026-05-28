@@ -20,7 +20,7 @@ Hiểu nhầm thứ hai là nghĩ gán parameter sang object mới sẽ đổi l
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 participant Caller
@@ -52,7 +52,7 @@ Khi gọi method, Java luôn copy argument sang parameter.
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 participant Caller

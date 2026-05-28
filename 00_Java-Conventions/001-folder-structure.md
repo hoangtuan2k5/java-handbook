@@ -20,7 +20,7 @@ Nếu folder structure lẫn lộn, package naming và dependency direction phí
 
 ```plantuml
 @startwbs
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 skinparam ArrowColor #7A9CC0

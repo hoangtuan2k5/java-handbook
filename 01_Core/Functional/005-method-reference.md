@@ -18,7 +18,7 @@ Method reference vẫn cần target functional interface giống lambda. Compile
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 left to right direction

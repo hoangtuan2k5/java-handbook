@@ -28,7 +28,7 @@ Ngoài ra, `switch expression` với `enum` là cặp rất mạnh vì compiler 
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 left to right direction

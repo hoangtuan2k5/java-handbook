@@ -45,7 +45,7 @@ Broad catches nên nằm ở các boundary như: controller advice, CLI entry po
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 

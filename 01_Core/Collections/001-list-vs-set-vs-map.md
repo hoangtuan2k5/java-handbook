@@ -36,7 +36,7 @@ Hiểu nhầm thứ hai là xem `Set` như `List` có thêm bước xoá trùng.
 
 ```plantuml
 @startuml
-skinparam defaultFontSize 16
+skinparam defaultFontSize 15
 skinparam maxMessageSize 200
 skinparam wrapWidth 200
 left to right direction
